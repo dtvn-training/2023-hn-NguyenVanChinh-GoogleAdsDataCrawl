@@ -116,9 +116,20 @@ def writeLog(folderName):
     with open(file_path, "w") as file:
         file.write("folder_name={}".format(folderName[:-1]))
 
+# open file properties get link to googleads website
+def getLinkGoogleads():
+    file_path = 'config/googleadsLink.properties'
+    properties = {}
+    with open(file_path, 'r') as file:
+        for line in file:
+            line = line.strip()
+            if line and not line.startswith('#'):
+                key, value = line.split('=')
+                properties[key.strip()] = value.strip().strip("'")
+    return properties.get('googleadsLink')
 
 if __name__ == "__main__":
-    googleadsLink = "https://developers.google.com/google-ads/api/fields/v15/overview"
+    googleadsLink = getLinkGoogleads()
     googleadsRawData = getHtmlData(googleadsLink)
 
     resourceLink = extractInfoResource(googleadsRawData)
