@@ -95,16 +95,16 @@ def checkRawdataFolder(folder_name):
         os.makedirs(folder_name + "/resources")
 
 
-def copyToInput(folderName):
-    # checkInputFolder(folderName)
-    shutil.copytree(
-        "./rawdata/" + folderName, "./inputdata/" + folderName
-    )  # cai nay folder dest ko dc ton tai trc khi chay
+# def copyToInput(folderName):
+#     # checkInputFolder(folderName)
+#     shutil.copytree(
+#         "./rawdata/" + folderName, "./inputdata/" + folderName
+#     )  # cai nay folder dest ko dc ton tai trc khi chay
 
 
-def checkInputFolder(folderName):  # neu folder ton tai, se ko copy dc.
-    # if not os.path.isdir("inputdata/"):
-    os.makedirs("inputdata/" + folderName)
+# def checkInputFolder(folderName):  # neu folder ton tai, se ko copy dc.
+#     # if not os.path.isdir("inputdata/"):
+#     os.makedirs("inputdata/" + folderName)
 
 
 def writeLog(folderName):

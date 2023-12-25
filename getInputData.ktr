@@ -69,16 +69,17 @@
   <created_date>2023&#x2f;12&#x2f;21 15&#x3a;50&#x3a;35.226</created_date>
   <modified_user>-</modified_user>
   <modified_date>2023&#x2f;12&#x2f;21 15&#x3a;50&#x3a;35.226</modified_date>
-    <key_for_session_key/>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <order>
+  <hop> <from>Property Input</from><to>Set Variables</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Python crawl data</name>
-    <type>Script</type>
+    <name>Property Input</name>
+    <type>PropertyInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -87,13 +88,96 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f; Script here&#xd;&#xa;&#xd;&#xa;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>    </fields>     <cluster_schema/>
+    <file_type>property</file_type>
+    <encoding>UTF-8</encoding>
+    <include>N</include>
+    <include_field/>
+    <filename_Field/>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field/>
+    <resetrownumber>N</resetrownumber>
+    <resolvevaluevariable>N</resolvevaluevariable>
+    <ini_section>N</ini_section>
+    <ini_section_field/>
+    <section/>
+    <file>
+      <name>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x2f;config&#x2f;foldername.properties</name>
+      <exclude_filemask/>
+      <filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>Key</name>
+        <column>key</column>
+        <type>String</type>
+        <format/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <currency/>
+        <decimal/>
+        <group/>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>Value</name>
+        <column>value</column>
+        <type>String</type>
+        <format/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <currency/>
+        <decimal/>
+        <group/>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>304</xloc>
-      <yloc>208</yloc>
+      <xloc>368</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set Variables</name>
+    <type>SetVariable</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <field_name>Value</field_name>
+        <variable_name>FOLDER_NAME</variable_name>
+        <variable_type>JVM</variable_type>
+        <default_value/>
+        </field>
+      </fields>
+    <use_formatting>Y</use_formatting>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>512</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

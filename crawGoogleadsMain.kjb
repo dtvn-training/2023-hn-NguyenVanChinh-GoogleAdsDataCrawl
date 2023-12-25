@@ -50,11 +50,11 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>96</xloc>
+      <xloc>64</xloc>
       <yloc>144</yloc>
       </entry>
     <entry>
-      <name>load raw data</name>
+      <name>load folderName rawdata</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -83,68 +83,284 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>192</xloc>
+      <xloc>304</xloc>
       <yloc>144</yloc>
       </entry>
     <entry>
-      <name>Check if a folder is empty</name>
+      <name>Check if input folder is empty</name>
       <description/>
       <type>FOLDER_IS_EMPTY</type>
-      <foldername/>
+      <foldername>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;inputdata&#x2f;&#x24;&#x7b;FOLDER_NAME&#x7d;</foldername>
       <include_subfolders>N</include_subfolders>
       <specify_wildcard>N</specify_wildcard>
       <wildcard/>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>464</xloc>
+      <xloc>624</xloc>
       <yloc>144</yloc>
       </entry>
     <entry>
-      <name>Create a folder</name>
+      <name>Create input folder</name>
       <description/>
       <type>CREATE_FOLDER</type>
-      <foldername/>
-      <fail_of_folder_exists>Y</fail_of_folder_exists>
+      <foldername>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;inputdata&#x2f;&#x24;&#x7b;FOLDER_NAME&#x7d;</foldername>
+      <fail_of_folder_exists>N</fail_of_folder_exists>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>352</xloc>
+      <xloc>416</xloc>
       <yloc>144</yloc>
       </entry>
     <entry>
-      <name>Copy Files</name>
+      <name>DUMMY</name>
+      <description/>
+      <type>SPECIAL</type>
+      <start>N</start>
+      <dummy>Y</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>336</xloc>
+      <yloc>320</yloc>
+      </entry>
+    <entry>
+      <name>copy rawdata to inputdata</name>
       <description/>
       <type>COPY_FILES</type>
       <copy_empty_folders>Y</copy_empty_folders>
       <arg_from_previous>N</arg_from_previous>
       <overwrite_files>N</overwrite_files>
-      <include_subfolders>N</include_subfolders>
+      <include_subfolders>Y</include_subfolders>
       <remove_source_files>N</remove_source_files>
       <add_result_filesname>N</add_result_filesname>
       <destination_is_a_file>N</destination_is_a_file>
       <create_destination_folder>N</create_destination_folder>
       <fields>
+        <field>
+          <source_filefolder>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;rawdata&#x2f;&#x24;&#x7b;FOLDER_NAME&#x7d;</source_filefolder>
+          <source_configuration_name>LOCAL-SOURCE-FILE-0</source_configuration_name>
+          <destination_filefolder>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;inputdata&#x2f;&#x24;&#x7b;FOLDER_NAME&#x7d;</destination_filefolder>
+          <destination_configuration_name>LOCAL-DEST-FILE-0</destination_configuration_name>
+          <wildcard/>
+        </field>
       </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>368</xloc>
+      <xloc>752</xloc>
+      <yloc>144</yloc>
+      </entry>
+    <entry>
+      <name>python crawl data</name>
+      <description/>
+      <type>SHELL</type>
+      <filename/>
+      <work_directory>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;</work_directory>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <set_append_logfile>N</set_append_logfile>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <insertScript>Y</insertScript>
+      <script>python crawlWebData.py</script>
+      <loglevel>Basic</loglevel>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>176</xloc>
+      <yloc>144</yloc>
+      </entry>
+    <entry>
+      <name>extract segments</name>
+      <description/>
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;handleSegments.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>752</xloc>
       <yloc>240</yloc>
+      </entry>
+    <entry>
+      <name>Success</name>
+      <description/>
+      <type>SUCCESS</type>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>752</xloc>
+      <yloc>384</yloc>
+      </entry>
+    <entry>
+      <name>Create output folder</name>
+      <description/>
+      <type>CREATE_FOLDER</type>
+      <foldername>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;outputdata&#x2f;&#x24;&#x7b;FOLDER_NAME&#x7d;</foldername>
+      <fail_of_folder_exists>N</fail_of_folder_exists>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>512</xloc>
+      <yloc>144</yloc>
       </entry>
   </entries>
   <hops>
     <hop>
+      <from>load folderName rawdata</from>
+      <to>Create input folder</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Check if input folder is empty</from>
+      <to>copy rawdata to inputdata</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Check if input folder is empty</from>
+      <to>DUMMY</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
       <from>START</from>
-      <to>load raw data</to>
+      <to>python crawl data</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
     </hop>
+    <hop>
+      <from>python crawl data</from>
+      <to>load folderName rawdata</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>python crawl data</from>
+      <to>DUMMY</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>copy rawdata to inputdata</from>
+      <to>extract segments</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>extract segments</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>copy rawdata to inputdata</from>
+      <to>DUMMY</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Create input folder</from>
+      <to>Create output folder</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Create output folder</from>
+      <to>Check if input folder is empty</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
   </hops>
   <notepads>
+    <notepad>
+      <note>sao check empty nay luon luon dung du no ko empty</note>
+      <xloc>368</xloc>
+      <yloc>64</yloc>
+      <width>317</width>
+      <heigth>25</heigth>
+      <fontname/>
+      <fontsize>-1</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
 
 </job>
