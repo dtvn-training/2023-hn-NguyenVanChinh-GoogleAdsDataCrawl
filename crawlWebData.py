@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 from datetime import datetime
+import logging
 
 
 # send request get html raw data by link
@@ -111,22 +112,45 @@ def checkRawdataFolder(folder_name):
 
 
 # write folderName of saved file to properties, for downstream in PDI
-def writeLog(folderName):
+def writeLog(folderName, resourceLink):
+    writeFolderName(folderName)
+    writeToLogFile(folderName, resourceLink)
+
+
+# write folder name to properties file
+def writeFolderName(folderName):
     file_path = "config/foldername.properties"
     with open(file_path, "w") as file:
         file.write("folder_name={}".format(folderName[:-1]))
 
+
+# write result of crawlCode to log file
+def writeToLogFile(folderName, resourceLink):
+    # Configure logging to write to a file
+    logging.basicConfig(
+        filename="./log/crawl.log",
+        level=logging.DEBUG,
+        format="%(asctime)s - %(levelname)s - %(message)s",
+    )
+    logging.info(
+        "Downloaded file to folder: rawdata/{}, with {} file".format(
+            folderName, len(resourceLink)
+        )
+    )
+
+
 # open file properties get link to googleads website
 def getLinkGoogleads():
-    file_path = 'config/googleadsLink.properties'
+    file_path = "config/googleadsLink.properties"
     properties = {}
-    with open(file_path, 'r') as file:
+    with open(file_path, "r") as file:
         for line in file:
             line = line.strip()
-            if line and not line.startswith('#'):
-                key, value = line.split('=')
+            if line and not line.startswith("#"):
+                key, value = line.split("=")
                 properties[key.strip()] = value.strip().strip("'")
-    return properties.get('googleadsLink')
+    return properties.get("googleadsLink")
+
 
 if __name__ == "__main__":
     googleadsLink = getLinkGoogleads()
@@ -134,4 +158,4 @@ if __name__ == "__main__":
 
     resourceLink = extractInfoResource(googleadsRawData)
     folderName = downloadXmlRawData(resourceLink)
-    writeLog(folderName)
+    writeLog(folderName, resourceLink)
