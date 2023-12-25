@@ -73,40 +73,119 @@
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
+    <notepad>
+      <note>this transformation handle segments.xml file.&#xd;&#xa;Extract and save 3 table &#xd;&#xa;&#x2b; segments&#xd;&#xa;&#x2b; datatype&#xd;&#xa;&#x2b; selectableWith to file csv</note>
+      <xloc>16</xloc>
+      <yloc>128</yloc>
+      <width>269</width>
+      <heigth>85</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>select segments for table ResourceField</note>
+      <xloc>448</xloc>
+      <yloc>176</yloc>
+      <width>244</width>
+      <heigth>25</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>ETL selectableWith&#xd;&#xa;select, cut redundance string, and split into rows. Finally export to output file</note>
+      <xloc>592</xloc>
+      <yloc>336</yloc>
+      <width>453</width>
+      <heigth>40</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>ETL dataType&#xd;&#xa;select, filter datatype contains &#x27;enum&#x27; or not into 2 branch&#xd;&#xa;&#x2b; branch have &#x27;enum&#x27; will stringcut &#x27;enum&#x27;, trim both, then split datatype into rows. &#xd;&#xa;&#x2b; branch dont have &#x27;enum&#x27; doesnt need split.&#xd;&#xa;select 2 branch into 1 table, add index and export to output</note>
+      <xloc>400</xloc>
+      <yloc>720</yloc>
+      <width>485</width>
+      <heigth>85</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <order>
-  <hop> <from>Select for selectableWith</from><to>Cut selectableWith</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add index segments</from><to>Select for selectableWith</to><enabled>Y</enabled> </hop>
-  <hop> <from>Cut selectableWith</from><to>Select for load</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select for load</from><to>Split selectableWith</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select values 3</from><to>selectableWith output</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select selectableWith</from><to>Cut selectableWith</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add index segments</from><to>Select selectableWith</to><enabled>Y</enabled> </hop>
+  <hop> <from>Cut selectableWith</from><to>Select after cut</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select after cut</from><to>Split selectableWith</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select selectableWith fields </from><to>selectableWith output</to><enabled>Y</enabled> </hop>
   <hop> <from>segments data</from><to>Add index segments</to><enabled>Y</enabled> </hop>
   <hop> <from>Select segments</from><to>segments output</to><enabled>Y</enabled> </hop>
-  <hop> <from>Split selectableWith</from><to>Add id selectableWith</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add id selectableWith</from><to>Select values 3</to><enabled>Y</enabled> </hop>
+  <hop> <from>Split selectableWith</from><to>Add index selectableWith</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add index selectableWith</from><to>Select selectableWith fields </to><enabled>Y</enabled> </hop>
   <hop> <from>Add index segments</from><to>Select segments</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select for load 2</from><to>Split datatype</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select values 3 2</from><to>datatype output</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add index segments</from><to>Select for dataType</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select for dataType</from><to>Filter datatype</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter datatype</from><to>Cut dataType</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter datatype</from><to>Select values</to><enabled>Y</enabled> </hop>
-  <hop> <from>Cut dataType</from><to>trim datatype</to><enabled>Y</enabled> </hop>
-  <hop> <from>trim datatype</from><to>Select for load 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select after cut 2</from><to>Split datatype</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select datatype fields</from><to>datatype output</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add index segments</from><to>Select dataType</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select dataType</from><to>If datatype have enum</to><enabled>Y</enabled> </hop>
+  <hop> <from>If datatype have enum</from><to>Cut enum</to><enabled>Y</enabled> </hop>
+  <hop> <from>If datatype have enum</from><to>Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>Cut enum</from><to>trim datatype</to><enabled>Y</enabled> </hop>
+  <hop> <from>trim datatype</from><to>Select after cut 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Split datatype</from><to>Select values 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Select values 2</from><to>Select values 4</to><enabled>Y</enabled> </hop>
   <hop> <from>Select values</from><to>Select values 4</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select values 4</from><to>Sort rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>Sort rows</from><to>Add sequence</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add sequence</from><to>Select values 3 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add index segments</from><to>Select values 5</to><enabled>N</enabled> </hop>
-  <hop> <from>Select values 5</from><to>Filter rows</to><enabled>N</enabled> </hop>
-  <hop> <from>Filter rows</from><to>Strings cut</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter rows</from><to>Select values 6</to><enabled>N</enabled> </hop>
-  <hop> <from>Strings cut</from><to>Select values 7</to><enabled>N</enabled> </hop>
+  <hop> <from>Select values 4</from><to>Sort by segmentId</to><enabled>Y</enabled> </hop>
+  <hop> <from>Sort by segmentId</from><to>Add index dataType</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add index dataType</from><to>Select datatype fields</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Add id selectableWith</name>
+    <name>Add index selectableWith</name>
     <type>Sequence</type>
     <description/>
     <distribute>Y</distribute>
@@ -128,8 +207,8 @@
       <max_value>999999999</max_value>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>832</xloc>
-      <yloc>320</yloc>
+      <xloc>1024</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -157,14 +236,43 @@
       <max_value>999999999</max_value>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>240</xloc>
-      <yloc>352</yloc>
+      <xloc>416</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Cut dataType</name>
+    <name>Add index dataType</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <valuename>Id</valuename>
+      <use_database>N</use_database>
+      <connection/>
+      <schema/>
+      <seqname>SEQ_</seqname>
+      <use_counter>Y</use_counter>
+      <counter_name>idDataType</counter_name>
+      <start_at>0</start_at>
+      <increment_by>1</increment_by>
+      <max_value>99999999</max_value>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1200</xloc>
+      <yloc>752</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Cut enum</name>
     <type>StringCut</type>
     <description/>
     <distribute>Y</distribute>
@@ -184,8 +292,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>608</xloc>
-      <yloc>464</yloc>
+      <xloc>672</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -211,14 +319,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>512</xloc>
-      <yloc>304</yloc>
+      <xloc>672</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Filter datatype</name>
+    <name>If datatype have enum</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -228,7 +336,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>Cut dataType</send_true_to>
+<send_true_to>Cut enum</send_true_to>
 <send_false_to>Select values</send_false_to>
     <compare>
 <condition>
@@ -240,14 +348,14 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>496</xloc>
-      <yloc>464</yloc>
+      <xloc>544</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Select for dataType</name>
+    <name>Select dataType</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -268,14 +376,14 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>400</xloc>
-      <yloc>416</yloc>
+      <xloc>432</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Select for load</name>
+    <name>Select after cut</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -296,14 +404,14 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>608</xloc>
-      <yloc>320</yloc>
+      <xloc>768</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Select for load 2</name>
+    <name>Select after cut 2</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -324,14 +432,14 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>752</xloc>
-      <yloc>480</yloc>
+      <xloc>848</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Select for selectableWith</name>
+    <name>Select selectableWith</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -352,8 +460,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>400</xloc>
-      <yloc>320</yloc>
+      <xloc>560</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -385,6 +493,10 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
+      </field>      <field>        <name>TypeURL</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
       </field>      <field>        <name>Filterable</name>
         <rename/>
         <length>-2</length>
@@ -404,8 +516,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>288</xloc>
-      <yloc>160</yloc>
+      <xloc>464</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -432,8 +544,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>608</xloc>
-      <yloc>576</yloc>
+      <xloc>736</xloc>
+      <yloc>656</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -460,14 +572,14 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>912</xloc>
-      <yloc>528</yloc>
+      <xloc>1040</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Select values 3</name>
+    <name>Select selectableWith fields </name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -492,14 +604,14 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>944</xloc>
-      <yloc>320</yloc>
+      <xloc>1184</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Select values 3 2</name>
+    <name>Select datatype fields</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -524,8 +636,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1232</xloc>
-      <yloc>640</yloc>
+      <xloc>1328</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -552,14 +664,14 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>928</xloc>
-      <yloc>624</yloc>
+      <xloc>1072</xloc>
+      <yloc>656</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Sort rows</name>
+    <name>Sort by segmentId</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -586,8 +698,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1024</xloc>
-      <yloc>640</yloc>
+      <xloc>1088</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -612,8 +724,8 @@
    <delimiter_is_regex>Y</delimiter_is_regex>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>832</xloc>
-      <yloc>496</yloc>
+      <xloc>944</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -638,8 +750,8 @@
    <delimiter_is_regex>Y</delimiter_is_regex>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>704</xloc>
-      <yloc>320</yloc>
+      <xloc>880</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -726,8 +838,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1344</xloc>
-      <yloc>640</yloc>
+      <xloc>1472</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -914,6 +1026,21 @@
         <trim_type>both</trim_type>
         <repeat>N</repeat>
       </field>
+      <field>
+        <name>rawSelectableWith</name>
+        <xpath>td&#x2f;table&#x2f;tr&#x5b;10&#x5d;&#x2f;td&#x5b;2&#x5d;</xpath>
+        <element_type>node</element_type>
+        <result_type>singlenode</result_type>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
     </fields>
     <limit>0</limit>
     <loopxpath>&#x2f;html&#x2f;body&#x2f;section&#x2f;section&#x2f;main&#x2f;devsite-content&#x2f;article&#x2f;div&#x2f;devsite-filter&#x2f;table&#x2f;tbody&#x2f;tr</loopxpath>
@@ -931,8 +1058,8 @@
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>96</xloc>
-      <yloc>352</yloc>
+      <xloc>272</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -983,8 +1110,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>432</xloc>
-      <yloc>160</yloc>
+      <xloc>608</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1071,8 +1198,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1056</xloc>
-      <yloc>320</yloc>
+      <xloc>1328</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1105,181 +1232,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>688</xloc>
-      <yloc>464</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Add sequence</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <valuename>Id</valuename>
-      <use_database>N</use_database>
-      <connection/>
-      <schema/>
-      <seqname>SEQ_</seqname>
-      <use_counter>Y</use_counter>
-      <counter_name>idDataType</counter_name>
-      <start_at>0</start_at>
-      <increment_by>1</increment_by>
-      <max_value>99999999</max_value>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1120</xloc>
-      <yloc>640</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Select values 5</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>TypeURL</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>272</xloc>
-      <yloc>480</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>Strings cut</send_true_to>
-<send_false_to>Select values 6</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>TypeURL</leftvalue>
- <function>CONTAINS</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>enums</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>352</xloc>
-      <yloc>736</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Strings cut</name>
-    <type>StringCut</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>TypeURL</in_stream_name>
-        <out_stream_name>cutTypeURL</out_stream_name>
-        <cut_from>31</cut_from>
-        <cut_to>999999999</cut_to>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>480</xloc>
-      <yloc>672</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Select values 6</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>TypeURL</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>496</xloc>
-      <yloc>768</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Select values 7</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>TypeURL</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>cutTypeURL</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>592</xloc>
-      <yloc>672</yloc>
+      <xloc>752</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

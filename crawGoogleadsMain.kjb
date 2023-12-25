@@ -90,8 +90,8 @@
       <name>Check if input folder is empty</name>
       <description/>
       <type>FOLDER_IS_EMPTY</type>
-      <foldername>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x2f;inputdata&#x2f;&#x24;&#x7b;FOLDER_NAME&#x7d;</foldername>
-      <include_subfolders>Y</include_subfolders>
+      <foldername>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;inputdata&#x2f;&#x24;&#x7b;FOLDER_NAME&#x7d;</foldername>
+      <include_subfolders>N</include_subfolders>
       <specify_wildcard>N</specify_wildcard>
       <wildcard/>
       <parallel>N</parallel>
@@ -342,7 +342,7 @@
   <notepads>
     <notepad>
       <note>sao check empty nay luon luon dung du no ko empty</note>
-      <xloc>384</xloc>
+      <xloc>368</xloc>
       <yloc>64</yloc>
       <width>317</width>
       <heigth>25</heigth>
