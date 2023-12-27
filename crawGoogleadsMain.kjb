@@ -223,7 +223,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>752</xloc>
-      <yloc>432</yloc>
+      <yloc>464</yloc>
       </entry>
     <entry>
       <name>Create output folder</name>
@@ -268,7 +268,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>752</xloc>
-      <yloc>336</yloc>
+      <yloc>320</yloc>
       </entry>
     <entry>
       <name>update count</name>
