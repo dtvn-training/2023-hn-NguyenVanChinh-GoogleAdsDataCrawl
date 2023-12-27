@@ -69,10 +69,12 @@ def downloadXmlRawData(resources):
     checkRawdataFolder(folderPath)
 
     # for each resources, download file xml of its href_link
-    for resource in resources:
+    for id, resource in enumerate(resources):
         downloadXml(
             resource["Link"], folderPath + resource["Category"], resource["Name"]
         )
+        if id == 4:
+            break
 
     return folderName
 

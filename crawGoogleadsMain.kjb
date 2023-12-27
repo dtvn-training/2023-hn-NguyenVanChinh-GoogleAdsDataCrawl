@@ -51,7 +51,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>64</xloc>
-      <yloc>144</yloc>
+      <yloc>64</yloc>
       </entry>
     <entry>
       <name>load folderName rawdata</name>
@@ -84,7 +84,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>304</xloc>
-      <yloc>144</yloc>
+      <yloc>64</yloc>
       </entry>
     <entry>
       <name>Check if input folder is empty</name>
@@ -98,7 +98,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>624</xloc>
-      <yloc>144</yloc>
+      <yloc>64</yloc>
       </entry>
     <entry>
       <name>Create input folder</name>
@@ -110,7 +110,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>416</xloc>
-      <yloc>144</yloc>
+      <yloc>64</yloc>
       </entry>
     <entry>
       <name>DUMMY</name>
@@ -129,8 +129,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>336</xloc>
-      <yloc>320</yloc>
+      <xloc>352</xloc>
+      <yloc>368</yloc>
       </entry>
     <entry>
       <name>copy rawdata to inputdata</name>
@@ -157,7 +157,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>752</xloc>
-      <yloc>144</yloc>
+      <yloc>64</yloc>
       </entry>
     <entry>
       <name>python crawl data</name>
@@ -180,7 +180,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>176</xloc>
-      <yloc>144</yloc>
+      <yloc>64</yloc>
       </entry>
     <entry>
       <name>extract segments</name>
@@ -213,7 +213,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>752</xloc>
-      <yloc>240</yloc>
+      <yloc>160</yloc>
       </entry>
     <entry>
       <name>Success</name>
@@ -223,7 +223,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>752</xloc>
-      <yloc>384</yloc>
+      <yloc>432</yloc>
       </entry>
     <entry>
       <name>Create output folder</name>
@@ -235,10 +235,85 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>512</xloc>
-      <yloc>144</yloc>
+      <yloc>64</yloc>
+      </entry>
+    <entry>
+      <name>extract metrics</name>
+      <description/>
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;handleMetrics.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>752</xloc>
+      <yloc>336</yloc>
+      </entry>
+    <entry>
+      <name>update count</name>
+      <description/>
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;countSegments.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>848</xloc>
+      <yloc>272</yloc>
       </entry>
   </entries>
   <hops>
+    <hop>
+      <from>extract metrics</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
     <hop>
       <from>load folderName rawdata</from>
       <to>Create input folder</to>
@@ -303,15 +378,6 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>extract segments</from>
-      <to>Success</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>copy rawdata to inputdata</from>
       <to>DUMMY</to>
       <from_nr>0</from_nr>
@@ -338,12 +404,30 @@
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
+    <hop>
+      <from>extract segments</from>
+      <to>update count</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>update count</from>
+      <to>extract metrics</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
   </hops>
   <notepads>
     <notepad>
       <note>sao check empty nay luon luon dung du no ko empty</note>
-      <xloc>368</xloc>
-      <yloc>64</yloc>
+      <xloc>320</xloc>
+      <yloc>16</yloc>
       <width>317</width>
       <heigth>25</heigth>
       <fontname/>
