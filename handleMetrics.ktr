@@ -110,7 +110,7 @@
   <hop> <from>Sort by metricsId</from><to>Add index dataType</to><enabled>Y</enabled> </hop>
   <hop> <from>Split datatype</from><to>Select values 2</to><enabled>Y</enabled> </hop>
   <hop> <from>trim datatype</from><to>Select after cut 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>segments data</from><to>Add index metrics</to><enabled>Y</enabled> </hop>
+  <hop> <from>metrics data</from><to>Add index metrics</to><enabled>Y</enabled> </hop>
   <hop> <from>Select metrics</from><to>metrics output</to><enabled>Y</enabled> </hop>
   <hop> <from>Add index metrics</from><to>Replace in string</to><enabled>Y</enabled> </hop>
   <hop> <from>Replace in string</from><to>Select metrics</to><enabled>Y</enabled> </hop>
@@ -690,7 +690,7 @@
     </step>
 
   <step>
-    <name>segments data</name>
+    <name>metrics data</name>
     <type>getXMLData</type>
     <description/>
     <distribute>N</distribute>

@@ -76,7 +76,7 @@
     <notepad>
       <note>this transformation handle segments.xml file.&#xd;&#xa;Extract and save 3 table &#xd;&#xa;&#x2b; segments&#xd;&#xa;&#x2b; datatype&#xd;&#xa;&#x2b; selectableWith to file csv</note>
       <xloc>16</xloc>
-      <yloc>128</yloc>
+      <yloc>16</yloc>
       <width>269</width>
       <heigth>85</heigth>
       <fontname>Arial</fontname>
