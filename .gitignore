@@ -1,0 +1,7 @@
+inputdata/*
+outputdata/*
+rawdata/*
+.vscode
+log/crawl.log
+config/foldername.properties
+config/db.properties

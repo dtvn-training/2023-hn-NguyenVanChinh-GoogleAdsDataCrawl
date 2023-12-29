@@ -1,0 +1,5 @@
+bs4
+pandas
+mysql-connector-python
+SQLAlchemy
+pymysql
