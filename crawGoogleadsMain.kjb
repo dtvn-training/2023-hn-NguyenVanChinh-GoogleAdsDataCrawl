@@ -224,7 +224,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>1120</xloc>
-      <yloc>384</yloc>
+      <yloc>432</yloc>
       </entry>
     <entry>
       <name>Create output folder</name>
@@ -436,8 +436,40 @@
       <xloc>1120</xloc>
       <yloc>272</yloc>
       </entry>
+    <entry>
+      <name>python loadToMysql</name>
+      <description/>
+      <type>SHELL</type>
+      <filename/>
+      <work_directory>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;</work_directory>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <set_append_logfile>N</set_append_logfile>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <insertScript>Y</insertScript>
+      <script>python loadToDB.py</script>
+      <loglevel>Basic</loglevel>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1120</xloc>
+      <yloc>352</yloc>
+      </entry>
   </entries>
   <hops>
+    <hop>
+      <from>python crawl data</from>
+      <to>DUMMY</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
     <hop>
       <from>extract resources</from>
       <to>extractConnectResourceVsResourceField</to>
@@ -466,24 +498,6 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Check if input folder is empty</from>
-      <to>DUMMY</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>START</from>
-      <to>python crawl data</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
-    <hop>
       <from>python crawl data</from>
       <to>load folderName rawdata</to>
       <from_nr>0</from_nr>
@@ -493,7 +507,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>python crawl data</from>
+      <from>Check if input folder is empty</from>
       <to>DUMMY</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -584,12 +598,30 @@
     </hop>
     <hop>
       <from>extract related resource</from>
+      <to>python loadToMysql</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>python loadToMysql</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>START</from>
+      <to>python crawl data</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
     </hop>
   </hops>
   <notepads>

@@ -736,66 +736,6 @@
         <trim_type>both</trim_type>
         <repeat>N</repeat>
       </field>
-      <field>
-        <name>Filterable</name>
-        <xpath>td&#x2f;table&#x2f;tr&#x5b;6&#x5d;&#x2f;td&#x5b;2&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>Boolean</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>Selectable</name>
-        <xpath>td&#x2f;table&#x2f;tr&#x5b;7&#x5d;&#x2f;td&#x5b;2&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>Boolean</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>Sortable</name>
-        <xpath>td&#x2f;table&#x2f;tr&#x5b;8&#x5d;&#x2f;td&#x5b;2&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>Boolean</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>Repeated</name>
-        <xpath>td&#x2f;table&#x2f;tr&#x5b;9&#x5d;&#x2f;td&#x5b;2&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>Boolean</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
     </fields>
     <limit>0</limit>
     <loopxpath>&#x2f;html&#x2f;body&#x2f;section&#x2f;section&#x2f;main&#x2f;devsite-content&#x2f;article&#x2f;div&#x2f;devsite-filter&#x5b;last&#x28;&#x29;&#x5d;&#x2f;table&#x2f;tbody&#x2f;tr</loopxpath>

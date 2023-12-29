@@ -1,0 +1,579 @@
+2023-12-29 11:57:50,329 - INFO - SELECT DATABASE()
+2023-12-29 11:57:50,330 - INFO - [raw sql] {}
+2023-12-29 11:57:50,330 - INFO - SELECT @@sql_mode
+2023-12-29 11:57:50,330 - INFO - [raw sql] {}
+2023-12-29 11:57:50,330 - INFO - SELECT @@lower_case_table_names
+2023-12-29 11:57:50,331 - INFO - [raw sql] {}
+2023-12-29 11:57:50,331 - INFO - BEGIN (implicit)
+2023-12-29 11:57:50,333 - INFO - DESCRIBE `googleadsdata`.`ResourceField`
+2023-12-29 11:57:50,333 - INFO - [raw sql] {}
+2023-12-29 11:57:50,334 - INFO - DESCRIBE `googleadsdata`.`ResourceField`
+2023-12-29 11:57:50,334 - INFO - [raw sql] {}
+2023-12-29 11:57:50,335 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 11:57:50,335 - INFO - [raw sql] {}
+2023-12-29 11:57:50,340 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 11:57:50,341 - INFO - [raw sql] {}
+2023-12-29 11:57:50,342 - INFO - COMMIT
+2023-12-29 11:58:49,143 - INFO - SELECT DATABASE()
+2023-12-29 11:58:49,143 - INFO - [raw sql] {}
+2023-12-29 11:58:49,143 - INFO - SELECT @@sql_mode
+2023-12-29 11:58:49,143 - INFO - [raw sql] {}
+2023-12-29 11:58:49,143 - INFO - SELECT @@lower_case_table_names
+2023-12-29 11:58:49,143 - INFO - [raw sql] {}
+2023-12-29 11:58:49,143 - INFO - BEGIN (implicit)
+2023-12-29 11:58:49,143 - INFO - DESCRIBE `googleadsdata`.`ResourceField`
+2023-12-29 11:58:49,159 - INFO - [raw sql] {}
+2023-12-29 11:58:49,159 - INFO - DESCRIBE `googleadsdata`.`ResourceField`
+2023-12-29 11:58:49,159 - INFO - [raw sql] {}
+2023-12-29 11:58:49,159 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 11:58:49,159 - INFO - [raw sql] {}
+2023-12-29 11:58:49,159 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 11:58:49,159 - INFO - [raw sql] {}
+2023-12-29 11:58:49,159 - INFO - COMMIT
+2023-12-29 12:00:16,105 - INFO - SELECT DATABASE()
+2023-12-29 12:00:16,105 - INFO - [raw sql] {}
+2023-12-29 12:00:16,105 - INFO - SELECT @@sql_mode
+2023-12-29 12:00:16,105 - INFO - [raw sql] {}
+2023-12-29 12:00:16,105 - INFO - SELECT @@lower_case_table_names
+2023-12-29 12:00:16,105 - INFO - [raw sql] {}
+2023-12-29 12:00:16,105 - INFO - BEGIN (implicit)
+2023-12-29 12:00:16,105 - INFO - DESCRIBE `googleadsdata`.`ResourceField`
+2023-12-29 12:00:16,105 - INFO - [raw sql] {}
+2023-12-29 12:00:16,105 - INFO - 
+CREATE TABLE `ResourceField` (
+	`FieldId` BIGINT, 
+	`FieldName` TEXT, 
+	`FieldDescription` TEXT, 
+	`Category` TEXT, 
+	`TypeURL` TEXT, 
+	`Filterable` BOOL, 
+	`Selectable` BOOL, 
+	`Sortable` BOOL, 
+	`Repeated` BOOL
+)
+
+
+2023-12-29 12:00:16,116 - INFO - [no key 0.00092s] {}
+2023-12-29 12:00:16,142 - INFO - INSERT INTO `ResourceField` (`FieldId`, `FieldName`, `FieldDescription`, `Category`, `TypeURL`, `Filterable`, `Selectable`, `Sortable`, `Repeated`) VALUES (%(FieldId)s, %(FieldName)s, %(FieldDescription)s, %(Category)s, %(TypeURL)s, %(Filterable)s, %(Selectable)s, %(Sortable)s, %(Repeated)s)
+2023-12-29 12:00:16,142 - INFO - [generated in 0.01579s] [{'FieldId': 0, 'FieldName': 'segments.activity_account_id', 'FieldDescription': 'Activity account ID.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 1, 'FieldName': 'segments.activity_rating', 'FieldDescription': 'Activity rating.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2, 'FieldName': 'segments.ad_destination_type', 'FieldDescription': 'Ad Destination type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdDestinationTypeEnum.AdDestinationType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 3, 'FieldName': 'segments.ad_group', 'FieldDescription': 'Resource name of the ad group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 4, 'FieldName': 'segments.ad_network_type', 'FieldDescription': 'Ad network type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdNetworkTypeEnum.AdNetworkType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 5, 'FieldName': 'segments.asset_group', 'FieldDescription': 'Resource name of the asset group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 6, 'FieldName': 'segments.asset_interaction_target.asset', 'FieldDescription': 'The asset resource name.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 7, 'FieldName': 'segments.asset_interaction_target.interaction_on_this_asset', 'FieldDescription': 'Only used with CustomerAsset, CampaignAsset and AdGroupAsset metrics. Indicates whether the interaction metrics occurred on the asset itself or a different asset or ad unit.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}  ... displaying 10 of 4345 total bound parameter sets ...  {'FieldId': 2311, 'FieldName': 'video.title', 'FieldDescription': 'Output only. The title of the video.', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2312, 'FieldName': 'webpage_view.resource_name', 'FieldDescription': 'Output only. The resource name of the webpage view. Webpage view resource names have the form: customers/{customer_id}/webpageViews/{ad_group_id}~{criterion_id}', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}]
+2023-12-29 12:00:16,293 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 12:00:16,294 - INFO - [raw sql] {}
+2023-12-29 12:00:16,295 - INFO - COMMIT
+2023-12-29 12:00:16,300 - INFO - Load to table ResourceField successfully!
+2023-12-29 12:00:16,309 - INFO - BEGIN (implicit)
+2023-12-29 12:00:16,309 - INFO - DESCRIBE `googleadsdata`.`DataType`
+2023-12-29 12:00:16,309 - INFO - [raw sql] {}
+2023-12-29 12:00:16,309 - INFO - 
+CREATE TABLE `DataType` (
+	`Id` BIGINT, 
+	`FieldId` BIGINT, 
+	`DataType` TEXT
+)
+
+
+2023-12-29 12:00:16,309 - INFO - [no key 0.00063s] {}
+2023-12-29 12:00:16,359 - INFO - INSERT INTO `DataType` (`Id`, `FieldId`, `DataType`) VALUES (%(Id)s, %(FieldId)s, %(DataType)s)
+2023-12-29 12:00:16,359 - INFO - [generated in 0.03553s] [{'Id': 0, 'FieldId': 0, 'DataType': 'INT64'}, {'Id': 1, 'FieldId': 1, 'DataType': 'INT64'}, {'Id': 2, 'FieldId': 2, 'DataType': 'APP_DEEP_LINK'}, {'Id': 3, 'FieldId': 2, 'DataType': 'APP_STORE'}, {'Id': 4, 'FieldId': 2, 'DataType': 'LEAD_FORM'}, {'Id': 5, 'FieldId': 2, 'DataType': 'LOCATION_LISTING'}, {'Id': 6, 'FieldId': 2, 'DataType': 'MAP_DIRECTIONS'}, {'Id': 7, 'FieldId': 2, 'DataType': 'MESSAGE'}  ... displaying 10 of 15206 total bound parameter sets ...  {'Id': 5516, 'FieldId': 2311, 'DataType': 'STRING'}, {'Id': 5517, 'FieldId': 2312, 'DataType': 'RESOURCE_NAME'}]
+2023-12-29 12:00:16,589 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 12:00:16,589 - INFO - [raw sql] {}
+2023-12-29 12:00:16,589 - INFO - COMMIT
+2023-12-29 12:00:16,589 - INFO - Load to table DataType successfully!
+2023-12-29 12:00:16,608 - INFO - BEGIN (implicit)
+2023-12-29 12:00:16,608 - INFO - DESCRIBE `googleadsdata`.`SelectableWith`
+2023-12-29 12:00:16,608 - INFO - [raw sql] {}
+2023-12-29 12:00:16,608 - INFO - 
+CREATE TABLE `SelectableWith` (
+	`Id` BIGINT, 
+	`FieldId` BIGINT, 
+	`ResourceName` TEXT
+)
+
+
+2023-12-29 12:00:16,608 - INFO - [no key 0.00057s] {}
+2023-12-29 12:00:16,625 - INFO - INSERT INTO `SelectableWith` (`Id`, `FieldId`, `ResourceName`) VALUES (%(Id)s, %(FieldId)s, %(ResourceName)s)
+2023-12-29 12:00:16,625 - INFO - [generated in 0.01010s] [{'Id': 0, 'FieldId': 0, 'ResourceName': 'ad_group'}, {'Id': 1, 'FieldId': 0, 'ResourceName': 'campaign'}, {'Id': 2, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions'}, {'Id': 3, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_from_interactions_rate'}, {'Id': 4, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_from_interactions_value_per_interaction'}, {'Id': 5, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_value'}, {'Id': 6, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_value_per_cost'}, {'Id': 7, 'FieldId': 0, 'ResourceName': 'metrics.average_cpc'}  ... displaying 10 of 8238 total bound parameter sets ...  {'Id': 8236, 'FieldId': 106, 'ResourceName': 'video'}, {'Id': 8237, 'FieldId': 106, 'ResourceName': 'webpage_view'}]
+2023-12-29 12:00:16,791 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 12:00:16,791 - INFO - [raw sql] {}
+2023-12-29 12:00:16,793 - INFO - COMMIT
+2023-12-29 12:00:16,797 - INFO - Load to table SelectableWith successfully!
+2023-12-29 12:00:16,803 - INFO - BEGIN (implicit)
+2023-12-29 12:00:16,804 - INFO - DESCRIBE `googleadsdata`.`Resource`
+2023-12-29 12:00:16,805 - INFO - [raw sql] {}
+2023-12-29 12:00:16,806 - INFO - 
+CREATE TABLE `Resource` (
+	`ResourceId` BIGINT, 
+	`ResourceName` TEXT, 
+	`ResourceDescription` TEXT, 
+	`ResourceWithMetric` BOOL
+)
+
+
+2023-12-29 12:00:16,806 - INFO - [no key 0.00078s] {}
+2023-12-29 12:00:16,808 - INFO - INSERT INTO `Resource` (`ResourceId`, `ResourceName`, `ResourceDescription`, `ResourceWithMetric`) VALUES (%(ResourceId)s, %(ResourceName)s, %(ResourceDescription)s, %(ResourceWithMetric)s)
+2023-12-29 12:00:16,808 - INFO - [generated in 0.00073s] [{'ResourceId': 0, 'ResourceName': 'accessible_bidding_strategy', 'ResourceDescription': 'Represents a view of BiddingStrategies owned by and shared with the customer. In contrast to BiddingStrategy, this resource includes strategies owned ... (69 characters truncated) ... ion to strategies owned by this customer. This resource does not provide metrics and only exposes a limited subset of the BiddingStrategy attributes.', 'ResourceWithMetric': 0}, {'ResourceId': 1, 'ResourceName': 'account_budget', 'ResourceDescription': "An account-level budget. It contains information about the budget itself, as well as the most recently approved changes to the budget and proposed ch ... (688 characters truncated) ... stments, such as credit adjustments. Adjustments create differences between the 'approved' and 'adjusted' fields, which would otherwise be identical.", 'ResourceWithMetric': 0}, {'ResourceId': 2, 'ResourceName': 'account_budget_proposal', 'ResourceDescription': "An account-level budget proposal. All fields prefixed with 'proposed' may not necessarily be applied directly. For example, proposed spending limits  ... (97 characters truncated) ... counterpart, for example, spending limits. Note that the proposal type (proposal_type) changes which fields are required and which must remain empty.", 'ResourceWithMetric': 0}, {'ResourceId': 3, 'ResourceName': 'account_link', 'ResourceDescription': 'Represents the data sharing connection between a Google Ads account and another account', 'ResourceWithMetric': 0}, {'ResourceId': 4, 'ResourceName': 'ad_group', 'ResourceDescription': 'An ad group.', 'ResourceWithMetric': 1}, {'ResourceId': 5, 'ResourceName': 'ad_group_ad', 'ResourceDescription': 'An ad group ad.', 'ResourceWithMetric': 1}, {'ResourceId': 6, 'ResourceName': 'ad_group_ad_asset_combination_view', 'ResourceDescription': 'A view on the usage of ad group ad asset combination. Now we only support AdGroupAdAssetCombinationView for Responsive Search Ads, with more ad types planned for the future.', 'ResourceWithMetric': 1}, {'ResourceId': 7, 'ResourceName': 'ad_group_ad_asset_view', 'ResourceDescription': 'A link between an AdGroupAd and an Asset. Currently we only support AdGroupAdAssetView for AppAds and Responsive Search Ads.', 'ResourceWithMetric': 1}  ... displaying 10 of 171 total bound parameter sets ...  {'ResourceId': 169, 'ResourceName': 'video', 'ResourceDescription': 'A video.', 'ResourceWithMetric': 1}, {'ResourceId': 170, 'ResourceName': 'webpage_view', 'ResourceDescription': 'A webpage view.', 'ResourceWithMetric': 1}]
+2023-12-29 12:00:16,825 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 12:00:16,825 - INFO - [raw sql] {}
+2023-12-29 12:00:16,825 - INFO - COMMIT
+2023-12-29 12:00:16,825 - INFO - Load to table Resource successfully!
+2023-12-29 12:00:16,825 - INFO - BEGIN (implicit)
+2023-12-29 12:00:16,825 - INFO - DESCRIBE `googleadsdata`.`ResourceFieldConnect`
+2023-12-29 12:00:16,825 - INFO - [raw sql] {}
+2023-12-29 12:00:16,825 - INFO - 
+CREATE TABLE `ResourceFieldConnect` (
+	`Id` BIGINT, 
+	`FieldId` BIGINT, 
+	`ResourceId` BIGINT
+)
+
+
+2023-12-29 12:00:16,825 - INFO - [no key 0.00070s] {}
+2023-12-29 12:00:16,857 - INFO - INSERT INTO `ResourceFieldConnect` (`Id`, `FieldId`, `ResourceId`) VALUES (%(Id)s, %(FieldId)s, %(ResourceId)s)
+2023-12-29 12:00:16,857 - INFO - [generated in 0.00876s] [{'Id': 0, 'FieldId': 281, 'ResourceId': 0}, {'Id': 1, 'FieldId': 281, 'ResourceId': 0}, {'Id': 2, 'FieldId': 282, 'ResourceId': 0}, {'Id': 3, 'FieldId': 282, 'ResourceId': 0}, {'Id': 4, 'FieldId': 283, 'ResourceId': 0}, {'Id': 5, 'FieldId': 283, 'ResourceId': 0}, {'Id': 6, 'FieldId': 284, 'ResourceId': 0}, {'Id': 7, 'FieldId': 284, 'ResourceId': 0}  ... displaying 10 of 7189 total bound parameter sets ...  {'Id': 7187, 'FieldId': 2312, 'ResourceId': 170}, {'Id': 7188, 'FieldId': 2312, 'ResourceId': 170}]
+2023-12-29 12:00:16,940 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 12:00:16,941 - INFO - [raw sql] {}
+2023-12-29 12:00:16,942 - INFO - COMMIT
+2023-12-29 12:00:16,945 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 12:00:16,951 - INFO - BEGIN (implicit)
+2023-12-29 12:00:16,952 - INFO - DESCRIBE `googleadsdata`.`RelatedResource`
+2023-12-29 12:00:16,952 - INFO - [raw sql] {}
+2023-12-29 12:00:16,954 - INFO - 
+CREATE TABLE `RelatedResource` (
+	`Id` BIGINT, 
+	`MasterResourceId` BIGINT, 
+	`AttributedResourceId` BIGINT, 
+	`beSegment` BOOL
+)
+
+
+2023-12-29 12:00:16,954 - INFO - [no key 0.00069s] {}
+2023-12-29 12:00:16,958 - INFO - INSERT INTO `RelatedResource` (`Id`, `MasterResourceId`, `AttributedResourceId`, `beSegment`) VALUES (%(Id)s, %(MasterResourceId)s, %(AttributedResourceId)s, %(beSegment)s)
+2023-12-29 12:00:16,958 - INFO - [generated in 0.00116s] [{'Id': 0, 'MasterResourceId': 4, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 1, 'MasterResourceId': 24, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 2, 'MasterResourceId': 47, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 3, 'MasterResourceId': 127, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 4, 'MasterResourceId': 145, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 5, 'MasterResourceId': 161, 'AttributedResourceId': 3, 'beSegment': 0}, {'Id': 6, 'MasterResourceId': 5, 'AttributedResourceId': 4, 'beSegment': 0}, {'Id': 7, 'MasterResourceId': 6, 'AttributedResourceId': 4, 'beSegment': 0}  ... displaying 10 of 434 total bound parameter sets ...  {'Id': 432, 'MasterResourceId': 54, 'AttributedResourceId': 167, 'beSegment': 0}, {'Id': 433, 'MasterResourceId': 142, 'AttributedResourceId': 167, 'beSegment': 0}]
+2023-12-29 12:00:16,958 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 12:00:16,958 - INFO - [raw sql] {}
+2023-12-29 12:00:16,974 - INFO - COMMIT
+2023-12-29 12:00:16,975 - INFO - Load to table RelatedResource successfully!
+2023-12-29 13:15:16,036 - INFO - SELECT DATABASE()
+2023-12-29 13:15:16,036 - INFO - [raw sql] {}
+2023-12-29 13:15:16,037 - INFO - SELECT @@sql_mode
+2023-12-29 13:15:16,038 - INFO - [raw sql] {}
+2023-12-29 13:15:16,038 - INFO - SELECT @@lower_case_table_names
+2023-12-29 13:15:16,038 - INFO - [raw sql] {}
+2023-12-29 13:15:16,039 - INFO - BEGIN (implicit)
+2023-12-29 13:15:16,040 - INFO - DESCRIBE `googleadsdata`.`ResourceField`
+2023-12-29 13:15:16,041 - INFO - [raw sql] {}
+2023-12-29 13:15:16,043 - INFO - DESCRIBE `googleadsdata`.`ResourceField`
+2023-12-29 13:15:16,043 - INFO - [raw sql] {}
+2023-12-29 13:15:16,044 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 13:15:16,045 - INFO - [raw sql] {}
+2023-12-29 13:15:16,046 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 13:15:16,046 - INFO - [raw sql] {}
+2023-12-29 13:15:16,046 - INFO - COMMIT
+2023-12-29 13:54:59,601 - INFO - SELECT DATABASE()
+2023-12-29 13:54:59,601 - INFO - [raw sql] {}
+2023-12-29 13:54:59,601 - INFO - SELECT @@sql_mode
+2023-12-29 13:54:59,601 - INFO - [raw sql] {}
+2023-12-29 13:54:59,601 - INFO - SELECT @@lower_case_table_names
+2023-12-29 13:54:59,601 - INFO - [raw sql] {}
+2023-12-29 13:54:59,601 - INFO - BEGIN (implicit)
+2023-12-29 13:54:59,601 - INFO - DESCRIBE `googleadsdata`.`ResourceField`
+2023-12-29 13:54:59,601 - INFO - [raw sql] {}
+2023-12-29 13:54:59,623 - INFO - INSERT INTO `ResourceField` (`FieldId`, `FieldName`, `FieldDescription`, `Category`, `TypeURL`, `Filterable`, `Selectable`, `Sortable`, `Repeated`) VALUES (%(FieldId)s, %(FieldName)s, %(FieldDescription)s, %(Category)s, %(TypeURL)s, %(Filterable)s, %(Selectable)s, %(Sortable)s, %(Repeated)s)
+2023-12-29 13:54:59,623 - INFO - [generated in 0.01544s] [{'FieldId': 0, 'FieldName': 'segments.activity_account_id', 'FieldDescription': 'Activity account ID.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 1, 'FieldName': 'segments.activity_rating', 'FieldDescription': 'Activity rating.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2, 'FieldName': 'segments.ad_destination_type', 'FieldDescription': 'Ad Destination type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdDestinationTypeEnum.AdDestinationType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 3, 'FieldName': 'segments.ad_group', 'FieldDescription': 'Resource name of the ad group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 4, 'FieldName': 'segments.ad_network_type', 'FieldDescription': 'Ad network type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdNetworkTypeEnum.AdNetworkType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 5, 'FieldName': 'segments.asset_group', 'FieldDescription': 'Resource name of the asset group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 6, 'FieldName': 'segments.asset_interaction_target.asset', 'FieldDescription': 'The asset resource name.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 7, 'FieldName': 'segments.asset_interaction_target.interaction_on_this_asset', 'FieldDescription': 'Only used with CustomerAsset, CampaignAsset and AdGroupAsset metrics. Indicates whether the interaction metrics occurred on the asset itself or a different asset or ad unit.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}  ... displaying 10 of 4345 total bound parameter sets ...  {'FieldId': 2311, 'FieldName': 'video.title', 'FieldDescription': 'Output only. The title of the video.', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2312, 'FieldName': 'webpage_view.resource_name', 'FieldDescription': 'Output only. The resource name of the webpage view. Webpage view resource names have the form: customers/{customer_id}/webpageViews/{ad_group_id}~{criterion_id}', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}]
+2023-12-29 13:54:59,690 - INFO - COMMIT
+2023-12-29 14:04:13,744 - INFO - SELECT DATABASE()
+2023-12-29 14:04:13,744 - INFO - [raw sql] {}
+2023-12-29 14:04:13,745 - INFO - SELECT @@sql_mode
+2023-12-29 14:04:13,745 - INFO - [raw sql] {}
+2023-12-29 14:04:13,745 - INFO - SELECT @@lower_case_table_names
+2023-12-29 14:04:13,745 - INFO - [raw sql] {}
+2023-12-29 14:04:13,746 - INFO - BEGIN (implicit)
+2023-12-29 14:04:13,747 - INFO - DESCRIBE `googleadsdata`.`ResourceField`
+2023-12-29 14:04:13,748 - INFO - [raw sql] {}
+2023-12-29 14:04:13,761 - INFO - INSERT INTO `ResourceField` (`FieldId`, `FieldName`, `FieldDescription`, `Category`, `TypeURL`, `Filterable`, `Selectable`, `Sortable`, `Repeated`) VALUES (%(FieldId)s, %(FieldName)s, %(FieldDescription)s, %(Category)s, %(TypeURL)s, %(Filterable)s, %(Selectable)s, %(Sortable)s, %(Repeated)s)
+2023-12-29 14:04:13,762 - INFO - [generated in 0.00915s] [{'FieldId': 0, 'FieldName': 'segments.activity_account_id', 'FieldDescription': 'Activity account ID.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 1, 'FieldName': 'segments.activity_rating', 'FieldDescription': 'Activity rating.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2, 'FieldName': 'segments.ad_destination_type', 'FieldDescription': 'Ad Destination type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdDestinationTypeEnum.AdDestinationType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 3, 'FieldName': 'segments.ad_group', 'FieldDescription': 'Resource name of the ad group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 4, 'FieldName': 'segments.ad_network_type', 'FieldDescription': 'Ad network type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdNetworkTypeEnum.AdNetworkType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 5, 'FieldName': 'segments.asset_group', 'FieldDescription': 'Resource name of the asset group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 6, 'FieldName': 'segments.asset_interaction_target.asset', 'FieldDescription': 'The asset resource name.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 7, 'FieldName': 'segments.asset_interaction_target.interaction_on_this_asset', 'FieldDescription': 'Only used with CustomerAsset, CampaignAsset and AdGroupAsset metrics. Indicates whether the interaction metrics occurred on the asset itself or a different asset or ad unit.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}  ... displaying 10 of 2313 total bound parameter sets ...  {'FieldId': 2311, 'FieldName': 'video.title', 'FieldDescription': 'Output only. The title of the video.', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2312, 'FieldName': 'webpage_view.resource_name', 'FieldDescription': 'Output only. The resource name of the webpage view. Webpage view resource names have the form: customers/{customer_id}/webpageViews/{ad_group_id}~{criterion_id}', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}]
+2023-12-29 14:04:13,835 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 14:04:13,835 - INFO - [raw sql] {}
+2023-12-29 14:04:13,835 - INFO - COMMIT
+2023-12-29 14:04:13,847 - INFO - Load to table ResourceField successfully!
+2023-12-29 14:04:13,851 - INFO - BEGIN (implicit)
+2023-12-29 14:04:13,851 - INFO - DESCRIBE `googleadsdata`.`DataType`
+2023-12-29 14:04:13,851 - INFO - [raw sql] {}
+2023-12-29 14:04:13,868 - INFO - INSERT INTO `DataType` (`Id`, `FieldId`, `DataType`) VALUES (%(Id)s, %(FieldId)s, %(DataType)s)
+2023-12-29 14:04:13,868 - INFO - [generated in 0.00745s] [{'Id': 0, 'FieldId': 0, 'DataType': 'INT64'}, {'Id': 1, 'FieldId': 1, 'DataType': 'INT64'}, {'Id': 2, 'FieldId': 2, 'DataType': 'APP_DEEP_LINK'}, {'Id': 3, 'FieldId': 2, 'DataType': 'APP_STORE'}, {'Id': 4, 'FieldId': 2, 'DataType': 'LEAD_FORM'}, {'Id': 5, 'FieldId': 2, 'DataType': 'LOCATION_LISTING'}, {'Id': 6, 'FieldId': 2, 'DataType': 'MAP_DIRECTIONS'}, {'Id': 7, 'FieldId': 2, 'DataType': 'MESSAGE'}  ... displaying 10 of 5518 total bound parameter sets ...  {'Id': 5516, 'FieldId': 2311, 'DataType': 'STRING'}, {'Id': 5517, 'FieldId': 2312, 'DataType': 'RESOURCE_NAME'}]
+2023-12-29 14:04:13,950 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 14:04:13,950 - INFO - [raw sql] {}
+2023-12-29 14:04:13,950 - INFO - COMMIT
+2023-12-29 14:04:13,950 - INFO - Load to table DataType successfully!
+2023-12-29 14:04:13,962 - INFO - BEGIN (implicit)
+2023-12-29 14:04:13,963 - INFO - DESCRIBE `googleadsdata`.`SelectableWith`
+2023-12-29 14:04:13,963 - INFO - [raw sql] {}
+2023-12-29 14:04:13,978 - INFO - INSERT INTO `SelectableWith` (`Id`, `FieldId`, `ResourceName`) VALUES (%(Id)s, %(FieldId)s, %(ResourceName)s)
+2023-12-29 14:04:13,978 - INFO - [generated in 0.01037s] [{'Id': 0, 'FieldId': 0, 'ResourceName': 'ad_group'}, {'Id': 1, 'FieldId': 0, 'ResourceName': 'campaign'}, {'Id': 2, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions'}, {'Id': 3, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_from_interactions_rate'}, {'Id': 4, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_from_interactions_value_per_interaction'}, {'Id': 5, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_value'}, {'Id': 6, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_value_per_cost'}, {'Id': 7, 'FieldId': 0, 'ResourceName': 'metrics.average_cpc'}  ... displaying 10 of 8238 total bound parameter sets ...  {'Id': 8236, 'FieldId': 106, 'ResourceName': 'video'}, {'Id': 8237, 'FieldId': 106, 'ResourceName': 'webpage_view'}]
+2023-12-29 14:04:14,121 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 14:04:14,121 - INFO - [raw sql] {}
+2023-12-29 14:04:14,122 - INFO - COMMIT
+2023-12-29 14:04:14,125 - INFO - Load to table SelectableWith successfully!
+2023-12-29 14:04:14,128 - INFO - BEGIN (implicit)
+2023-12-29 14:04:14,128 - INFO - DESCRIBE `googleadsdata`.`Resource`
+2023-12-29 14:04:14,128 - INFO - [raw sql] {}
+2023-12-29 14:04:14,130 - INFO - INSERT INTO `Resource` (`ResourceId`, `ResourceName`, `ResourceDescription`, `ResourceWithMetric`) VALUES (%(ResourceId)s, %(ResourceName)s, %(ResourceDescription)s, %(ResourceWithMetric)s)
+2023-12-29 14:04:14,143 - INFO - [generated in 0.01303s] [{'ResourceId': 0, 'ResourceName': 'accessible_bidding_strategy', 'ResourceDescription': 'Represents a view of BiddingStrategies owned by and shared with the customer. In contrast to BiddingStrategy, this resource includes strategies owned ... (69 characters truncated) ... ion to strategies owned by this customer. This resource does not provide metrics and only exposes a limited subset of the BiddingStrategy attributes.', 'ResourceWithMetric': 0}, {'ResourceId': 1, 'ResourceName': 'account_budget', 'ResourceDescription': "An account-level budget. It contains information about the budget itself, as well as the most recently approved changes to the budget and proposed ch ... (688 characters truncated) ... stments, such as credit adjustments. Adjustments create differences between the 'approved' and 'adjusted' fields, which would otherwise be identical.", 'ResourceWithMetric': 0}, {'ResourceId': 2, 'ResourceName': 'account_budget_proposal', 'ResourceDescription': "An account-level budget proposal. All fields prefixed with 'proposed' may not necessarily be applied directly. For example, proposed spending limits  ... (97 characters truncated) ... counterpart, for example, spending limits. Note that the proposal type (proposal_type) changes which fields are required and which must remain empty.", 'ResourceWithMetric': 0}, {'ResourceId': 3, 'ResourceName': 'account_link', 'ResourceDescription': 'Represents the data sharing connection between a Google Ads account and another account', 'ResourceWithMetric': 0}, {'ResourceId': 4, 'ResourceName': 'ad_group', 'ResourceDescription': 'An ad group.', 'ResourceWithMetric': 1}, {'ResourceId': 5, 'ResourceName': 'ad_group_ad', 'ResourceDescription': 'An ad group ad.', 'ResourceWithMetric': 1}, {'ResourceId': 6, 'ResourceName': 'ad_group_ad_asset_combination_view', 'ResourceDescription': 'A view on the usage of ad group ad asset combination. Now we only support AdGroupAdAssetCombinationView for Responsive Search Ads, with more ad types planned for the future.', 'ResourceWithMetric': 1}, {'ResourceId': 7, 'ResourceName': 'ad_group_ad_asset_view', 'ResourceDescription': 'A link between an AdGroupAd and an Asset. Currently we only support AdGroupAdAssetView for AppAds and Responsive Search Ads.', 'ResourceWithMetric': 1}  ... displaying 10 of 171 total bound parameter sets ...  {'ResourceId': 169, 'ResourceName': 'video', 'ResourceDescription': 'A video.', 'ResourceWithMetric': 1}, {'ResourceId': 170, 'ResourceName': 'webpage_view', 'ResourceDescription': 'A webpage view.', 'ResourceWithMetric': 1}]
+2023-12-29 14:04:14,144 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 14:04:14,144 - INFO - [raw sql] {}
+2023-12-29 14:04:14,144 - INFO - COMMIT
+2023-12-29 14:04:14,144 - INFO - Load to table Resource successfully!
+2023-12-29 14:04:14,144 - INFO - BEGIN (implicit)
+2023-12-29 14:04:14,144 - INFO - DESCRIBE `googleadsdata`.`ResourceFieldConnect`
+2023-12-29 14:04:14,144 - INFO - [raw sql] {}
+2023-12-29 14:04:14,165 - INFO - INSERT INTO `ResourceFieldConnect` (`Id`, `FieldId`, `ResourceId`) VALUES (%(Id)s, %(FieldId)s, %(ResourceId)s)
+2023-12-29 14:04:14,165 - INFO - [generated in 0.00639s] [{'Id': 0, 'FieldId': 281, 'ResourceId': 0}, {'Id': 1, 'FieldId': 282, 'ResourceId': 0}, {'Id': 2, 'FieldId': 283, 'ResourceId': 0}, {'Id': 3, 'FieldId': 284, 'ResourceId': 0}, {'Id': 4, 'FieldId': 285, 'ResourceId': 0}, {'Id': 5, 'FieldId': 286, 'ResourceId': 0}, {'Id': 6, 'FieldId': 287, 'ResourceId': 0}, {'Id': 7, 'FieldId': 288, 'ResourceId': 0}  ... displaying 10 of 5157 total bound parameter sets ...  {'Id': 5155, 'FieldId': 106, 'ResourceId': 170}, {'Id': 5156, 'FieldId': 2312, 'ResourceId': 170}]
+2023-12-29 14:04:14,258 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 14:04:14,258 - INFO - [raw sql] {}
+2023-12-29 14:04:14,259 - INFO - COMMIT
+2023-12-29 14:04:14,260 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 14:04:14,260 - INFO - BEGIN (implicit)
+2023-12-29 14:04:14,260 - INFO - DESCRIBE `googleadsdata`.`RelatedResource`
+2023-12-29 14:04:14,260 - INFO - [raw sql] {}
+2023-12-29 14:04:14,266 - INFO - INSERT INTO `RelatedResource` (`Id`, `MasterResourceId`, `AttributedResourceId`, `beSegment`) VALUES (%(Id)s, %(MasterResourceId)s, %(AttributedResourceId)s, %(beSegment)s)
+2023-12-29 14:04:14,266 - INFO - [generated in 0.00115s] [{'Id': 0, 'MasterResourceId': 4, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 1, 'MasterResourceId': 24, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 2, 'MasterResourceId': 47, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 3, 'MasterResourceId': 127, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 4, 'MasterResourceId': 145, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 5, 'MasterResourceId': 161, 'AttributedResourceId': 3, 'beSegment': 0}, {'Id': 6, 'MasterResourceId': 5, 'AttributedResourceId': 4, 'beSegment': 0}, {'Id': 7, 'MasterResourceId': 6, 'AttributedResourceId': 4, 'beSegment': 0}  ... displaying 10 of 434 total bound parameter sets ...  {'Id': 432, 'MasterResourceId': 54, 'AttributedResourceId': 167, 'beSegment': 0}, {'Id': 433, 'MasterResourceId': 142, 'AttributedResourceId': 167, 'beSegment': 0}]
+2023-12-29 14:04:14,266 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 14:04:14,266 - INFO - [raw sql] {}
+2023-12-29 14:04:14,276 - INFO - COMMIT
+2023-12-29 14:04:14,278 - INFO - Load to table RelatedResource successfully!
+2023-12-29 14:05:07,311 - INFO - SELECT DATABASE()
+2023-12-29 14:05:07,311 - INFO - [raw sql] {}
+2023-12-29 14:05:07,311 - INFO - SELECT @@sql_mode
+2023-12-29 14:05:07,311 - INFO - [raw sql] {}
+2023-12-29 14:05:07,311 - INFO - SELECT @@lower_case_table_names
+2023-12-29 14:05:07,311 - INFO - [raw sql] {}
+2023-12-29 14:05:07,311 - INFO - BEGIN (implicit)
+2023-12-29 14:05:07,311 - INFO - DESCRIBE `googleadsdata`.`resourcefield`
+2023-12-29 14:05:07,311 - INFO - [raw sql] {}
+2023-12-29 14:05:07,328 - INFO - INSERT INTO resourcefield (`FieldId`, `FieldName`, `FieldDescription`, `Category`, `TypeURL`, `Filterable`, `Selectable`, `Sortable`, `Repeated`) VALUES (%(FieldId)s, %(FieldName)s, %(FieldDescription)s, %(Category)s, %(TypeURL)s, %(Filterable)s, %(Selectable)s, %(Sortable)s, %(Repeated)s)
+2023-12-29 14:05:07,328 - INFO - [generated in 0.00905s] [{'FieldId': 0, 'FieldName': 'segments.activity_account_id', 'FieldDescription': 'Activity account ID.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 1, 'FieldName': 'segments.activity_rating', 'FieldDescription': 'Activity rating.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2, 'FieldName': 'segments.ad_destination_type', 'FieldDescription': 'Ad Destination type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdDestinationTypeEnum.AdDestinationType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 3, 'FieldName': 'segments.ad_group', 'FieldDescription': 'Resource name of the ad group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 4, 'FieldName': 'segments.ad_network_type', 'FieldDescription': 'Ad network type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdNetworkTypeEnum.AdNetworkType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 5, 'FieldName': 'segments.asset_group', 'FieldDescription': 'Resource name of the asset group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 6, 'FieldName': 'segments.asset_interaction_target.asset', 'FieldDescription': 'The asset resource name.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 7, 'FieldName': 'segments.asset_interaction_target.interaction_on_this_asset', 'FieldDescription': 'Only used with CustomerAsset, CampaignAsset and AdGroupAsset metrics. Indicates whether the interaction metrics occurred on the asset itself or a different asset or ad unit.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}  ... displaying 10 of 2313 total bound parameter sets ...  {'FieldId': 2311, 'FieldName': 'video.title', 'FieldDescription': 'Output only. The title of the video.', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2312, 'FieldName': 'webpage_view.resource_name', 'FieldDescription': 'Output only. The resource name of the webpage view. Webpage view resource names have the form: customers/{customer_id}/webpageViews/{ad_group_id}~{criterion_id}', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}]
+2023-12-29 14:05:07,362 - INFO - COMMIT
+2023-12-29 14:07:32,033 - INFO - SELECT DATABASE()
+2023-12-29 14:07:32,033 - INFO - [raw sql] {}
+2023-12-29 14:07:32,033 - INFO - SELECT @@sql_mode
+2023-12-29 14:07:32,033 - INFO - [raw sql] {}
+2023-12-29 14:07:32,033 - INFO - SELECT @@lower_case_table_names
+2023-12-29 14:07:32,033 - INFO - [raw sql] {}
+2023-12-29 14:07:32,033 - INFO - BEGIN (implicit)
+2023-12-29 14:07:32,048 - INFO - DESCRIBE `googleadsdata`.`resourcefield`
+2023-12-29 14:07:32,048 - INFO - [raw sql] {}
+2023-12-29 14:07:32,048 - INFO - INSERT INTO resourcefield (`FieldId`, `FieldName`, `FieldDescription`, `Category`, `TypeURL`, `Filterable`, `Selectable`, `Sortable`, `Repeated`) VALUES (%(FieldId)s, %(FieldName)s, %(FieldDescription)s, %(Category)s, %(TypeURL)s, %(Filterable)s, %(Selectable)s, %(Sortable)s, %(Repeated)s)
+2023-12-29 14:07:32,048 - INFO - [generated in 0.00855s] [{'FieldId': 0, 'FieldName': 'segments.activity_account_id', 'FieldDescription': 'Activity account ID.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 1, 'FieldName': 'segments.activity_rating', 'FieldDescription': 'Activity rating.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2, 'FieldName': 'segments.ad_destination_type', 'FieldDescription': 'Ad Destination type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdDestinationTypeEnum.AdDestinationType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 3, 'FieldName': 'segments.ad_group', 'FieldDescription': 'Resource name of the ad group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 4, 'FieldName': 'segments.ad_network_type', 'FieldDescription': 'Ad network type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdNetworkTypeEnum.AdNetworkType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 5, 'FieldName': 'segments.asset_group', 'FieldDescription': 'Resource name of the asset group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 6, 'FieldName': 'segments.asset_interaction_target.asset', 'FieldDescription': 'The asset resource name.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 7, 'FieldName': 'segments.asset_interaction_target.interaction_on_this_asset', 'FieldDescription': 'Only used with CustomerAsset, CampaignAsset and AdGroupAsset metrics. Indicates whether the interaction metrics occurred on the asset itself or a different asset or ad unit.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}  ... displaying 10 of 2313 total bound parameter sets ...  {'FieldId': 2311, 'FieldName': 'video.title', 'FieldDescription': 'Output only. The title of the video.', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2312, 'FieldName': 'webpage_view.resource_name', 'FieldDescription': 'Output only. The resource name of the webpage view. Webpage view resource names have the form: customers/{customer_id}/webpageViews/{ad_group_id}~{criterion_id}', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}]
+2023-12-29 14:07:32,155 - INFO - COMMIT
+2023-12-29 14:07:32,160 - INFO - Load to table ResourceField successfully!
+2023-12-29 14:07:32,160 - INFO - BEGIN (implicit)
+2023-12-29 14:07:32,160 - INFO - DESCRIBE `googleadsdata`.`datatype`
+2023-12-29 14:07:32,160 - INFO - [raw sql] {}
+2023-12-29 14:07:32,179 - INFO - INSERT INTO datatype (`Id`, `FieldId`, `DataType`) VALUES (%(Id)s, %(FieldId)s, %(DataType)s)
+2023-12-29 14:07:32,179 - INFO - [generated in 0.00707s] [{'Id': 0, 'FieldId': 0, 'DataType': 'INT64'}, {'Id': 1, 'FieldId': 1, 'DataType': 'INT64'}, {'Id': 2, 'FieldId': 2, 'DataType': 'APP_DEEP_LINK'}, {'Id': 3, 'FieldId': 2, 'DataType': 'APP_STORE'}, {'Id': 4, 'FieldId': 2, 'DataType': 'LEAD_FORM'}, {'Id': 5, 'FieldId': 2, 'DataType': 'LOCATION_LISTING'}, {'Id': 6, 'FieldId': 2, 'DataType': 'MAP_DIRECTIONS'}, {'Id': 7, 'FieldId': 2, 'DataType': 'MESSAGE'}  ... displaying 10 of 5518 total bound parameter sets ...  {'Id': 5516, 'FieldId': 2311, 'DataType': 'STRING'}, {'Id': 5517, 'FieldId': 2312, 'DataType': 'RESOURCE_NAME'}]
+2023-12-29 14:07:32,268 - INFO - COMMIT
+2023-12-29 14:07:32,270 - INFO - Load to table DataType successfully!
+2023-12-29 14:07:32,277 - INFO - BEGIN (implicit)
+2023-12-29 14:07:32,277 - INFO - DESCRIBE `googleadsdata`.`selectablewith`
+2023-12-29 14:07:32,277 - INFO - [raw sql] {}
+2023-12-29 14:07:32,296 - INFO - INSERT INTO selectablewith (`Id`, `FieldId`, `ResourceName`) VALUES (%(Id)s, %(FieldId)s, %(ResourceName)s)
+2023-12-29 14:07:32,296 - INFO - [generated in 0.01019s] [{'Id': 0, 'FieldId': 0, 'ResourceName': 'ad_group'}, {'Id': 1, 'FieldId': 0, 'ResourceName': 'campaign'}, {'Id': 2, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions'}, {'Id': 3, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_from_interactions_rate'}, {'Id': 4, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_from_interactions_value_per_interaction'}, {'Id': 5, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_value'}, {'Id': 6, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_value_per_cost'}, {'Id': 7, 'FieldId': 0, 'ResourceName': 'metrics.average_cpc'}  ... displaying 10 of 8238 total bound parameter sets ...  {'Id': 8236, 'FieldId': 106, 'ResourceName': 'video'}, {'Id': 8237, 'FieldId': 106, 'ResourceName': 'webpage_view'}]
+2023-12-29 14:07:32,426 - INFO - COMMIT
+2023-12-29 14:07:32,426 - INFO - Load to table SelectableWith successfully!
+2023-12-29 14:07:32,442 - INFO - BEGIN (implicit)
+2023-12-29 14:07:32,442 - INFO - DESCRIBE `googleadsdata`.`resource`
+2023-12-29 14:07:32,443 - INFO - [raw sql] {}
+2023-12-29 14:07:32,444 - INFO - INSERT INTO resource (`ResourceId`, `ResourceName`, `ResourceDescription`, `ResourceWithMetric`) VALUES (%(ResourceId)s, %(ResourceName)s, %(ResourceDescription)s, %(ResourceWithMetric)s)
+2023-12-29 14:07:32,444 - INFO - [generated in 0.01349s] [{'ResourceId': 0, 'ResourceName': 'accessible_bidding_strategy', 'ResourceDescription': 'Represents a view of BiddingStrategies owned by and shared with the customer. In contrast to BiddingStrategy, this resource includes strategies owned ... (69 characters truncated) ... ion to strategies owned by this customer. This resource does not provide metrics and only exposes a limited subset of the BiddingStrategy attributes.', 'ResourceWithMetric': 0}, {'ResourceId': 1, 'ResourceName': 'account_budget', 'ResourceDescription': "An account-level budget. It contains information about the budget itself, as well as the most recently approved changes to the budget and proposed ch ... (688 characters truncated) ... stments, such as credit adjustments. Adjustments create differences between the 'approved' and 'adjusted' fields, which would otherwise be identical.", 'ResourceWithMetric': 0}, {'ResourceId': 2, 'ResourceName': 'account_budget_proposal', 'ResourceDescription': "An account-level budget proposal. All fields prefixed with 'proposed' may not necessarily be applied directly. For example, proposed spending limits  ... (97 characters truncated) ... counterpart, for example, spending limits. Note that the proposal type (proposal_type) changes which fields are required and which must remain empty.", 'ResourceWithMetric': 0}, {'ResourceId': 3, 'ResourceName': 'account_link', 'ResourceDescription': 'Represents the data sharing connection between a Google Ads account and another account', 'ResourceWithMetric': 0}, {'ResourceId': 4, 'ResourceName': 'ad_group', 'ResourceDescription': 'An ad group.', 'ResourceWithMetric': 1}, {'ResourceId': 5, 'ResourceName': 'ad_group_ad', 'ResourceDescription': 'An ad group ad.', 'ResourceWithMetric': 1}, {'ResourceId': 6, 'ResourceName': 'ad_group_ad_asset_combination_view', 'ResourceDescription': 'A view on the usage of ad group ad asset combination. Now we only support AdGroupAdAssetCombinationView for Responsive Search Ads, with more ad types planned for the future.', 'ResourceWithMetric': 1}, {'ResourceId': 7, 'ResourceName': 'ad_group_ad_asset_view', 'ResourceDescription': 'A link between an AdGroupAd and an Asset. Currently we only support AdGroupAdAssetView for AppAds and Responsive Search Ads.', 'ResourceWithMetric': 1}  ... displaying 10 of 171 total bound parameter sets ...  {'ResourceId': 169, 'ResourceName': 'video', 'ResourceDescription': 'A video.', 'ResourceWithMetric': 1}, {'ResourceId': 170, 'ResourceName': 'webpage_view', 'ResourceDescription': 'A webpage view.', 'ResourceWithMetric': 1}]
+2023-12-29 14:07:32,462 - INFO - COMMIT
+2023-12-29 14:07:32,462 - INFO - Load to table Resource successfully!
+2023-12-29 14:07:32,462 - INFO - BEGIN (implicit)
+2023-12-29 14:07:32,462 - INFO - DESCRIBE `googleadsdata`.`resourcefieldconnect`
+2023-12-29 14:07:32,462 - INFO - [raw sql] {}
+2023-12-29 14:07:32,478 - INFO - INSERT INTO resourcefieldconnect (`Id`, `FieldId`, `ResourceId`) VALUES (%(Id)s, %(FieldId)s, %(ResourceId)s)
+2023-12-29 14:07:32,478 - INFO - [generated in 0.00634s] [{'Id': 0, 'FieldId': 281, 'ResourceId': 0}, {'Id': 1, 'FieldId': 282, 'ResourceId': 0}, {'Id': 2, 'FieldId': 283, 'ResourceId': 0}, {'Id': 3, 'FieldId': 284, 'ResourceId': 0}, {'Id': 4, 'FieldId': 285, 'ResourceId': 0}, {'Id': 5, 'FieldId': 286, 'ResourceId': 0}, {'Id': 6, 'FieldId': 287, 'ResourceId': 0}, {'Id': 7, 'FieldId': 288, 'ResourceId': 0}  ... displaying 10 of 5157 total bound parameter sets ...  {'Id': 5155, 'FieldId': 106, 'ResourceId': 170}, {'Id': 5156, 'FieldId': 2312, 'ResourceId': 170}]
+2023-12-29 14:07:32,586 - INFO - COMMIT
+2023-12-29 14:07:32,588 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 14:07:32,594 - INFO - BEGIN (implicit)
+2023-12-29 14:07:32,595 - INFO - DESCRIBE `googleadsdata`.`relatedresource`
+2023-12-29 14:07:32,595 - INFO - [raw sql] {}
+2023-12-29 14:07:32,598 - INFO - INSERT INTO relatedresource (`Id`, `MasterResourceId`, `AttributedResourceId`, `beSegment`) VALUES (%(Id)s, %(MasterResourceId)s, %(AttributedResourceId)s, %(beSegment)s)
+2023-12-29 14:07:32,598 - INFO - [generated in 0.00101s] [{'Id': 0, 'MasterResourceId': 4, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 1, 'MasterResourceId': 24, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 2, 'MasterResourceId': 47, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 3, 'MasterResourceId': 127, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 4, 'MasterResourceId': 145, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 5, 'MasterResourceId': 161, 'AttributedResourceId': 3, 'beSegment': 0}, {'Id': 6, 'MasterResourceId': 5, 'AttributedResourceId': 4, 'beSegment': 0}, {'Id': 7, 'MasterResourceId': 6, 'AttributedResourceId': 4, 'beSegment': 0}  ... displaying 10 of 434 total bound parameter sets ...  {'Id': 432, 'MasterResourceId': 54, 'AttributedResourceId': 167, 'beSegment': 0}, {'Id': 433, 'MasterResourceId': 142, 'AttributedResourceId': 167, 'beSegment': 0}]
+2023-12-29 14:07:32,606 - INFO - COMMIT
+2023-12-29 14:07:32,607 - INFO - Load to table RelatedResource successfully!
+2023-12-29 14:25:30,247 - INFO - SELECT DATABASE()
+2023-12-29 14:25:30,247 - INFO - [raw sql] {}
+2023-12-29 14:25:30,248 - INFO - SELECT @@sql_mode
+2023-12-29 14:25:30,248 - INFO - [raw sql] {}
+2023-12-29 14:25:30,248 - INFO - SELECT @@lower_case_table_names
+2023-12-29 14:25:30,248 - INFO - [raw sql] {}
+2023-12-29 14:25:30,249 - INFO - BEGIN (implicit)
+2023-12-29 14:25:30,251 - INFO - DESCRIBE `googleadsdata`.`resourcefield`
+2023-12-29 14:25:30,251 - INFO - [raw sql] {}
+2023-12-29 14:25:30,264 - INFO - INSERT INTO resourcefield (`FieldId`, `FieldName`, `FieldDescription`, `Category`, `TypeURL`, `Filterable`, `Selectable`, `Sortable`, `Repeated`) VALUES (%(FieldId)s, %(FieldName)s, %(FieldDescription)s, %(Category)s, %(TypeURL)s, %(Filterable)s, %(Selectable)s, %(Sortable)s, %(Repeated)s)
+2023-12-29 14:25:30,264 - INFO - [generated in 0.00877s] [{'FieldId': 0, 'FieldName': 'segments.activity_account_id', 'FieldDescription': 'Activity account ID.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 1, 'FieldName': 'segments.activity_rating', 'FieldDescription': 'Activity rating.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2, 'FieldName': 'segments.ad_destination_type', 'FieldDescription': 'Ad Destination type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdDestinationTypeEnum.AdDestinationType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 3, 'FieldName': 'segments.ad_group', 'FieldDescription': 'Resource name of the ad group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 4, 'FieldName': 'segments.ad_network_type', 'FieldDescription': 'Ad network type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdNetworkTypeEnum.AdNetworkType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 5, 'FieldName': 'segments.asset_group', 'FieldDescription': 'Resource name of the asset group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 6, 'FieldName': 'segments.asset_interaction_target.asset', 'FieldDescription': 'The asset resource name.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 7, 'FieldName': 'segments.asset_interaction_target.interaction_on_this_asset', 'FieldDescription': 'Only used with CustomerAsset, CampaignAsset and AdGroupAsset metrics. Indicates whether the interaction metrics occurred on the asset itself or a different asset or ad unit.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}  ... displaying 10 of 2313 total bound parameter sets ...  {'FieldId': 2311, 'FieldName': 'video.title', 'FieldDescription': 'Output only. The title of the video.', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2312, 'FieldName': 'webpage_view.resource_name', 'FieldDescription': 'Output only. The resource name of the webpage view. Webpage view resource names have the form: customers/{customer_id}/webpageViews/{ad_group_id}~{criterion_id}', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}]
+2023-12-29 14:25:30,293 - INFO - COMMIT
+2023-12-29 14:26:27,514 - INFO - SELECT DATABASE()
+2023-12-29 14:26:27,514 - INFO - [raw sql] {}
+2023-12-29 14:26:27,515 - INFO - SELECT @@sql_mode
+2023-12-29 14:26:27,515 - INFO - [raw sql] {}
+2023-12-29 14:26:27,515 - INFO - SELECT @@lower_case_table_names
+2023-12-29 14:26:27,515 - INFO - [raw sql] {}
+2023-12-29 14:26:27,516 - INFO - BEGIN (implicit)
+2023-12-29 14:26:27,518 - INFO - DESCRIBE `googleadsdata`.`resourcefield`
+2023-12-29 14:26:27,518 - INFO - [raw sql] {}
+2023-12-29 14:26:27,519 - INFO - DESCRIBE `googleadsdata`.`resourcefield`
+2023-12-29 14:26:27,519 - INFO - [raw sql] {}
+2023-12-29 14:26:27,520 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 14:26:27,520 - INFO - [raw sql] {}
+2023-12-29 14:26:27,521 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 14:26:27,521 - INFO - [raw sql] {}
+2023-12-29 14:26:27,527 - INFO - SHOW CREATE TABLE `resourcefield`
+2023-12-29 14:26:27,527 - INFO - [raw sql] {}
+2023-12-29 14:26:27,529 - INFO - 
+DROP TABLE resourcefield
+2023-12-29 14:26:27,529 - INFO - [no key 0.00016s] {}
+2023-12-29 14:26:27,529 - INFO - COMMIT
+2023-12-29 14:27:11,012 - INFO - SELECT DATABASE()
+2023-12-29 14:27:11,012 - INFO - [raw sql] {}
+2023-12-29 14:27:11,012 - INFO - SELECT @@sql_mode
+2023-12-29 14:27:11,013 - INFO - [raw sql] {}
+2023-12-29 14:27:11,013 - INFO - SELECT @@lower_case_table_names
+2023-12-29 14:27:11,013 - INFO - [raw sql] {}
+2023-12-29 14:27:11,014 - INFO - BEGIN (implicit)
+2023-12-29 14:27:11,015 - INFO - DESCRIBE `googleadsdata`.`resourcefield`
+2023-12-29 14:27:11,016 - INFO - [raw sql] {}
+2023-12-29 14:27:11,017 - INFO - COMMIT
+2023-12-29 14:30:20,810 - INFO - SELECT DATABASE()
+2023-12-29 14:30:20,810 - INFO - [raw sql] {}
+2023-12-29 14:30:20,811 - INFO - SELECT @@sql_mode
+2023-12-29 14:30:20,811 - INFO - [raw sql] {}
+2023-12-29 14:30:20,811 - INFO - SELECT @@lower_case_table_names
+2023-12-29 14:30:20,811 - INFO - [raw sql] {}
+2023-12-29 14:30:20,812 - INFO - BEGIN (implicit)
+2023-12-29 14:30:20,814 - INFO - DESCRIBE `googleadsdata`.`resourcefield`
+2023-12-29 14:30:20,814 - INFO - [raw sql] {}
+2023-12-29 14:30:20,816 - INFO - DESCRIBE `googleadsdata`.`resourcefield`
+2023-12-29 14:30:20,816 - INFO - [raw sql] {}
+2023-12-29 14:30:20,817 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 14:30:20,817 - INFO - [raw sql] {}
+2023-12-29 14:30:20,818 - INFO - SHOW FULL TABLES FROM `googleadsdata`
+2023-12-29 14:30:20,818 - INFO - [raw sql] {}
+2023-12-29 14:30:20,825 - INFO - SHOW CREATE TABLE `resourcefield`
+2023-12-29 14:30:20,825 - INFO - [raw sql] {}
+2023-12-29 14:30:20,827 - INFO - 
+DROP TABLE resourcefield
+2023-12-29 14:30:20,827 - INFO - [no key 0.00027s] {}
+2023-12-29 14:30:20,828 - INFO - COMMIT
+2023-12-29 14:30:32,078 - INFO - SELECT DATABASE()
+2023-12-29 14:30:32,078 - INFO - [raw sql] {}
+2023-12-29 14:30:32,079 - INFO - SELECT @@sql_mode
+2023-12-29 14:30:32,079 - INFO - [raw sql] {}
+2023-12-29 14:30:32,079 - INFO - SELECT @@lower_case_table_names
+2023-12-29 14:30:32,079 - INFO - [raw sql] {}
+2023-12-29 14:30:32,080 - INFO - BEGIN (implicit)
+2023-12-29 14:30:32,082 - INFO - DESCRIBE `googleadsdata`.`resourcefield`
+2023-12-29 14:30:32,082 - INFO - [raw sql] {}
+2023-12-29 14:30:32,095 - INFO - INSERT INTO resourcefield (`FieldId`, `FieldName`, `FieldDescription`, `Category`, `TypeURL`, `Filterable`, `Selectable`, `Sortable`, `Repeated`) VALUES (%(FieldId)s, %(FieldName)s, %(FieldDescription)s, %(Category)s, %(TypeURL)s, %(Filterable)s, %(Selectable)s, %(Sortable)s, %(Repeated)s)
+2023-12-29 14:30:32,096 - INFO - [generated in 0.00920s] [{'FieldId': 0, 'FieldName': 'segments.activity_account_id', 'FieldDescription': 'Activity account ID.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 1, 'FieldName': 'segments.activity_rating', 'FieldDescription': 'Activity rating.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2, 'FieldName': 'segments.ad_destination_type', 'FieldDescription': 'Ad Destination type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdDestinationTypeEnum.AdDestinationType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 3, 'FieldName': 'segments.ad_group', 'FieldDescription': 'Resource name of the ad group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 4, 'FieldName': 'segments.ad_network_type', 'FieldDescription': 'Ad network type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdNetworkTypeEnum.AdNetworkType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 5, 'FieldName': 'segments.asset_group', 'FieldDescription': 'Resource name of the asset group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 6, 'FieldName': 'segments.asset_interaction_target.asset', 'FieldDescription': 'The asset resource name.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 7, 'FieldName': 'segments.asset_interaction_target.interaction_on_this_asset', 'FieldDescription': 'Only used with CustomerAsset, CampaignAsset and AdGroupAsset metrics. Indicates whether the interaction metrics occurred on the asset itself or a different asset or ad unit.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}  ... displaying 10 of 2313 total bound parameter sets ...  {'FieldId': 2311, 'FieldName': 'video.title', 'FieldDescription': 'Output only. The title of the video.', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2312, 'FieldName': 'webpage_view.resource_name', 'FieldDescription': 'Output only. The resource name of the webpage view. Webpage view resource names have the form: customers/{customer_id}/webpageViews/{ad_group_id}~{criterion_id}', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}]
+2023-12-29 14:30:32,177 - INFO - COMMIT
+2023-12-29 14:30:32,182 - INFO - Load to table ResourceField successfully!
+2023-12-29 14:30:32,192 - INFO - BEGIN (implicit)
+2023-12-29 14:30:32,193 - INFO - DESCRIBE `googleadsdata`.`datatype`
+2023-12-29 14:30:32,193 - INFO - [raw sql] {}
+2023-12-29 14:30:32,205 - INFO - INSERT INTO datatype (`Id`, `FieldId`, `DataType`) VALUES (%(Id)s, %(FieldId)s, %(DataType)s)
+2023-12-29 14:30:32,205 - INFO - [generated in 0.00704s] [{'Id': 0, 'FieldId': 0, 'DataType': 'INT64'}, {'Id': 1, 'FieldId': 1, 'DataType': 'INT64'}, {'Id': 2, 'FieldId': 2, 'DataType': 'APP_DEEP_LINK'}, {'Id': 3, 'FieldId': 2, 'DataType': 'APP_STORE'}, {'Id': 4, 'FieldId': 2, 'DataType': 'LEAD_FORM'}, {'Id': 5, 'FieldId': 2, 'DataType': 'LOCATION_LISTING'}, {'Id': 6, 'FieldId': 2, 'DataType': 'MAP_DIRECTIONS'}, {'Id': 7, 'FieldId': 2, 'DataType': 'MESSAGE'}  ... displaying 10 of 5518 total bound parameter sets ...  {'Id': 5516, 'FieldId': 2311, 'DataType': 'STRING'}, {'Id': 5517, 'FieldId': 2312, 'DataType': 'RESOURCE_NAME'}]
+2023-12-29 14:30:32,290 - INFO - COMMIT
+2023-12-29 14:30:32,292 - INFO - Load to table DataType successfully!
+2023-12-29 14:30:32,303 - INFO - BEGIN (implicit)
+2023-12-29 14:30:32,304 - INFO - DESCRIBE `googleadsdata`.`selectablewith`
+2023-12-29 14:30:32,304 - INFO - [raw sql] {}
+2023-12-29 14:30:32,319 - INFO - INSERT INTO selectablewith (`Id`, `FieldId`, `ResourceName`) VALUES (%(Id)s, %(FieldId)s, %(ResourceName)s)
+2023-12-29 14:30:32,319 - INFO - [generated in 0.01031s] [{'Id': 0, 'FieldId': 0, 'ResourceName': 'ad_group'}, {'Id': 1, 'FieldId': 0, 'ResourceName': 'campaign'}, {'Id': 2, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions'}, {'Id': 3, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_from_interactions_rate'}, {'Id': 4, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_from_interactions_value_per_interaction'}, {'Id': 5, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_value'}, {'Id': 6, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_value_per_cost'}, {'Id': 7, 'FieldId': 0, 'ResourceName': 'metrics.average_cpc'}  ... displaying 10 of 8238 total bound parameter sets ...  {'Id': 8236, 'FieldId': 106, 'ResourceName': 'video'}, {'Id': 8237, 'FieldId': 106, 'ResourceName': 'webpage_view'}]
+2023-12-29 14:30:32,453 - INFO - COMMIT
+2023-12-29 14:30:32,457 - INFO - Load to table SelectableWith successfully!
+2023-12-29 14:30:32,464 - INFO - BEGIN (implicit)
+2023-12-29 14:30:32,465 - INFO - DESCRIBE `googleadsdata`.`resource`
+2023-12-29 14:30:32,466 - INFO - [raw sql] {}
+2023-12-29 14:30:32,487 - INFO - INSERT INTO resource (`ResourceId`, `ResourceName`, `ResourceDescription`, `ResourceWithMetric`) VALUES (%(ResourceId)s, %(ResourceName)s, %(ResourceDescription)s, %(ResourceWithMetric)s)
+2023-12-29 14:30:32,488 - INFO - [generated in 0.01938s] [{'ResourceId': 0, 'ResourceName': 'accessible_bidding_strategy', 'ResourceDescription': 'Represents a view of BiddingStrategies owned by and shared with the customer. In contrast to BiddingStrategy, this resource includes strategies owned ... (69 characters truncated) ... ion to strategies owned by this customer. This resource does not provide metrics and only exposes a limited subset of the BiddingStrategy attributes.', 'ResourceWithMetric': 0}, {'ResourceId': 1, 'ResourceName': 'account_budget', 'ResourceDescription': "An account-level budget. It contains information about the budget itself, as well as the most recently approved changes to the budget and proposed ch ... (688 characters truncated) ... stments, such as credit adjustments. Adjustments create differences between the 'approved' and 'adjusted' fields, which would otherwise be identical.", 'ResourceWithMetric': 0}, {'ResourceId': 2, 'ResourceName': 'account_budget_proposal', 'ResourceDescription': "An account-level budget proposal. All fields prefixed with 'proposed' may not necessarily be applied directly. For example, proposed spending limits  ... (97 characters truncated) ... counterpart, for example, spending limits. Note that the proposal type (proposal_type) changes which fields are required and which must remain empty.", 'ResourceWithMetric': 0}, {'ResourceId': 3, 'ResourceName': 'account_link', 'ResourceDescription': 'Represents the data sharing connection between a Google Ads account and another account', 'ResourceWithMetric': 0}, {'ResourceId': 4, 'ResourceName': 'ad_group', 'ResourceDescription': 'An ad group.', 'ResourceWithMetric': 1}, {'ResourceId': 5, 'ResourceName': 'ad_group_ad', 'ResourceDescription': 'An ad group ad.', 'ResourceWithMetric': 1}, {'ResourceId': 6, 'ResourceName': 'ad_group_ad_asset_combination_view', 'ResourceDescription': 'A view on the usage of ad group ad asset combination. Now we only support AdGroupAdAssetCombinationView for Responsive Search Ads, with more ad types planned for the future.', 'ResourceWithMetric': 1}, {'ResourceId': 7, 'ResourceName': 'ad_group_ad_asset_view', 'ResourceDescription': 'A link between an AdGroupAd and an Asset. Currently we only support AdGroupAdAssetView for AppAds and Responsive Search Ads.', 'ResourceWithMetric': 1}  ... displaying 10 of 171 total bound parameter sets ...  {'ResourceId': 169, 'ResourceName': 'video', 'ResourceDescription': 'A video.', 'ResourceWithMetric': 1}, {'ResourceId': 170, 'ResourceName': 'webpage_view', 'ResourceDescription': 'A webpage view.', 'ResourceWithMetric': 1}]
+2023-12-29 14:30:32,495 - INFO - COMMIT
+2023-12-29 14:30:32,497 - INFO - Load to table Resource successfully!
+2023-12-29 14:30:32,505 - INFO - BEGIN (implicit)
+2023-12-29 14:30:32,505 - INFO - DESCRIBE `googleadsdata`.`resourcefieldconnect`
+2023-12-29 14:30:32,506 - INFO - [raw sql] {}
+2023-12-29 14:30:32,516 - INFO - INSERT INTO resourcefieldconnect (`Id`, `FieldId`, `ResourceId`) VALUES (%(Id)s, %(FieldId)s, %(ResourceId)s)
+2023-12-29 14:30:32,516 - INFO - [generated in 0.00669s] [{'Id': 0, 'FieldId': 281, 'ResourceId': 0}, {'Id': 1, 'FieldId': 282, 'ResourceId': 0}, {'Id': 2, 'FieldId': 283, 'ResourceId': 0}, {'Id': 3, 'FieldId': 284, 'ResourceId': 0}, {'Id': 4, 'FieldId': 285, 'ResourceId': 0}, {'Id': 5, 'FieldId': 286, 'ResourceId': 0}, {'Id': 6, 'FieldId': 287, 'ResourceId': 0}, {'Id': 7, 'FieldId': 288, 'ResourceId': 0}  ... displaying 10 of 5157 total bound parameter sets ...  {'Id': 5155, 'FieldId': 106, 'ResourceId': 170}, {'Id': 5156, 'FieldId': 2312, 'ResourceId': 170}]
+2023-12-29 14:30:32,613 - INFO - COMMIT
+2023-12-29 14:30:32,615 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 14:30:32,621 - INFO - BEGIN (implicit)
+2023-12-29 14:30:32,621 - INFO - DESCRIBE `googleadsdata`.`relatedresource`
+2023-12-29 14:30:32,622 - INFO - [raw sql] {}
+2023-12-29 14:30:32,624 - INFO - INSERT INTO relatedresource (`Id`, `MasterResourceId`, `AttributedResourceId`, `beSegment`) VALUES (%(Id)s, %(MasterResourceId)s, %(AttributedResourceId)s, %(beSegment)s)
+2023-12-29 14:30:32,625 - INFO - [generated in 0.00102s] [{'Id': 0, 'MasterResourceId': 4, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 1, 'MasterResourceId': 24, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 2, 'MasterResourceId': 47, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 3, 'MasterResourceId': 127, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 4, 'MasterResourceId': 145, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 5, 'MasterResourceId': 161, 'AttributedResourceId': 3, 'beSegment': 0}, {'Id': 6, 'MasterResourceId': 5, 'AttributedResourceId': 4, 'beSegment': 0}, {'Id': 7, 'MasterResourceId': 6, 'AttributedResourceId': 4, 'beSegment': 0}  ... displaying 10 of 434 total bound parameter sets ...  {'Id': 432, 'MasterResourceId': 54, 'AttributedResourceId': 167, 'beSegment': 0}, {'Id': 433, 'MasterResourceId': 142, 'AttributedResourceId': 167, 'beSegment': 0}]
+2023-12-29 14:30:32,633 - INFO - COMMIT
+2023-12-29 14:30:32,634 - INFO - Load to table RelatedResource successfully!
+2023-12-29 14:31:02,588 - INFO - SELECT DATABASE()
+2023-12-29 14:31:02,589 - INFO - [raw sql] {}
+2023-12-29 14:31:02,589 - INFO - SELECT @@sql_mode
+2023-12-29 14:31:02,589 - INFO - [raw sql] {}
+2023-12-29 14:31:02,590 - INFO - SELECT @@lower_case_table_names
+2023-12-29 14:31:02,590 - INFO - [raw sql] {}
+2023-12-29 14:31:02,590 - INFO - BEGIN (implicit)
+2023-12-29 14:31:02,592 - INFO - DESCRIBE `googleadsdata`.`resourcefield`
+2023-12-29 14:31:02,592 - INFO - [raw sql] {}
+2023-12-29 14:31:02,595 - INFO - 
+CREATE TABLE resourcefield (
+	`FieldId` BIGINT, 
+	`FieldName` TEXT, 
+	`FieldDescription` TEXT, 
+	`Category` TEXT, 
+	`TypeURL` TEXT, 
+	`Filterable` BOOL, 
+	`Selectable` BOOL, 
+	`Sortable` BOOL, 
+	`Repeated` BOOL
+)
+
+
+2023-12-29 14:31:02,596 - INFO - [no key 0.00079s] {}
+2023-12-29 14:31:02,620 - INFO - INSERT INTO resourcefield (`FieldId`, `FieldName`, `FieldDescription`, `Category`, `TypeURL`, `Filterable`, `Selectable`, `Sortable`, `Repeated`) VALUES (%(FieldId)s, %(FieldName)s, %(FieldDescription)s, %(Category)s, %(TypeURL)s, %(Filterable)s, %(Selectable)s, %(Sortable)s, %(Repeated)s)
+2023-12-29 14:31:02,620 - INFO - [generated in 0.00903s] [{'FieldId': 0, 'FieldName': 'segments.activity_account_id', 'FieldDescription': 'Activity account ID.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 1, 'FieldName': 'segments.activity_rating', 'FieldDescription': 'Activity rating.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2, 'FieldName': 'segments.ad_destination_type', 'FieldDescription': 'Ad Destination type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdDestinationTypeEnum.AdDestinationType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 3, 'FieldName': 'segments.ad_group', 'FieldDescription': 'Resource name of the ad group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 4, 'FieldName': 'segments.ad_network_type', 'FieldDescription': 'Ad network type.', 'Category': 'SEGMENT', 'TypeURL': 'google.ads.googleads.v15.enums.AdNetworkTypeEnum.AdNetworkType', 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 5, 'FieldName': 'segments.asset_group', 'FieldDescription': 'Resource name of the asset group.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}, {'FieldId': 6, 'FieldName': 'segments.asset_interaction_target.asset', 'FieldDescription': 'The asset resource name.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 7, 'FieldName': 'segments.asset_interaction_target.interaction_on_this_asset', 'FieldDescription': 'Only used with CustomerAsset, CampaignAsset and AdGroupAsset metrics. Indicates whether the interaction metrics occurred on the asset itself or a different asset or ad unit.', 'Category': 'SEGMENT', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}  ... displaying 10 of 2313 total bound parameter sets ...  {'FieldId': 2311, 'FieldName': 'video.title', 'FieldDescription': 'Output only. The title of the video.', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 1, 'Repeated': 0}, {'FieldId': 2312, 'FieldName': 'webpage_view.resource_name', 'FieldDescription': 'Output only. The resource name of the webpage view. Webpage view resource names have the form: customers/{customer_id}/webpageViews/{ad_group_id}~{criterion_id}', 'Category': 'ATTRIBUTE', 'TypeURL': None, 'Filterable': 1, 'Selectable': 1, 'Sortable': 0, 'Repeated': 0}]
+2023-12-29 14:31:02,722 - INFO - COMMIT
+2023-12-29 14:31:02,726 - INFO - Load to table ResourceField successfully!
+2023-12-29 14:31:02,730 - INFO - BEGIN (implicit)
+2023-12-29 14:31:02,731 - INFO - DESCRIBE `googleadsdata`.`datatype`
+2023-12-29 14:31:02,731 - INFO - [raw sql] {}
+2023-12-29 14:31:02,732 - INFO - 
+CREATE TABLE datatype (
+	`Id` BIGINT, 
+	`FieldId` BIGINT, 
+	`DataType` TEXT
+)
+
+
+2023-12-29 14:31:02,732 - INFO - [no key 0.00043s] {}
+2023-12-29 14:31:02,749 - INFO - INSERT INTO datatype (`Id`, `FieldId`, `DataType`) VALUES (%(Id)s, %(FieldId)s, %(DataType)s)
+2023-12-29 14:31:02,749 - INFO - [generated in 0.00726s] [{'Id': 0, 'FieldId': 0, 'DataType': 'INT64'}, {'Id': 1, 'FieldId': 1, 'DataType': 'INT64'}, {'Id': 2, 'FieldId': 2, 'DataType': 'APP_DEEP_LINK'}, {'Id': 3, 'FieldId': 2, 'DataType': 'APP_STORE'}, {'Id': 4, 'FieldId': 2, 'DataType': 'LEAD_FORM'}, {'Id': 5, 'FieldId': 2, 'DataType': 'LOCATION_LISTING'}, {'Id': 6, 'FieldId': 2, 'DataType': 'MAP_DIRECTIONS'}, {'Id': 7, 'FieldId': 2, 'DataType': 'MESSAGE'}  ... displaying 10 of 5518 total bound parameter sets ...  {'Id': 5516, 'FieldId': 2311, 'DataType': 'STRING'}, {'Id': 5517, 'FieldId': 2312, 'DataType': 'RESOURCE_NAME'}]
+2023-12-29 14:31:02,814 - INFO - COMMIT
+2023-12-29 14:31:02,817 - INFO - Load to table DataType successfully!
+2023-12-29 14:31:02,822 - INFO - BEGIN (implicit)
+2023-12-29 14:31:02,822 - INFO - DESCRIBE `googleadsdata`.`selectablewith`
+2023-12-29 14:31:02,823 - INFO - [raw sql] {}
+2023-12-29 14:31:02,823 - INFO - 
+CREATE TABLE selectablewith (
+	`Id` BIGINT, 
+	`FieldId` BIGINT, 
+	`ResourceName` TEXT
+)
+
+
+2023-12-29 14:31:02,824 - INFO - [no key 0.00053s] {}
+2023-12-29 14:31:02,871 - INFO - INSERT INTO selectablewith (`Id`, `FieldId`, `ResourceName`) VALUES (%(Id)s, %(FieldId)s, %(ResourceName)s)
+2023-12-29 14:31:02,872 - INFO - [generated in 0.02574s] [{'Id': 0, 'FieldId': 0, 'ResourceName': 'ad_group'}, {'Id': 1, 'FieldId': 0, 'ResourceName': 'campaign'}, {'Id': 2, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions'}, {'Id': 3, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_from_interactions_rate'}, {'Id': 4, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_from_interactions_value_per_interaction'}, {'Id': 5, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_value'}, {'Id': 6, 'FieldId': 0, 'ResourceName': 'metrics.all_conversions_value_per_cost'}, {'Id': 7, 'FieldId': 0, 'ResourceName': 'metrics.average_cpc'}  ... displaying 10 of 8238 total bound parameter sets ...  {'Id': 8236, 'FieldId': 106, 'ResourceName': 'video'}, {'Id': 8237, 'FieldId': 106, 'ResourceName': 'webpage_view'}]
+2023-12-29 14:31:03,024 - INFO - COMMIT
+2023-12-29 14:31:03,046 - INFO - Load to table SelectableWith successfully!
+2023-12-29 14:31:03,048 - INFO - BEGIN (implicit)
+2023-12-29 14:31:03,049 - INFO - DESCRIBE `googleadsdata`.`resource`
+2023-12-29 14:31:03,049 - INFO - [raw sql] {}
+2023-12-29 14:31:03,050 - INFO - 
+CREATE TABLE resource (
+	`ResourceId` BIGINT, 
+	`ResourceName` TEXT, 
+	`ResourceDescription` TEXT, 
+	`ResourceWithMetric` BOOL
+)
+
+
+2023-12-29 14:31:03,051 - INFO - [no key 0.00052s] {}
+2023-12-29 14:31:03,059 - INFO - INSERT INTO resource (`ResourceId`, `ResourceName`, `ResourceDescription`, `ResourceWithMetric`) VALUES (%(ResourceId)s, %(ResourceName)s, %(ResourceDescription)s, %(ResourceWithMetric)s)
+2023-12-29 14:31:03,059 - INFO - [generated in 0.00076s] [{'ResourceId': 0, 'ResourceName': 'accessible_bidding_strategy', 'ResourceDescription': 'Represents a view of BiddingStrategies owned by and shared with the customer. In contrast to BiddingStrategy, this resource includes strategies owned ... (69 characters truncated) ... ion to strategies owned by this customer. This resource does not provide metrics and only exposes a limited subset of the BiddingStrategy attributes.', 'ResourceWithMetric': 0}, {'ResourceId': 1, 'ResourceName': 'account_budget', 'ResourceDescription': "An account-level budget. It contains information about the budget itself, as well as the most recently approved changes to the budget and proposed ch ... (688 characters truncated) ... stments, such as credit adjustments. Adjustments create differences between the 'approved' and 'adjusted' fields, which would otherwise be identical.", 'ResourceWithMetric': 0}, {'ResourceId': 2, 'ResourceName': 'account_budget_proposal', 'ResourceDescription': "An account-level budget proposal. All fields prefixed with 'proposed' may not necessarily be applied directly. For example, proposed spending limits  ... (97 characters truncated) ... counterpart, for example, spending limits. Note that the proposal type (proposal_type) changes which fields are required and which must remain empty.", 'ResourceWithMetric': 0}, {'ResourceId': 3, 'ResourceName': 'account_link', 'ResourceDescription': 'Represents the data sharing connection between a Google Ads account and another account', 'ResourceWithMetric': 0}, {'ResourceId': 4, 'ResourceName': 'ad_group', 'ResourceDescription': 'An ad group.', 'ResourceWithMetric': 1}, {'ResourceId': 5, 'ResourceName': 'ad_group_ad', 'ResourceDescription': 'An ad group ad.', 'ResourceWithMetric': 1}, {'ResourceId': 6, 'ResourceName': 'ad_group_ad_asset_combination_view', 'ResourceDescription': 'A view on the usage of ad group ad asset combination. Now we only support AdGroupAdAssetCombinationView for Responsive Search Ads, with more ad types planned for the future.', 'ResourceWithMetric': 1}, {'ResourceId': 7, 'ResourceName': 'ad_group_ad_asset_view', 'ResourceDescription': 'A link between an AdGroupAd and an Asset. Currently we only support AdGroupAdAssetView for AppAds and Responsive Search Ads.', 'ResourceWithMetric': 1}  ... displaying 10 of 171 total bound parameter sets ...  {'ResourceId': 169, 'ResourceName': 'video', 'ResourceDescription': 'A video.', 'ResourceWithMetric': 1}, {'ResourceId': 170, 'ResourceName': 'webpage_view', 'ResourceDescription': 'A webpage view.', 'ResourceWithMetric': 1}]
+2023-12-29 14:31:03,069 - INFO - COMMIT
+2023-12-29 14:31:03,071 - INFO - Load to table Resource successfully!
+2023-12-29 14:31:03,073 - INFO - BEGIN (implicit)
+2023-12-29 14:31:03,074 - INFO - DESCRIBE `googleadsdata`.`resourcefieldconnect`
+2023-12-29 14:31:03,074 - INFO - [raw sql] {}
+2023-12-29 14:31:03,075 - INFO - 
+CREATE TABLE resourcefieldconnect (
+	`Id` BIGINT, 
+	`FieldId` BIGINT, 
+	`ResourceId` BIGINT
+)
+
+
+2023-12-29 14:31:03,075 - INFO - [no key 0.00049s] {}
+2023-12-29 14:31:03,091 - INFO - INSERT INTO resourcefieldconnect (`Id`, `FieldId`, `ResourceId`) VALUES (%(Id)s, %(FieldId)s, %(ResourceId)s)
+2023-12-29 14:31:03,091 - INFO - [generated in 0.00636s] [{'Id': 0, 'FieldId': 281, 'ResourceId': 0}, {'Id': 1, 'FieldId': 282, 'ResourceId': 0}, {'Id': 2, 'FieldId': 283, 'ResourceId': 0}, {'Id': 3, 'FieldId': 284, 'ResourceId': 0}, {'Id': 4, 'FieldId': 285, 'ResourceId': 0}, {'Id': 5, 'FieldId': 286, 'ResourceId': 0}, {'Id': 6, 'FieldId': 287, 'ResourceId': 0}, {'Id': 7, 'FieldId': 288, 'ResourceId': 0}  ... displaying 10 of 5157 total bound parameter sets ...  {'Id': 5155, 'FieldId': 106, 'ResourceId': 170}, {'Id': 5156, 'FieldId': 2312, 'ResourceId': 170}]
+2023-12-29 14:31:03,183 - INFO - COMMIT
+2023-12-29 14:31:03,185 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 14:31:03,186 - INFO - BEGIN (implicit)
+2023-12-29 14:31:03,187 - INFO - DESCRIBE `googleadsdata`.`relatedresource`
+2023-12-29 14:31:03,187 - INFO - [raw sql] {}
+2023-12-29 14:31:03,188 - INFO - 
+CREATE TABLE relatedresource (
+	`Id` BIGINT, 
+	`MasterResourceId` BIGINT, 
+	`AttributedResourceId` BIGINT, 
+	`beSegment` BOOL
+)
+
+
+2023-12-29 14:31:03,189 - INFO - [no key 0.00055s] {}
+2023-12-29 14:31:03,201 - INFO - INSERT INTO relatedresource (`Id`, `MasterResourceId`, `AttributedResourceId`, `beSegment`) VALUES (%(Id)s, %(MasterResourceId)s, %(AttributedResourceId)s, %(beSegment)s)
+2023-12-29 14:31:03,201 - INFO - [generated in 0.00105s] [{'Id': 0, 'MasterResourceId': 4, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 1, 'MasterResourceId': 24, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 2, 'MasterResourceId': 47, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 3, 'MasterResourceId': 127, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 4, 'MasterResourceId': 145, 'AttributedResourceId': 0, 'beSegment': 0}, {'Id': 5, 'MasterResourceId': 161, 'AttributedResourceId': 3, 'beSegment': 0}, {'Id': 6, 'MasterResourceId': 5, 'AttributedResourceId': 4, 'beSegment': 0}, {'Id': 7, 'MasterResourceId': 6, 'AttributedResourceId': 4, 'beSegment': 0}  ... displaying 10 of 434 total bound parameter sets ...  {'Id': 432, 'MasterResourceId': 54, 'AttributedResourceId': 167, 'beSegment': 0}, {'Id': 433, 'MasterResourceId': 142, 'AttributedResourceId': 167, 'beSegment': 0}]
+2023-12-29 14:31:03,210 - INFO - COMMIT
+2023-12-29 14:31:03,211 - INFO - Load to table RelatedResource successfully!
+2023-12-29 15:12:26,189 - INFO - Load to table ResourceField successfully!
+2023-12-29 15:12:26,303 - INFO - Load to table DataType successfully!
+2023-12-29 15:12:26,479 - INFO - Load to table SelectableWith successfully!
+2023-12-29 15:12:26,494 - INFO - Load to table Resource successfully!
+2023-12-29 15:12:26,619 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 15:12:26,636 - INFO - Load to table RelatedResource successfully!
+2023-12-29 15:18:39,573 - INFO - Load to table ResourceField successfully!
+2023-12-29 15:18:39,673 - INFO - Load to table DataType successfully!
+2023-12-29 15:18:39,835 - INFO - Load to table SelectableWith successfully!
+2023-12-29 15:18:39,851 - INFO - Load to table Resource successfully!
+2023-12-29 15:18:39,976 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 15:18:39,976 - INFO - Load to table RelatedResource successfully!
+2023-12-29 15:28:19,917 - INFO - Load to table ResourceField successfully!
+2023-12-29 15:28:20,042 - INFO - Load to table DataType successfully!
+2023-12-29 15:28:20,198 - INFO - Load to table SelectableWith successfully!
+2023-12-29 15:28:20,229 - INFO - Load to table Resource successfully!
+2023-12-29 15:28:20,354 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 15:32:30,481 - INFO - Load to table ResourceField successfully!
+2023-12-29 15:32:30,590 - INFO - Load to table DataType successfully!
+2023-12-29 15:32:30,746 - INFO - Load to table SelectableWith successfully!
+2023-12-29 15:32:30,778 - INFO - Load to table Resource successfully!
+2023-12-29 15:32:30,887 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 15:33:58,922 - INFO - Load to table ResourceField successfully!
+2023-12-29 15:33:59,040 - INFO - Load to table DataType successfully!
+2023-12-29 15:33:59,207 - INFO - Load to table SelectableWith successfully!
+2023-12-29 15:33:59,256 - INFO - Load to table Resource successfully!
+2023-12-29 15:33:59,356 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 15:34:17,622 - INFO - Load to table ResourceField successfully!
+2023-12-29 15:34:17,739 - INFO - Load to table DataType successfully!
+2023-12-29 15:34:17,907 - INFO - Load to table SelectableWith successfully!
+2023-12-29 15:34:17,926 - INFO - Load to table Resource successfully!
+2023-12-29 15:34:18,039 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 15:35:57,122 - INFO - Load to table ResourceField successfully!
+2023-12-29 15:35:57,239 - INFO - Load to table DataType successfully!
+2023-12-29 15:35:57,405 - INFO - Load to table SelectableWith successfully!
+2023-12-29 15:35:57,423 - INFO - Load to table Resource successfully!
+2023-12-29 15:35:57,539 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 15:42:10,097 - INFO - Load to table ResourceField successfully!
+2023-12-29 15:42:10,190 - INFO - Load to table DataType successfully!
+2023-12-29 15:42:10,362 - INFO - Load to table SelectableWith successfully!
+2023-12-29 15:42:10,378 - INFO - Load to table Resource successfully!
+2023-12-29 15:42:10,487 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 15:42:10,503 - INFO - Load to table RelatedResource successfully!
+2023-12-29 15:49:55,713 - INFO - Load to table ResourceField successfully!
+2023-12-29 15:49:55,822 - INFO - Load to table DataType successfully!
+2023-12-29 15:49:55,979 - INFO - Load to table SelectableWith successfully!
+2023-12-29 15:49:56,010 - INFO - Load to table Resource successfully!
+2023-12-29 15:49:56,119 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 15:49:56,135 - INFO - Load to table RelatedResource successfully!
+2023-12-29 15:56:17,838 - INFO - Load to table ResourceField successfully!
+2023-12-29 15:56:17,938 - INFO - Load to table DataType successfully!
+2023-12-29 15:56:18,117 - INFO - Load to table SelectableWith successfully!
+2023-12-29 15:56:18,146 - INFO - Load to table Resource successfully!
+2023-12-29 15:56:18,256 - INFO - Load to table ResourceFieldConnect successfully!
+2023-12-29 15:56:18,277 - INFO - Load to table RelatedResource successfully!
