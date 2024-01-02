@@ -75,9 +75,30 @@
   <notepads>
     <notepad>
       <note>select segments for table ResourceField</note>
-      <xloc>592</xloc>
-      <yloc>208</yloc>
+      <xloc>672</xloc>
+      <yloc>176</yloc>
       <width>244</width>
+      <heigth>25</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>extract datatype</note>
+      <xloc>624</xloc>
+      <yloc>496</yloc>
+      <width>105</width>
       <heigth>25</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -162,7 +183,7 @@
       <seqname>SEQ_</seqname>
       <use_counter>Y</use_counter>
       <counter_name/>
-      <start_at>&#x24;&#x7b;COUNT_SEGMENTS&#x7d;</start_at>
+      <start_at>&#x24;&#x7b;COUNT_RESOURCEFIELD&#x7d;</start_at>
       <increment_by>1</increment_by>
       <max_value>999999999</max_value>
      <cluster_schema/>
@@ -255,8 +276,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>656</xloc>
-      <yloc>272</yloc>
+      <xloc>640</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -399,8 +420,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>784</xloc>
-      <yloc>272</yloc>
+      <xloc>768</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -878,8 +899,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>896</xloc>
-      <yloc>272</yloc>
+      <xloc>880</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

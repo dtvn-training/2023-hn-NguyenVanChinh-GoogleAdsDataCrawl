@@ -95,8 +95,8 @@
            </partitioning>
     <fields>
       <field>
-        <field_name>countSegments</field_name>
-        <variable_name>COUNT_SEGMENTS</variable_name>
+        <field_name>countResourceField</field_name>
+        <variable_name>COUNT_RESOURCEFIELD</variable_name>
         <variable_type>JVM</variable_type>
         <default_value/>
         </field>
@@ -186,7 +186,7 @@
            </partitioning>
     <files_count>N</files_count>
     <files_count_fieldname>count</files_count_fieldname>
-    <rows_count_fieldname>countSegments</rows_count_fieldname>
+    <rows_count_fieldname>countResourceField</rows_count_fieldname>
     <rowseparator_format>CRLF</rowseparator_format>
     <row_separator/>
     <isaddresult>Y</isaddresult>
@@ -223,9 +223,9 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var countSegments &#x3d; countSegments-1&#x3b;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>countSegments</name>
-        <rename>countSegments</rename>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var countResourceField &#x3d; countResourceField-1&#x3b;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>countResourceField</name>
+        <rename>countResourceField</rename>
         <type>Integer</type>
         <length>16</length>
         <precision>2</precision>

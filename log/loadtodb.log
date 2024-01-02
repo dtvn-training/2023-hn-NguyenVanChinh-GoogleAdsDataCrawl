@@ -577,3 +577,15 @@ CREATE TABLE relatedresource (
 2023-12-29 15:56:18,146 - INFO - Load to table Resource successfully!
 2023-12-29 15:56:18,256 - INFO - Load to table ResourceFieldConnect successfully!
 2023-12-29 15:56:18,277 - INFO - Load to table RelatedResource successfully!
+2024-01-02 09:25:56,783 - INFO - Load to table ResourceField successfully!
+2024-01-02 09:25:56,905 - INFO - Load to table DataType successfully!
+2024-01-02 09:25:57,152 - INFO - Load to table SelectableWith successfully!
+2024-01-02 09:25:57,184 - INFO - Load to table Resource successfully!
+2024-01-02 09:25:57,339 - INFO - Load to table ResourceFieldConnect successfully!
+2024-01-02 09:25:57,356 - INFO - Load to table RelatedResource successfully!
+2024-01-02 10:51:06,812 - INFO - Load to table ResourceField successfully!
+2024-01-02 10:51:06,937 - INFO - Load to table DataType successfully!
+2024-01-02 10:51:07,186 - INFO - Load to table SelectableWith successfully!
+2024-01-02 10:51:07,218 - INFO - Load to table Resource successfully!
+2024-01-02 10:51:07,327 - INFO - Load to table ResourceFieldConnect successfully!
+2024-01-02 10:51:07,358 - INFO - Load to table RelatedResource successfully!
