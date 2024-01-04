@@ -471,6 +471,15 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
+      <from>python crawl data</from>
+      <to>load folderName rawdata</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
       <from>extract resources</from>
       <to>extractConnectResourceVsResourceField</to>
       <from_nr>0</from_nr>
@@ -491,15 +500,6 @@
     <hop>
       <from>Check if input folder is empty</from>
       <to>copy rawdata to inputdata</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>python crawl data</from>
-      <to>load folderName rawdata</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
