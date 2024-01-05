@@ -161,29 +161,6 @@
       <yloc>80</yloc>
       </entry>
     <entry>
-      <name>python crawl data</name>
-      <description/>
-      <type>SHELL</type>
-      <filename/>
-      <work_directory>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;</work_directory>
-      <arg_from_previous>N</arg_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <set_append_logfile>N</set_append_logfile>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <insertScript>Y</insertScript>
-      <script>python crawlWebData.py</script>
-      <loglevel>Basic</loglevel>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>128</xloc>
-      <yloc>80</yloc>
-      </entry>
-    <entry>
       <name>extract segments</name>
       <description/>
       <type>TRANS</type>
@@ -459,26 +436,31 @@
       <xloc>1120</xloc>
       <yloc>416</yloc>
       </entry>
+    <entry>
+      <name>python crawlData</name>
+      <description/>
+      <type>SHELL</type>
+      <filename/>
+      <work_directory>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;</work_directory>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <set_append_logfile>N</set_append_logfile>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <insertScript>Y</insertScript>
+      <script>python crawlWebData.py</script>
+      <loglevel>Basic</loglevel>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>128</xloc>
+      <yloc>80</yloc>
+      </entry>
   </entries>
   <hops>
-    <hop>
-      <from>python crawl data</from>
-      <to>DUMMY</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>python crawl data</from>
-      <to>load folderName rawdata</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
     <hop>
       <from>extract resources</from>
       <to>extractConnectResourceVsResourceField</to>
@@ -616,12 +598,21 @@
     </hop>
     <hop>
       <from>START</from>
-      <to>python crawl data</to>
+      <to>python crawlData</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>python crawlData</from>
+      <to>load folderName rawdata</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
     </hop>
   </hops>
   <notepads>

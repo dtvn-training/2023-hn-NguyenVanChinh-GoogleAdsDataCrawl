@@ -75,7 +75,7 @@
   <notepads>
     <notepad>
       <note>this transformation handle segments.xml file.&#xd;&#xa;Extract and save 3 table &#xd;&#xa;&#x2b; segments&#xd;&#xa;&#x2b; datatype&#xd;&#xa;&#x2b; selectableWith to file csv</note>
-      <xloc>16</xloc>
+      <xloc>304</xloc>
       <yloc>16</yloc>
       <width>269</width>
       <heigth>85</heigth>
@@ -177,14 +177,14 @@
   <hop> <from>If datatype have enum</from><to>Select values</to><enabled>Y</enabled> </hop>
   <hop> <from>Cut enum</from><to>trim datatype</to><enabled>Y</enabled> </hop>
   <hop> <from>trim datatype</from><to>Select after cut 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Split datatype</from><to>Select values 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Select values 4</from><to>Sort by segmentId</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort by segmentId</from><to>Add index dataType</to><enabled>Y</enabled> </hop>
   <hop> <from>Add index dataType</from><to>Select datatype fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select values</from><to>Add isEnum</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add isEnum</from><to>Select values 4</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select values 2</from><to>Add isEnum 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add isEnum 2</from><to>Select values 4</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add enumdatatype</from><to>Select values 4</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values</from><to>Add enumdatatype</to><enabled>Y</enabled> </hop>
+  <hop> <from>Split datatype</from><to>Add datatype</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add datatype</from><to>Select values 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 2</from><to>Select values 4</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add index dataType</name>
@@ -269,6 +269,72 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1024</xloc>
       <yloc>416</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Add enumdatatype</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>EnumDataType</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>N&#x2f;A</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>912</xloc>
+      <yloc>656</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Add datatype</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>DataType</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>ENUM</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1040</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -463,8 +529,8 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>isEnum</name>
-        <rename>IsEnum</rename>
+      </field>      <field>        <name>EnumDataType</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
@@ -639,10 +705,14 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
+      </field>      <field>        <name>EnumDataType</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1024</xloc>
+      <xloc>1136</xloc>
       <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
@@ -667,7 +737,7 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>isEnum</name>
+      </field>      <field>        <name>EnumDataType</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -727,7 +797,7 @@
            </partitioning>
    <splitfield>TrimmedDataType</splitfield>
    <delimiter>&#x5c;s&#x2b;</delimiter>
-   <newfield>DataType</newfield>
+   <newfield>EnumDataType</newfield>
    <rownum>N</rownum>
    <rownum_field>rownum</rownum_field>
    <resetrownumber>Y</resetrownumber>
@@ -846,7 +916,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>IsEnum</name>
+        <name>EnumDataType</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1240,72 +1310,6 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>752</xloc>
-      <yloc>560</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Add isEnum</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>isEnum</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>False</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>880</xloc>
-      <yloc>656</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Add isEnum 2</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>isEnum</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>True</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1120</xloc>
       <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>

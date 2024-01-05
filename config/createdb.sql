@@ -14,8 +14,8 @@ Repeated bool);
 create table if not exists DataType (
 Id int primary key,
 FieldId int,
-DataType varchar(100),
-IsEnum bool,
+DataType varchar(20),
+EnumDataType varchar(100),
 foreign key (FieldId) references resourcefield(FieldId));
 
 create table if not exists SelectableWith (
