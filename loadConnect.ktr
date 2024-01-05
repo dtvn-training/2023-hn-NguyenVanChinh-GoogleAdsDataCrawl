@@ -75,23 +75,23 @@
   <notepads>
   </notepads>
   <order>
-  <hop> <from>Modified Java Script Value</from><to>Select values 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>resources data</from><to>Modified Java Script Value</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select values 2</from><to>Sort rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>resource field</from><to>Sort rows 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Sort rows</from><to>Merge Join</to><enabled>Y</enabled> </hop>
-  <hop> <from>Sort rows 2</from><to>Merge Join</to><enabled>Y</enabled> </hop>
+  <hop> <from>transform fileName</from><to>Select values 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>resources data</from><to>transform fileName</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 2</from><to>Sort FieldName 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>resource field table</from><to>Sort FieldName</to><enabled>Y</enabled> </hop>
+  <hop> <from>Sort FieldName 2</from><to>Merge Join</to><enabled>Y</enabled> </hop>
+  <hop> <from>Sort FieldName</from><to>Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>Merge Join</from><to>Select values</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select values</from><to>Sort rows 2 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>resource table</from><to>Sort rows 2 2 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Sort rows 2 2</from><to>Merge Join 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Sort rows 2 2 2</from><to>Merge Join 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values</from><to>Sort resourceName</to><enabled>Y</enabled> </hop>
+  <hop> <from>resource table</from><to>Sort ResourceName 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Sort resourceName</from><to>Merge Join 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Sort ResourceName 2</from><to>Merge Join 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Merge Join 2</from><to>Select values 3</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select values 3</from><to>Add sequence</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add sequence</from><to>ResourceFieldConnect output</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 3</from><to>Add id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add id</from><to>ResourceFieldConnect output</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Add sequence</name>
+    <name>Add id</name>
     <type>Sequence</type>
     <description/>
     <distribute>Y</distribute>
@@ -131,8 +131,8 @@
            <schema_name/>
            </partitioning>
 <join_type>INNER</join_type>
-<step1>Sort rows</step1>
-<step2>Sort rows 2</step2>
+<step1>Sort FieldName 2</step1>
+<step2>Sort FieldName</step2>
     <keys_1>
       <key>FieldName</key>
     </keys_1>
@@ -159,8 +159,8 @@
            <schema_name/>
            </partitioning>
 <join_type>INNER</join_type>
-<step1>Sort rows 2 2</step1>
-<step2>Sort rows 2 2 2</step2>
+<step1>Sort resourceName</step1>
+<step2>Sort ResourceName 2</step2>
     <keys_1>
       <key>ResourceName</key>
     </keys_1>
@@ -176,7 +176,7 @@
     </step>
 
   <step>
-    <name>Modified Java Script Value</name>
+    <name>transform fileName</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>N</distribute>
@@ -382,7 +382,7 @@
     </step>
 
   <step>
-    <name>Sort rows</name>
+    <name>Sort FieldName 2</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -409,14 +409,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>496</xloc>
+      <xloc>512</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Sort rows 2</name>
+    <name>Sort FieldName</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -443,14 +443,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>672</xloc>
+      <xloc>512</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Sort rows 2 2</name>
+    <name>Sort resourceName</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -484,7 +484,7 @@
     </step>
 
   <step>
-    <name>Sort rows 2 2 2</name>
+    <name>Sort ResourceName 2</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -518,7 +518,7 @@
     </step>
 
   <step>
-    <name>resource field</name>
+    <name>resource field table</name>
     <type>CsvInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -567,7 +567,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>560</xloc>
+      <xloc>368</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
       </GUI>

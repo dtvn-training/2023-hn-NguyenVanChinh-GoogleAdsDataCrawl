@@ -14,7 +14,8 @@ Repeated bool);
 create table if not exists DataType (
 Id int primary key,
 FieldId int,
-DataType varchar(100),
+DataType varchar(20),
+EnumDataType varchar(100),
 foreign key (FieldId) references resourcefield(FieldId));
 
 create table if not exists SelectableWith (
@@ -34,7 +35,7 @@ create table if not exists RelatedResource (
 Id int primary key,
 MasterResourceId int not null,
 AttributedResourceId int not null,
-beSegment bool not null,
+BeSegment bool not null,
 foreign key (MasterResourceId) references Resource(ResourceId),
 foreign key (AttributedResourceId) references Resource(ResourceId));
 
