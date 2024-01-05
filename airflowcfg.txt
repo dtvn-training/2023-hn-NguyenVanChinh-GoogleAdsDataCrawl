@@ -1,0 +1,3 @@
+dags_folder = /home/chinhnv/2023-hn-NguyenVanChinh-GoogleadsApiDataCrawl/dags
+
+plugins_folder = /home/chinhnv/2023-hn-NguyenVanChinh-GoogleadsApiDataCrawl/plugins
