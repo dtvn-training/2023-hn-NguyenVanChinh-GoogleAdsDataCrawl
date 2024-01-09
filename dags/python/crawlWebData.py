@@ -73,8 +73,8 @@ def downloadXmlRawData(resources):
         downloadXml(
             resource["Link"], folderPath + resource["Category"], resource["Name"]
         )
-        if id == 10:
-            break
+        # if id == 10:
+        #     break
 
     return folderName
 

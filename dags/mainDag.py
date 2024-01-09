@@ -8,6 +8,7 @@ from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 from python.crawlWebData import executeCrawl
 from python.transformData import transform
+from python.loadToDB import loadToMySql
 # from airflow_pentaho.operators.KitchenOperator import KitchenOperator
 
 with DAG(
@@ -16,6 +17,7 @@ with DAG(
     schedule_interval=timedelta(days=2000),
     tags=["etl", "v1", "googleads"],
 ) as dag:
-    crawlData = PythonOperator(task_id='crawlData', python_callable=executeCrawl)
-    transform = PythonOperator(task_id='transformData', python_callable=transform)
-    crawlData >> transform
+    crawlData = PythonOperator(task_id='crawl_data', python_callable=executeCrawl)
+    transform = PythonOperator(task_id='transform_data', python_callable=transform)
+    loadData = PythonOperator(task_id='load_data_toMysql', python_callable=loadToMySql)
+    crawlData >> transform >> loadData

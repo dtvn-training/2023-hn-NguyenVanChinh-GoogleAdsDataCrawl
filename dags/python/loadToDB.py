@@ -53,17 +53,17 @@ def createTableMySql(connection):
     cursor.close()
     connection.close()
 
-
-if __name__ == "__main__":
+# use all above functions
+def loadToMySql():
     # read properties file
     folderName = readProperties("config/foldername.properties")
     outputdataPath = "outputdata/" + folderName.get("folder_name") + "/"
-
     # read connection to mysql
     connectionInfo = readProperties("config/db.properties")
 
     # prepare db by drop exist table and create new table.
     mysqlConnection = create_connection(connectionInfo)
+    
     createTableMySql(mysqlConnection)
 
     # declare engine for save data
@@ -78,7 +78,7 @@ if __name__ == "__main__":
 
     # save and write log
     logging.basicConfig(
-        filename="./log/loadtodb.log",
+        # filename="log/loadtodb.log",
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(message)s",
     )
