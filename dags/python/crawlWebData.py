@@ -63,7 +63,7 @@ def extractInfoResource(googleadsRawData):
 def downloadXmlRawData(resources):
     # create a foldername with date today
     folderName = datetime.now().strftime("%Y%m%d") + "_googleadsData/"
-    folderPath = "rawdata/" + folderName
+    folderPath = "inputdata/" + folderName
 
     # check to sure that folder exists with 3 subfolder: segments, metrics, resources
     checkRawdataFolder(folderPath)
@@ -73,6 +73,8 @@ def downloadXmlRawData(resources):
         downloadXml(
             resource["Link"], folderPath + resource["Category"], resource["Name"]
         )
+        if id == 10:
+            break
 
     return folderName
 
@@ -128,12 +130,12 @@ def writeFolderName(folderName):
 def writeToLogFile(folderName, resourceLink):
     # Configure logging to write to a file
     logging.basicConfig(
-        filename="./log/crawl.log",
+        filename="log/crawls.log",
         level=logging.DEBUG,
         format="%(asctime)s - %(levelname)s - %(message)s",
     )
     logging.info(
-        "Downloaded file to folder: rawdata/{}, with {} file".format(
+        "Downloaded file to folder: inputdata/{}, with {} file".format(
             folderName, len(resourceLink)
         )
     )
@@ -152,7 +154,8 @@ def getLinkGoogleads():
     return properties.get("googleadsLink")
 
 
-if __name__ == "__main__":
+# run crawl process using above function
+def executeCrawl():
     googleadsLink = getLinkGoogleads()
     googleadsRawData = getHtmlData(googleadsLink)
 
