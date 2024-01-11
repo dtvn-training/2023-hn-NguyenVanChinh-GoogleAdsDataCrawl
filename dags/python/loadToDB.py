@@ -39,8 +39,8 @@ def createTableMySql(connection):
     # Read the SQL script from the file
     with open("config/createdb.sql", "r") as file:
         sql_queries = file.read()
-    
-    sql_scripts = sql_queries.split(';')
+
+    sql_scripts = sql_queries.split(";")
 
     # Execute the SQL script
     for sql_script in sql_scripts:
@@ -53,6 +53,7 @@ def createTableMySql(connection):
     cursor.close()
     connection.close()
 
+
 # use all above functions
 def loadToMySql():
     # read properties file
@@ -63,7 +64,7 @@ def loadToMySql():
 
     # prepare db by drop exist table and create new table.
     mysqlConnection = create_connection(connectionInfo)
-    
+
     createTableMySql(mysqlConnection)
 
     # declare engine for save data
@@ -93,5 +94,7 @@ def loadToMySql():
     ]
     for tableName in tableNames:
         df = pd.read_csv(outputdataPath + tableName + ".csv", sep=";")
-        df.to_sql(tableName.lower(), engine, if_exists="append", index=False) # lower because tablename in mysql always in lowercase form
+        df.to_sql(
+            tableName.lower(), engine, if_exists="append", index=False
+        )  # lower because tablename in mysql always in lowercase form
         logging.info("Load to table {} successfully!".format(tableName))

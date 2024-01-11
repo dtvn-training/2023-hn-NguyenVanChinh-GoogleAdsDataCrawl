@@ -3,33 +3,53 @@ from bs4 import BeautifulSoup
 import os
 from datetime import datetime
 import logging
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 
 
 # send request get html raw data by link
 def getHtmlData(googleadsLink):
-    googleadsResponse = requests.get(googleadsLink)  # get response
+    googleadsResponse = requests.get(googleadsLink)  # get response to link
     if googleadsResponse.status_code == 200:  # if request ok, return html text
-        return googleadsResponse.text
+        return getRawHtmlWithSelenium(googleadsLink)
     else:  # if not ok, return status code
         return "error, code: {}".format(googleadsResponse.status_code)
 
+def getRawHtmlWithSelenium(googleadsLink):
+    service = Service(executable_path=(os.getcwd() + "/chromedriver"))
+    options = Options()
+    options.headless = True
+    options.add_argument("--headless")
+    options.add_argument("--window-size=1920,1200")
+
+    driver = webdriver.Chrome(options=options, service=service)
+    driver.get(googleadsLink)
+    source = driver.page_source
+    driver.quit()
+    return source
 
 # from htmlRawData, extract necessary info of resources: category, name, link
 def extractInfoResource(googleadsRawData):
     soupGoogleadsData = BeautifulSoup(googleadsRawData, "html.parser")
 
     # extract item from navigation bar
-    GoogleadsV15Data = soupGoogleadsData.select_one(
-        "div.devsite-mobile-nav-bottom ul.devsite-nav-section li.devsite-nav-item.devsite-nav-expandable"
+    GoogleadsData = soupGoogleadsData.select(
+        "div.devsite-mobile-nav-bottom ul.devsite-nav-section > li.devsite-nav-item.devsite-nav-expandable > div.devsite-expandable-nav.expanded"
     )
-    ResourceRawData = GoogleadsV15Data.select(
+    ResourceRawData = GoogleadsData[0].select(
         "ul.devsite-nav-section > li.devsite-nav-item"
     )
 
     # get specific item, id 1 is segments, id 2 is ResourceWithMetrics, id 63 is ResourceWithoutMetrics
-    # TODO: can fix not using index??
-    NeededRawData = ResourceRawData[1:3]
-    NeededRawData.append(ResourceRawData[63])
+    NeededRawData = [ResourceRawData[1]]
+
+    idResource = []
+    for ir in range(0, len(ResourceRawData)):
+        if len(ResourceRawData[ir].select("li.devsite-nav-item > a")) > 1: # fist 2 record is list ResourceWithMetric and ResourceWithoutMetric
+            idResource.append(ir)
+    for id in idResource[:2]:
+        NeededRawData.append(ResourceRawData[id])
 
     ExtractedRawData = []
     for (
@@ -62,7 +82,7 @@ def extractInfoResource(googleadsRawData):
 # read extracted resources list and download files
 def downloadXmlRawData(resources):
     # create a foldername with date today
-    folderName = datetime.now().strftime("%Y%m%d") + "_googleadsData/"
+    folderName = datetime.now().strftime("%Y%m%d") + "_googleadsData14/"
     folderPath = "inputdata/" + folderName
 
     # check to sure that folder exists with 3 subfolder: segments, metrics, resources
@@ -155,10 +175,11 @@ def getLinkGoogleads():
 
 
 # run crawl process using above function
-def executeCrawl():
+if __name__ == "__main__":
     googleadsLink = getLinkGoogleads()
     googleadsRawData = getHtmlData(googleadsLink)
 
     resourceLink = extractInfoResource(googleadsRawData)
-    folderName = downloadXmlRawData(resourceLink)
-    writeLog(folderName, resourceLink)
+    print(len(resourceLink))
+    # folderName = downloadXmlRawData(resourceLink)
+    # writeLog(folderName, resourceLink)
