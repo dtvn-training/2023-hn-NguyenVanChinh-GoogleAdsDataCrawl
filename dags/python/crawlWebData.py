@@ -150,7 +150,7 @@ def writeFolderName(folderName):
 def writeToLogFile(folderName, resourceLink):
     # Configure logging to write to a file
     logging.basicConfig(
-        filename="log/crawls.log",
+        # filename="log/crawls.log",
         level=logging.DEBUG,
         format="%(asctime)s - %(levelname)s - %(message)s",
     )
@@ -163,7 +163,7 @@ def writeToLogFile(folderName, resourceLink):
 
 # open file properties get link to googleads website
 def getLinkGoogleads():
-    file_path = "config/googleadsLink.properties"
+    file_path = "config/newestLink.properties"
     properties = {}
     with open(file_path, "r") as file:
         for line in file:
@@ -175,7 +175,7 @@ def getLinkGoogleads():
 
 
 # run crawl process using above function
-if __name__ == "__main__":
+def executeCrawl():
     googleadsLink = getLinkGoogleads()
     googleadsRawData = getHtmlData(googleadsLink)
 

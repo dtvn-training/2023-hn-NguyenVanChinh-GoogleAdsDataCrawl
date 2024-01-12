@@ -4,20 +4,41 @@ from datetime import timedelta
 from airflow import DAG
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import PythonOperator
-from airflow.operators.bash import BashOperator
+from airflow.decorators import task
 from python.crawlWebData import executeCrawl
 from python.transformData import transform
 from python.loadToDB import loadToMySql
+from python.checkLink import updateNewestLinkGoogleads
+from python.checkLink import getLinkGoogleads
 
 # from airflow_pentaho.operators.KitchenOperator import KitchenOperator
 
-with DAG(
+dag = DAG(
     dag_id="crawlDataGoogleadsJob",
     start_date=datetime.datetime(2021, 1, 1),
     schedule_interval=timedelta(days=2000),
     tags=["etl", "pentaho", "googleads"],
-) as dag:
-    crawlData = PythonOperator(task_id="crawl_data", python_callable=executeCrawl)
-    transformData = PythonOperator(task_id="transform_data", python_callable=transform)
-    loadData = PythonOperator(task_id="load_data_toMysql", python_callable=loadToMySql)
-    crawlData >> transformData >> loadData
+)
+
+# updateLink = PythonOperator(task_id="get_newest_link", python_callable=updateNewestLinkGoogleads, dag=dag)
+
+# @task.branch(task_id="check_link_googleads")
+# def do_branching():
+#     oldLink = getLinkGoogleads(getNewest=False)
+#     todayLink = getLinkGoogleads(getNewest=True)
+#     if oldLink == todayLink:
+#         return "EndTask"
+#     else:
+#         return "crawl_data"
+
+# checkLink = do_branching()
+
+# crawlData = PythonOperator(task_id="crawl_data", python_callable=executeCrawl, dag=dag)
+# transformData = PythonOperator(task_id="transform_data", python_callable=transform, dag=dag)
+checkDiff = PythonOperator(task_id="check_for_changes", python_callable=) #TODO: 
+# loadData = PythonOperator(task_id="load_data_toMysql", python_callable=loadToMySql, dag=dag)
+# endTask = EmptyOperator(task_id='endTask') # TODO: 
+# updateLinkConfig = EmptyOperator(task_id='update_link_config')
+
+# updateLink >> checkLink >> [crawlData, endTask]
+# crawlData >> transformData >> checkDiff >> loadData >> updateLinkConfig

@@ -32,12 +32,12 @@ def create_connection(connectionInfo):
     return connection
 
 
-def createTableMySql(connection):
+def createTableMySql(connection, createTablePath):
     # Create a cursor object to execute SQL statements
     cursor = connection.cursor()
 
     # Read the SQL script from the file
-    with open("config/createdb.sql", "r") as file:
+    with open(createTablePath, "r") as file:
         sql_queries = file.read()
 
     sql_scripts = sql_queries.split(";")
@@ -50,8 +50,8 @@ def createTableMySql(connection):
     connection.commit()
 
     # Close the cursor and connection
-    cursor.close()
-    connection.close()
+    # cursor.close()
+    # connection.close()
 
 
 # use all above functions
@@ -65,7 +65,7 @@ def loadToMySql():
     # prepare db by drop exist table and create new table.
     mysqlConnection = create_connection(connectionInfo)
 
-    createTableMySql(mysqlConnection)
+    createTableMySql(mysqlConnection, "config/createtables.sql")
 
     # declare engine for save data
     engine = create_engine(
