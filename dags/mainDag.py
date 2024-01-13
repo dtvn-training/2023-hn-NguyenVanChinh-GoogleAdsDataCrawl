@@ -9,8 +9,8 @@ from python.crawlWebData import executeCrawl
 from python.transformData import transform
 from python.loadToDB import loadToMySql
 from python.checkLink import updateNewestLinkGoogleads
-from python.checkLink import getLinkGoogleads
-
+from python.crawlWebData import getLinkGoogleads
+from python.endTask import writeLog
 # from airflow_pentaho.operators.KitchenOperator import KitchenOperator
 
 dag = DAG(
@@ -20,25 +20,26 @@ dag = DAG(
     tags=["etl", "pentaho", "googleads"],
 )
 
-# updateLink = PythonOperator(task_id="get_newest_link", python_callable=updateNewestLinkGoogleads, dag=dag)
+updateLink = PythonOperator(task_id="get_newest_link", python_callable=updateNewestLinkGoogleads, dag=dag)
 
-# @task.branch(task_id="check_link_googleads")
-# def do_branching():
-#     oldLink = getLinkGoogleads(getNewest=False)
-#     todayLink = getLinkGoogleads(getNewest=True)
-#     if oldLink == todayLink:
-#         return "EndTask"
-#     else:
-#         return "crawl_data"
+@task.branch(task_id="check_link_googleads")
+def do_branching():
+    oldLink = getLinkGoogleads(getNewest=False)
+    todayLink = getLinkGoogleads(getNewest=True)
+    if oldLink == todayLink:
+        return "end_job"
+    else:
+        return "crawl_data"
 
-# checkLink = do_branching()
+checkLink = do_branching()
 
-# crawlData = PythonOperator(task_id="crawl_data", python_callable=executeCrawl, dag=dag)
-# transformData = PythonOperator(task_id="transform_data", python_callable=transform, dag=dag)
-checkDiff = PythonOperator(task_id="check_for_changes", python_callable=) #TODO: 
+crawlData = PythonOperator(task_id="crawl_data", python_callable=executeCrawl, dag=dag)
+transformData = PythonOperator(task_id="transform_data", python_callable=transform, dag=dag)
+# checkDiff = PythonOperator(task_id="check_for_changes", python_callable=) #TODO: 
 # loadData = PythonOperator(task_id="load_data_toMysql", python_callable=loadToMySql, dag=dag)
-# endTask = EmptyOperator(task_id='endTask') # TODO: 
+endJob = PythonOperator(task_id='end_job', python_callable=writeLog) 
 # updateLinkConfig = EmptyOperator(task_id='update_link_config')
 
-# updateLink >> checkLink >> [crawlData, endTask]
-# crawlData >> transformData >> checkDiff >> loadData >> updateLinkConfig
+updateLink >> checkLink >> [crawlData, endJob]
+crawlData >> transformData
+#>> loadData >> updateLinkConfig

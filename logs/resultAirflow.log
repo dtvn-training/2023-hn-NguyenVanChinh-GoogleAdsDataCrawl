@@ -1,0 +1,9 @@
+2024-01-14 00:14:17 INFO: Link not change. New link still is: https://developers.google.com/google-ads/api/fields/v15/overview
+2024-01-14 00:45:57 INFO: Link was changed from None.
+              to https://developers.google.com/google-ads/api/fields/v15/overview
+2024-01-14 00:45:57 INFO: Link was changed from None.
+              to https://developers.google.com/google-ads/api/fields/v15/overview
+2024-01-14 00:55:23 INFO: Link was changed from None to https://developers.google.com/google-ads/api/fields/v15/overview
+2024-01-14 00:55:23 INFO: Downloaded file to folder: inputdata/20240114_googleadsData/, with 173 files
+2024-01-14 01:43:24 INFO: Transform data successfully! Result saved in folder: outputdata/20240114_googleadsData
+2024-01-14 01:48:41 INFO: Transform data successfully! Result saved in folder: outputdata/20240114_googleadsData

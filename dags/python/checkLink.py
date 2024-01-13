@@ -11,12 +11,15 @@ from selenium.webdriver.chrome.service import Service
 # send request get html raw data by link
 def getHtmlData(googleadsLink):
     googleadsResponse = requests.get(googleadsLink)  # get response to link
-    if googleadsResponse.status_code == 200:  # if request ok, return html text
+    if (
+        googleadsResponse.status_code == 200
+    ):  # if request ok, call selenium get html data
         return getRawHtmlWithSelenium(googleadsLink)
     else:  # if not ok, return status code
-        return "error, code: {}".format(googleadsResponse.status_code)
+        return "ERROR get html data, code: {}".format(googleadsResponse.status_code)
 
 
+# selenium call chromeDriver to send request to website, and get html source
 def getRawHtmlWithSelenium(googleadsLink):
     service = Service(executable_path=(os.getcwd() + "/chromedriver"))
     options = Options()
@@ -41,37 +44,6 @@ def extractLink(googleadsRawData):
     return ReportsLink[0]["href"]
 
 
-# write result of crawlCode to log file
-def writeToLogFile(folderName, resourceLink):
-    # Configure logging to write to a file
-    logging.basicConfig(
-        # filename="log/crawls.log",
-        level=logging.DEBUG,
-        format="%(asctime)s - %(levelname)s - %(message)s",
-    )
-    logging.info(
-        "Downloaded file to folder: inputdata/{}, with {} file".format(
-            folderName, len(resourceLink)
-        )
-    )
-
-
-# open file properties get link to googleads website
-def getLinkGoogleads(getNewest=False):
-    if getNewest:
-        file_path = "config/newestLink.properties"
-    else:
-        file_path = "config/googleadsLink.properties"
-    properties = {}
-    with open(file_path, "r") as file:
-        for line in file:
-            line = line.strip()
-            if line and not line.startswith("#"):
-                key, value = line.split("=")
-                properties[key.strip()] = value.strip().strip("'")
-    return properties.get("googleadsLink")
-
-
 def writeToNewestLink(googleadsLink):
     file_path = "config/newestLink.properties"
     with open(file_path, "w") as file:
@@ -80,8 +52,14 @@ def writeToNewestLink(googleadsLink):
 
 # run process using above function
 def updateNewestLinkGoogleads():
+    # send request, if ok then get html data
     homeGoogleadsLink = "https://developers.google.com/google-ads/api/docs/start"
-
     googleadsRawData = getHtmlData(homeGoogleadsLink)
+    # TODO: handle get html error
+
+    # extract link report, it is newest link
     googleadsReportLink = extractLink(googleadsRawData)
+
+    # write log
+    print("Get link:", googleadsReportLink)
     writeToNewestLink(googleadsReportLink)
