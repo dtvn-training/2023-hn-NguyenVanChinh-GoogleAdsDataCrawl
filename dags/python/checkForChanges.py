@@ -1,7 +1,8 @@
-from datetime import datetime
 from loadToDB import create_connection
 from loadToDB import readProperties
 from loadToDB import createTableMySql
+from selfLog import writeAirflowLog
+from crawlWebData import getLinkGoogleads
 from sqlalchemy import create_engine
 import pandas as pd
 
@@ -12,7 +13,7 @@ def getConnection():
     return mysqlConnection, connectionInfo
 
 
-def loadTempTable(mysqlConnection, connectionInfo, logger):
+def loadTempTable(mysqlConnection, connectionInfo):
     createTableMySql(mysqlConnection, "config/createTmpTables.sql")
     engine = create_engine(
         "mysql+pymysql://{user}:{pw}@{host}:3306/{db}".format(
@@ -38,11 +39,11 @@ def loadTempTable(mysqlConnection, connectionInfo, logger):
     for tableName in tableNames:
         df = pd.read_csv(outputdataPath + tableName + ".csv", sep=";")
         df.to_sql(tableName + "Tmp", engine, if_exists="append", index=False)
-        selfLog(logger, "Load to table {}Tmp successfully!".format(tableName))
+        writeAirflowLog("Load to table {}Tmp successfully!".format(tableName))
 
 
-def checkResourceField(connection, logger):
-    selfLog(logger, "-----Start check ResourceField table")
+def checkResourceField(connection):
+    writeAirflowLog("--Start check ResourceField table")
 
     cursor = connection.cursor()
 
@@ -55,8 +56,7 @@ def checkResourceField(connection, logger):
     cursor.execute(queryCount2)
     result2 = cursor.fetchone()
     num_recordsNew = result2[0]
-    selfLog(
-        logger,
+    writeAirflowLog(
         "Number of record change from {} to {}, different: {}".format(
             num_recordsSoFar, num_recordsNew, abs(num_recordsNew - num_recordsSoFar)
         ),
@@ -74,9 +74,7 @@ def checkResourceField(connection, logger):
     # Execute the SQL script
     cursor.execute(sql_scripts_checkResourceField1)
     difResult1 = cursor.fetchall()
-    selfLog(logger, "Number of deleted fields: {} ".format(len(difResult1)))
-    for record in difResult1:
-        selfLog(logger, record)
+    writeAirflowLog("Number of deleted fields: {} ".format(len(difResult1)))
 
     # check added field
     sql_scripts_checkResourceField2 = """SELECT rft.FieldName, SUBSTRING(rft.FieldDescription, 1, 40) AS FieldDescription, rft.Category, 'New' AS 'Status'
@@ -90,12 +88,10 @@ def checkResourceField(connection, logger):
     # Execute the SQL script
     cursor.execute(sql_scripts_checkResourceField2)
     difResult2 = cursor.fetchall()
-    selfLog(logger, "Number of new fields: {} ".format(len(difResult2)))
-    for record in difResult2:
-        selfLog(logger, record)
+    writeAirflowLog("Number of new fields: {} ".format(len(difResult2)))
 
-def checkDataType(connection, logger):
-    selfLog(logger, "-----Start check Datatype table")
+def checkDataType(connection):
+    writeAirflowLog("--Start check Datatype table")
 
     cursor = connection.cursor()
 
@@ -108,11 +104,10 @@ def checkDataType(connection, logger):
     cursor.execute(queryCount2)
     result2 = cursor.fetchone()
     num_dataTypeNew = result2[0]
-    selfLog(
-        logger,
+    writeAirflowLog(
         "Number of record change from {} to {}, different: {}".format(
             num_dataTypeSoFar, num_dataTypeNew, abs(num_dataTypeSoFar - num_dataTypeNew)
-        ),
+        )
     )
 
     # check deleted field
@@ -124,9 +119,7 @@ def checkDataType(connection, logger):
     # Execute the SQL script
     cursor.execute(sql_scripts_checkDataType1)
     difResult1 = cursor.fetchall()
-    selfLog(logger, "Number of deleted records: {} ".format(len(difResult1)))
-    for record in difResult1:
-        selfLog(logger, record)
+    writeAirflowLog("Number of deleted records: {} ".format(len(difResult1)))
 
     # check added field
     sql_scripts_checkDataType2 = """SELECT rft.FieldName, dtt.DataType, dtt.EnumDataType, 'New' as Status
@@ -137,12 +130,10 @@ def checkDataType(connection, logger):
     # Execute the SQL script
     cursor.execute(sql_scripts_checkDataType2)
     difResult2 = cursor.fetchall()
-    selfLog(logger, "Number of new records: {} ".format(len(difResult2)))
-    for record in difResult2:
-        selfLog(logger, record)
+    writeAirflowLog("Number of new records: {} ".format(len(difResult2)))
 
-def checkResource(connection, logger):
-    selfLog(logger, "-----Start check Resources table")
+def checkResource(connection):
+    writeAirflowLog("--Start check Resources table")
 
     cursor = connection.cursor()
 
@@ -155,8 +146,7 @@ def checkResource(connection, logger):
     cursor.execute(queryCount2)
     result2 = cursor.fetchone()
     num_resourceNew = result2[0]
-    selfLog(
-        logger,
+    writeAirflowLog(
         "Number of record change from {} to {}, different: {}".format(
             num_resourceSoFar, num_resourceNew, abs(num_resourceSoFar - num_resourceNew)
         ),
@@ -170,9 +160,7 @@ def checkResource(connection, logger):
     # Execute the SQL script
     cursor.execute(sql_scripts_checkResource1)
     difResult1 = cursor.fetchall()
-    selfLog(logger, "Number of deleted records: {} ".format(len(difResult1)))
-    for record in difResult1:
-        selfLog(logger, record)
+    writeAirflowLog("Number of deleted records: {} ".format(len(difResult1)))
 
     # check added field
     sql_scripts_checkResource2 = """SELECT rt.ResourceName, SUBSTRING(rt.ResourceDescription, 1, 40) AS ResourceDescription, rt.ResourceWithMetric, 'New' AS 'Status'
@@ -182,14 +170,12 @@ def checkResource(connection, logger):
     # Execute the SQL script
     cursor.execute(sql_scripts_checkResource2)
     difResult2 = cursor.fetchall()
-    selfLog(logger, "Number of new records: {} ".format(len(difResult2)))
-    for record in difResult2:
-        selfLog(logger, record)
+    writeAirflowLog("Number of new records: {} ".format(len(difResult2)))
 
-def checkChanges(connection, logger):
-    # checkResourceField(connection, logger)
-    # checkDataType(connection, logger)
-    checkResource(connection, logger)
+def checkChanges(connection):
+    checkResourceField(connection)
+    checkDataType(connection)
+    checkResource(connection)
 
 
 def dropTable(connection):
@@ -202,17 +188,15 @@ def dropTable(connection):
     connection.close()
 
 
-def selfLog(logger, logText):
-    print(logText)
-    logger.write("{} INFO: {}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), logText))
 
-
-if __name__ == "__main__":
-    logger = open("logs/resultAirflow.log", "a")
+def checkDifferences():
+    writeAirflowLog('------- Start checkForChanges.py ---------')
     mysqlConnection, connectionInfo = getConnection()
-    # loadTempTable(mysqlConnection, connectionInfo, logger)
+    loadTempTable(mysqlConnection, connectionInfo)
     
-    # TODO: if link so far null -> dont check
-    checkChanges(mysqlConnection, logger)
+    if getLinkGoogleads(getNewest=False) is not None:
+        checkChanges(mysqlConnection)
+    else:
+        writeAirflowLog('Dont have old table to compare')
 
     # dropTable(mysqlConnection)

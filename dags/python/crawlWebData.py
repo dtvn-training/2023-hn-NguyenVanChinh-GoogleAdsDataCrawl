@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 from datetime import datetime
-import logging
+from selfLog import writeAirflowLog
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -148,24 +148,15 @@ def writeFolderName(folderName):
 
 # write result of crawlCode to log file
 def writeToLogFile(folderName, resourceLink):
-    log_file = open("logs/resultAirflow.log", "a")  # Open the log file in 'append' mode
-
     logText1 = "Link was changed from {} to {}".format(
         getLinkGoogleads(getNewest=False), getLinkGoogleads(getNewest=True)
     )
-    print(logText1)
-    log_file.write(
-        "{} INFO: {}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), logText1)
-    )
+    writeAirflowLog(logText1)
 
     logText2 = "Downloaded file to folder: inputdata/{}, with {} files".format(
         folderName, len(resourceLink)
     )
-    print(logText2)
-    log_file.write(
-        "{} INFO: {}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), logText2)
-    )
-    log_file.close()
+    writeAirflowLog(logText2)
 
 
 # open file properties get link to googleads website
@@ -190,6 +181,6 @@ def executeCrawl():
     googleadsRawData = getHtmlData(googleadsLink)
 
     resourceLink = extractInfoResource(googleadsRawData)
-    print("Number of resource:", len(resourceLink))
+    
     folderName = downloadXmlRawData(resourceLink)
     writeLog(folderName, resourceLink)

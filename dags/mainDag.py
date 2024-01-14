@@ -10,8 +10,8 @@ from python.transformData import transform
 from python.loadToDB import loadToMySql
 from python.checkLink import updateNewestLinkGoogleads
 from python.crawlWebData import getLinkGoogleads
-from python.endTask import writeLog
-# from airflow_pentaho.operators.KitchenOperator import KitchenOperator
+from python.endTask import handleEndJob
+from python.checkForChanges import checkDifferences
 
 dag = DAG(
     dag_id="crawlDataGoogleadsJob",
@@ -35,11 +35,11 @@ checkLink = do_branching()
 
 crawlData = PythonOperator(task_id="crawl_data", python_callable=executeCrawl, dag=dag)
 transformData = PythonOperator(task_id="transform_data", python_callable=transform, dag=dag)
-# checkDiff = PythonOperator(task_id="check_for_changes", python_callable=) #TODO: 
+checkDiff = PythonOperator(task_id="check_for_changes", python_callable=checkDifferences) 
 # loadData = PythonOperator(task_id="load_data_toMysql", python_callable=loadToMySql, dag=dag)
-endJob = PythonOperator(task_id='end_job', python_callable=writeLog) 
+endJob = PythonOperator(task_id='end_job', python_callable=handleEndJob) 
 # updateLinkConfig = EmptyOperator(task_id='update_link_config')
 
 updateLink >> checkLink >> [crawlData, endJob]
-crawlData >> transformData
+crawlData >> transformData >> checkDiff
 #>> loadData >> updateLinkConfig

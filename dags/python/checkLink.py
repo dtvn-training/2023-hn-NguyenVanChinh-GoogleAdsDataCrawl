@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import os
-from datetime import datetime
-import logging
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service

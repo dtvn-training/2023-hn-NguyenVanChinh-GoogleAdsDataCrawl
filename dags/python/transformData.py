@@ -1,7 +1,7 @@
 from datetime import datetime
 import subprocess
 from python.loadToDB import readProperties
-
+from selfLog import writeAirflowLog
 
 def writeTransformLog():
     folderName = readProperties("config/foldername.properties").get("folder_name")
@@ -11,13 +11,7 @@ def writeTransformLog():
             folderName
         )
     )
-    print(logText)
-
-    log_file = open("logs/resultAirflow.log", "a")  # Open the log file in 'append' mode
-    log_file.write(
-        "{} INFO: {}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), logText)
-    )
-    log_file.close()
+    writeAirflowLog(logText)
 
 
 def transform():
