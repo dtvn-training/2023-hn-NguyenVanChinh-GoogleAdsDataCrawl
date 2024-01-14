@@ -186,11 +186,10 @@ def getLinkGoogleads(getNewest=False):
 
 # run crawl process using above function
 def executeCrawl():
-    pass
-    # googleadsLink = getLinkGoogleads(getNewest=True)
-    # googleadsRawData = getHtmlData(googleadsLink)
+    googleadsLink = getLinkGoogleads(getNewest=True)
+    googleadsRawData = getHtmlData(googleadsLink)
 
-    # resourceLink = extractInfoResource(googleadsRawData)
-    # print("Number of resource:", len(resourceLink))
-    # folderName = downloadXmlRawData(resourceLink)
-    # writeLog(folderName, resourceLink)
+    resourceLink = extractInfoResource(googleadsRawData)
+    print("Number of resource:", len(resourceLink))
+    folderName = downloadXmlRawData(resourceLink)
+    writeLog(folderName, resourceLink)

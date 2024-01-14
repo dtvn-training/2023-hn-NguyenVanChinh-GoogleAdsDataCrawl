@@ -1,7 +1,6 @@
 import pandas as pd
 import mysql.connector
 from sqlalchemy import create_engine
-import logging
 
 
 # open file properties get link to googleads website
@@ -77,12 +76,6 @@ def loadToMySql():
         )
     )
 
-    # save and write log
-    logging.basicConfig(
-        # filename="log/loadtodb.log",
-        level=logging.INFO,
-        format="%(asctime)s - %(levelname)s - %(message)s",
-    )
     # table name for save
     tableNames = [
         "ResourceField",
@@ -95,6 +88,6 @@ def loadToMySql():
     for tableName in tableNames:
         df = pd.read_csv(outputdataPath + tableName + ".csv", sep=";")
         df.to_sql(
-            tableName.lower(), engine, if_exists="append", index=False
+            tableName, engine, if_exists="append", index=False
         )  # lower because tablename in mysql always in lowercase form
-        logging.info("Load to table {} successfully!".format(tableName))
+        print("Load to table {} successfully!".format(tableName))

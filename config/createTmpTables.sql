@@ -1,4 +1,4 @@
-drop table if exists RelatedResourceTmp, ResourceTmp, ResourceFieldTmp, DataTypeTmp, SelectableWithTmp, ResourceFieldConnectTmp;
+drop table if exists ResourceFieldTmp, DataTypeTmp, SelectableWithTmp, ResourceFieldConnectTmp, RelatedResourceTmp, ResourceTmp;
 
 create table ResourceFieldTmp (
 FieldId int primary key not null,
@@ -16,13 +16,13 @@ Id int primary key,
 FieldId int,
 DataType varchar(20),
 EnumDataType varchar(100),
-foreign key (FieldId) references resourcefield(FieldId));
+foreign key (FieldId) references ResourceFieldTmp(FieldId));
 
 create table SelectableWithTmp (
 Id int primary key,
 FieldId int,
 ResourceName text,
-foreign key (FieldId) references resourcefield(FieldId));
+foreign key (FieldId) references ResourceFieldTmp(FieldId));
 
 create table ResourceTmp (
 ResourceId int primary key not null,
@@ -36,12 +36,12 @@ Id int primary key,
 MasterResourceId int not null,
 AttributedResourceId int not null,
 BeSegment bool not null,
-foreign key (MasterResourceId) references Resource(ResourceId),
-foreign key (AttributedResourceId) references Resource(ResourceId));
+foreign key (MasterResourceId) references ResourceTmp(ResourceId),
+foreign key (AttributedResourceId) references ResourceTmp(ResourceId));
 
 create table ResourceFieldConnectTmp (
 Id int primary key not null,
 FieldId int not null,
 ResourceId int not null,
-foreign key (FieldId) references ResourceField(FieldId),
-foreign key (ResourceId) references Resource(ResourceId))
+foreign key (FieldId) references ResourceFieldTmp(FieldId),
+foreign key (ResourceId) references ResourceTmp(ResourceId))
