@@ -1,7 +1,8 @@
 import pandas as pd
 import mysql.connector
 from sqlalchemy import create_engine
-
+from selfLog import writeAirflowLog
+from crawlWebData import getLinkGoogleads
 
 # open file properties get link to googleads website
 def readProperties(file_path):
@@ -52,6 +53,10 @@ def createTableMySql(connection, createTablePath):
     # cursor.close()
     # connection.close()
 
+def updateLinkGoogleads():
+    file_path = "config/googleadsLink.properties"
+    with open(file_path, "w") as file:
+        file.write("googleadsLink={}".format(getLinkGoogleads(getNewest=True)))
 
 # use all above functions
 def loadToMySql():
@@ -90,4 +95,6 @@ def loadToMySql():
         df.to_sql(
             tableName, engine, if_exists="append", index=False
         )  # lower because tablename in mysql always in lowercase form
-        print("Load to table {} successfully!".format(tableName))
+        writeAirflowLog("Load to table {} successfully!".format(tableName))
+        
+    updateLinkGoogleads()
