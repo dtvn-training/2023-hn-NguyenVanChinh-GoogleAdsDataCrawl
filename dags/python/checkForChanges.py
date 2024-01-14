@@ -1,8 +1,8 @@
-from loadToDB import create_connection
-from loadToDB import readProperties
-from loadToDB import createTableMySql
-from selfLog import writeAirflowLog
-from crawlWebData import getLinkGoogleads
+from python.loadToDB import create_connection
+from python.loadToDB import readProperties
+from python.loadToDB import createTableMySql
+from python.selfLog import writeAirflowLog
+from python.crawlWebData import getLinkGoogleads
 from sqlalchemy import create_engine
 import pandas as pd
 
@@ -194,9 +194,10 @@ def checkDifferences():
     mysqlConnection, connectionInfo = getConnection()
     loadTempTable(mysqlConnection, connectionInfo)
     
+    # if crawled googleadsLink is null, data googleads is empty. So dont need check
     if getLinkGoogleads(getNewest=False) is not None:
         checkChanges(mysqlConnection)
     else:
         writeAirflowLog('Dont have old table to compare')
 
-    # dropTable(mysqlConnection)
+    dropTable(mysqlConnection)

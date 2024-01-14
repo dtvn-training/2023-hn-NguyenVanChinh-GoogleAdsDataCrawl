@@ -1,8 +1,8 @@
 import pandas as pd
 import mysql.connector
 from sqlalchemy import create_engine
-from selfLog import writeAirflowLog
-from crawlWebData import getLinkGoogleads
+from python.selfLog import writeAirflowLog
+from python.crawlWebData import getLinkGoogleads
 
 # open file properties get link to googleads website
 def readProperties(file_path):

@@ -4,6 +4,7 @@ import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+from python.selfLog import writeAirflowLog
 
 
 # send request get html raw data by link
@@ -59,5 +60,5 @@ def updateNewestLinkGoogleads():
     googleadsReportLink = extractLink(googleadsRawData)
 
     # write log
-    print("Get link:", googleadsReportLink)
+    writeAirflowLog("Get link: {}".format(googleadsReportLink))
     writeToNewestLink(googleadsReportLink)

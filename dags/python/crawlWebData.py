@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 from datetime import datetime
-from selfLog import writeAirflowLog
+from python.selfLog import writeAirflowLog
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
