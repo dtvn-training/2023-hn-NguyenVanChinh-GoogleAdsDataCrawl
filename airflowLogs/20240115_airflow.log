@@ -1,0 +1,29 @@
+INFO: Get link: https://developers.google.com/google-ads/api/fields/v15/overview
+INFO: Link was changed from https://developers.google.com/google-ads/api/fields/v14/overview to https://developers.google.com/google-ads/api/fields/v15/overview
+INFO: Downloaded file to folder: inputdata/20240115_googleadsData/, with 173 files
+INFO: Transform data successfully! Result saved in folder: outputdata/20240115_googleadsData
+INFO: ------- Start checkForChanges.py ---------
+INFO: Load to table ResourceFieldTmp successfully!
+INFO: Load to table DataTypeTmp successfully!
+INFO: Load to table SelectableWithTmp successfully!
+INFO: Load to table ResourceTmp successfully!
+INFO: Load to table ResourceFieldConnectTmp successfully!
+INFO: Load to table RelatedResourceTmp successfully!
+INFO: --Start check ResourceField table
+INFO: Number of record change from 2184 to 2313, different: 129
+INFO: Number of deleted fields: 23 
+INFO: Number of new fields: 152 
+INFO: --Start check Datatype table
+INFO: Number of record change from 5170 to 5518, different: 348
+INFO: Number of deleted records: 50 
+INFO: Number of new records: 398 
+INFO: --Start check Resources table
+INFO: Number of record change from 159 to 171, different: 12
+INFO: Number of deleted records: 1 
+INFO: Number of new records: 13 
+INFO: Load to table ResourceField successfully!
+INFO: Load to table DataType successfully!
+INFO: Load to table SelectableWith successfully!
+INFO: Load to table Resource successfully!
+INFO: Load to table ResourceFieldConnect successfully!
+INFO: Load to table RelatedResource successfully!

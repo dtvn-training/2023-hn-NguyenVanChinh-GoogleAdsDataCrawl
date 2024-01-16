@@ -1,0 +1,18 @@
+INFO: Get link: https://developers.google.com/google-ads/api/fields/v14/overview
+INFO: Link was changed from None to https://developers.google.com/google-ads/api/fields/v14/overview
+INFO: Downloaded file to folder: inputdata/20240114_googleadsData/, with 161 files
+INFO: Transform data successfully! Result saved in folder: outputdata/20240114_googleadsData
+INFO: ------- Start checkForChanges.py ---------
+INFO: Load to table ResourceFieldTmp successfully!
+INFO: Load to table DataTypeTmp successfully!
+INFO: Load to table SelectableWithTmp successfully!
+INFO: Load to table ResourceTmp successfully!
+INFO: Load to table ResourceFieldConnectTmp successfully!
+INFO: Load to table RelatedResourceTmp successfully!
+INFO: Dont have old table to compare
+INFO: Load to table ResourceField successfully!
+INFO: Load to table DataType successfully!
+INFO: Load to table SelectableWith successfully!
+INFO: Load to table Resource successfully!
+INFO: Load to table ResourceFieldConnect successfully!
+INFO: Load to table RelatedResource successfully!

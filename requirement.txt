@@ -1,5 +1,11 @@
-bs4
-pandas
-mysql-connector-python
-SQLAlchemy
-pymysql
+pip:
+- bs4
+- pandas
+- mysql-connector-python
+- SQLAlchemy
+- pymysql
+- selenium
+
+selenium:
+- google-chrome (in ubuntu)
+- webdriver: (https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/120.0.6099.109/linux64/chromedriver-linux64.zip)
