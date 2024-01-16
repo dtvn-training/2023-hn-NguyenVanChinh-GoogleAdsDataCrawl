@@ -9,7 +9,7 @@ from python.crawlWebData import executeCrawl
 from python.transformData import transform
 from python.loadToDB import loadToMySql
 from python.checkLink import updateNewestLinkGoogleads
-from python.crawlWebData import getLinkGoogleads
+from python.commonFunction import getLinkGoogleads
 from python.endTask import handleEndJob
 from python.checkForChanges import checkDifferences
 

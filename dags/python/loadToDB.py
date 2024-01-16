@@ -1,19 +1,11 @@
 import pandas as pd
 import mysql.connector
 from sqlalchemy import create_engine
-from python.selfLog import writeAirflowLog
-from python.crawlWebData import getLinkGoogleads
+from python.commonFunction import writeAirflowLog
+from python.commonFunction import readProperties
+from python.commonFunction import getLinkGoogleads
 
-# open file properties get link to googleads website
-def readProperties(file_path):
-    properties = {}
-    with open(file_path, "r") as file:
-        for line in file:
-            line = line.strip()
-            if line and not line.startswith("#"):
-                key, value = line.split("=")
-                properties[key.strip()] = value.strip().strip("'")
-    return properties
+
 
 
 def create_connection(connectionInfo):

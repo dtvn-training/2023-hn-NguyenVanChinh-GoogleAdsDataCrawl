@@ -1,8 +1,8 @@
 from python.loadToDB import create_connection
-from python.loadToDB import readProperties
+from python.commonFunction import readProperties
 from python.loadToDB import createTableMySql
-from python.selfLog import writeAirflowLog
-from python.crawlWebData import getLinkGoogleads
+from python.commonFunction import writeAirflowLog
+from python.commonFunction import getLinkGoogleads
 from sqlalchemy import create_engine
 import pandas as pd
 

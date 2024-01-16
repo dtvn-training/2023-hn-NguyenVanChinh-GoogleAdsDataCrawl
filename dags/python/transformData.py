@@ -1,7 +1,7 @@
 from datetime import datetime
 import subprocess
-from python.loadToDB import readProperties
-from python.selfLog import writeAirflowLog
+from python.commonFunction import readProperties
+from python.commonFunction import writeAirflowLog
 
 def writeTransformLog():
     folderName = readProperties("config/foldername.properties").get("folder_name")
