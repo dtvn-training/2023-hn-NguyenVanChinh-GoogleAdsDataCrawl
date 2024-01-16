@@ -1,4 +1,5 @@
 from datetime import datetime
+import re
 
 def writeAirflowLog(logText):
     print(logText)
@@ -34,3 +35,13 @@ def getLinkGoogleads(getNewest=False):
                 key, value = line.split("=")
                 properties[key.strip()] = value.strip().strip("'")
     return properties.get("googleadsLink")
+
+# using regex get googleads api version
+def getVersion(link):
+    match = re.search(r'/v(\d+)/', link)
+
+    if match:
+        version = match.group(1)
+        return version
+    else:
+        return -1

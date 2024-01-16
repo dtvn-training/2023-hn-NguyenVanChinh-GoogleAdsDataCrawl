@@ -1,10 +1,10 @@
 import pandas as pd
 import mysql.connector
 from sqlalchemy import create_engine
-from python.commonFunction import writeAirflowLog
-from python.commonFunction import readProperties
-from python.commonFunction import getLinkGoogleads
-
+from commonFunction import writeAirflowLog
+from commonFunction import readProperties
+from commonFunction import getLinkGoogleads
+from commonFunction import getVersion
 
 
 
@@ -78,12 +78,13 @@ def loadToMySql():
         "ResourceField",
         "DataType",
         "SelectableWith",
-        "Resource",
+        "Resources",
         "ResourceFieldConnect",
         "RelatedResource",
     ]
     for tableName in tableNames:
         df = pd.read_csv(outputdataPath + tableName + ".csv", sep=";")
+        df['GoogleadsApiVersion'] = getVersion(getLinkGoogleads(getNewest=True))
         df.to_sql(
             tableName, engine, if_exists="append", index=False
         )  # lower because tablename in mysql always in lowercase form
