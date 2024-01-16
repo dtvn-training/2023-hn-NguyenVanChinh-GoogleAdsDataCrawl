@@ -1,8 +1,8 @@
 import pandas as pd
 import mysql.connector
 from sqlalchemy import create_engine
-import logging
-
+from python.selfLog import writeAirflowLog
+from python.crawlWebData import getLinkGoogleads
 
 # open file properties get link to googleads website
 def readProperties(file_path):
@@ -32,15 +32,15 @@ def create_connection(connectionInfo):
     return connection
 
 
-def createTableMySql(connection):
+def createTableMySql(connection, createTablePath):
     # Create a cursor object to execute SQL statements
     cursor = connection.cursor()
 
     # Read the SQL script from the file
-    with open("config/createdb.sql", "r") as file:
+    with open(createTablePath, "r") as file:
         sql_queries = file.read()
-    
-    sql_scripts = sql_queries.split(';')
+
+    sql_scripts = sql_queries.split(";")
 
     # Execute the SQL script
     for sql_script in sql_scripts:
@@ -50,21 +50,26 @@ def createTableMySql(connection):
     connection.commit()
 
     # Close the cursor and connection
-    cursor.close()
-    connection.close()
+    # cursor.close()
+    # connection.close()
 
+def updateLinkGoogleads():
+    file_path = "config/googleadsLink.properties"
+    with open(file_path, "w") as file:
+        file.write("googleadsLink={}".format(getLinkGoogleads(getNewest=True)))
 
-if __name__ == "__main__":
+# use all above functions
+def loadToMySql():
     # read properties file
     folderName = readProperties("config/foldername.properties")
     outputdataPath = "outputdata/" + folderName.get("folder_name") + "/"
-
     # read connection to mysql
     connectionInfo = readProperties("config/db.properties")
 
     # prepare db by drop exist table and create new table.
     mysqlConnection = create_connection(connectionInfo)
-    createTableMySql(mysqlConnection)
+
+    createTableMySql(mysqlConnection, "config/createtables.sql")
 
     # declare engine for save data
     engine = create_engine(
@@ -76,12 +81,6 @@ if __name__ == "__main__":
         )
     )
 
-    # save and write log
-    logging.basicConfig(
-        filename="./log/loadtodb.log",
-        level=logging.INFO,
-        format="%(asctime)s - %(levelname)s - %(message)s",
-    )
     # table name for save
     tableNames = [
         "ResourceField",
@@ -93,5 +92,9 @@ if __name__ == "__main__":
     ]
     for tableName in tableNames:
         df = pd.read_csv(outputdataPath + tableName + ".csv", sep=";")
-        df.to_sql(tableName.lower(), engine, if_exists="append", index=False) # lower because tablename in mysql always in lowercase form
-        logging.info("Load to table {} successfully!".format(tableName))
+        df.to_sql(
+            tableName, engine, if_exists="append", index=False
+        )  # lower because tablename in mysql always in lowercase form
+        writeAirflowLog("Load to table {} successfully!".format(tableName))
+        
+    updateLinkGoogleads()

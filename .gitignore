@@ -5,3 +5,6 @@ rawdata/*
 log/crawl.log
 config/foldername.properties
 config/db.properties
+__pycache__
+chromedriver
+log/*

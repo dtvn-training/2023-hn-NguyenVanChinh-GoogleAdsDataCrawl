@@ -2,41 +2,61 @@ import requests
 from bs4 import BeautifulSoup
 import os
 from datetime import datetime
-import logging
+from python.selfLog import writeAirflowLog
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 
 
 # send request get html raw data by link
 def getHtmlData(googleadsLink):
-    googleadsResponse = requests.get(googleadsLink)  # get response
+    googleadsResponse = requests.get(googleadsLink)  # get response to link
     if googleadsResponse.status_code == 200:  # if request ok, return html text
-        return googleadsResponse.text
+        return getRawHtmlWithSelenium(googleadsLink)
     else:  # if not ok, return status code
         return "error, code: {}".format(googleadsResponse.status_code)
+
+
+def getRawHtmlWithSelenium(googleadsLink):
+    service = Service(executable_path=(os.getcwd() + "/chromedriver"))
+    options = Options()
+    options.headless = True
+    options.add_argument("--headless")
+    options.add_argument("--window-size=1920,1200")
+
+    driver = webdriver.Chrome(options=options, service=service)
+    driver.get(googleadsLink)
+    source = driver.page_source
+    driver.quit()
+    return source
 
 
 # from htmlRawData, extract necessary info of resources: category, name, link
 def extractInfoResource(googleadsRawData):
     soupGoogleadsData = BeautifulSoup(googleadsRawData, "html.parser")
 
-    # extract item from navigation bar
-    GoogleadsV15Data = soupGoogleadsData.select_one(
-        "div.devsite-mobile-nav-bottom ul.devsite-nav-section li.devsite-nav-item.devsite-nav-expandable"
+    # extract expanded item from navigation bar
+    GoogleadsData = soupGoogleadsData.select(
+        "div.devsite-mobile-nav-bottom ul.devsite-nav-section > li.devsite-nav-item.devsite-nav-expandable > div.devsite-expandable-nav.expanded"
     )
-    ResourceRawData = GoogleadsV15Data.select(
+    ResourceRawData = GoogleadsData[0].select(
         "ul.devsite-nav-section > li.devsite-nav-item"
     )
 
-    # get specific item, id 1 is segments, id 2 is ResourceWithMetrics, id 63 is ResourceWithoutMetrics
-    # TODO: can fix not using index??
-    NeededRawData = ResourceRawData[1:3]
-    NeededRawData.append(ResourceRawData[63])
+    # get specific item, id 1 is segments
+    NeededRawData = [ResourceRawData[1]]
+
+    idResource = []
+    for ir in range(0, len(ResourceRawData)):
+        if len(ResourceRawData[ir].select("li.devsite-nav-item > a")) > 1:
+            idResource.append(ir)
+    # fist 2 record is list ResourceWithMetric and ResourceWithoutMetric
+    for id in idResource[:2]:
+        NeededRawData.append(ResourceRawData[id])
 
     ExtractedRawData = []
-    for (
-        rawData
-    ) in (
-        NeededRawData
-    ):  # for each neededRawData, select all a tags and append that list to ExtractedRawData
+    # for each neededRawData, select all a tags and append that list to ExtractedRawData
+    for rawData in NeededRawData:
         ExtractedRawData.extend(rawData.select("li.devsite-nav-item > a"))
 
     resources = []  # list store all extracted resources
@@ -63,7 +83,7 @@ def extractInfoResource(googleadsRawData):
 def downloadXmlRawData(resources):
     # create a foldername with date today
     folderName = datetime.now().strftime("%Y%m%d") + "_googleadsData/"
-    folderPath = "rawdata/" + folderName
+    folderPath = "inputdata/" + folderName
 
     # check to sure that folder exists with 3 subfolder: segments, metrics, resources
     checkRawdataFolder(folderPath)
@@ -73,6 +93,8 @@ def downloadXmlRawData(resources):
         downloadXml(
             resource["Link"], folderPath + resource["Category"], resource["Name"]
         )
+        # if id == 10:
+        #     break
 
     return folderName
 
@@ -126,22 +148,23 @@ def writeFolderName(folderName):
 
 # write result of crawlCode to log file
 def writeToLogFile(folderName, resourceLink):
-    # Configure logging to write to a file
-    logging.basicConfig(
-        filename="./log/crawl.log",
-        level=logging.DEBUG,
-        format="%(asctime)s - %(levelname)s - %(message)s",
+    logText1 = "Link was changed from {} to {}".format(
+        getLinkGoogleads(getNewest=False), getLinkGoogleads(getNewest=True)
     )
-    logging.info(
-        "Downloaded file to folder: rawdata/{}, with {} file".format(
-            folderName, len(resourceLink)
-        )
+    writeAirflowLog(logText1)
+
+    logText2 = "Downloaded file to folder: inputdata/{}, with {} files".format(
+        folderName, len(resourceLink)
     )
+    writeAirflowLog(logText2)
 
 
 # open file properties get link to googleads website
-def getLinkGoogleads():
-    file_path = "config/googleadsLink.properties"
+def getLinkGoogleads(getNewest=False):
+    if getNewest:
+        file_path = "config/newestLink.properties"
+    else:
+        file_path = "config/googleadsLink.properties"
     properties = {}
     with open(file_path, "r") as file:
         for line in file:
@@ -152,10 +175,12 @@ def getLinkGoogleads():
     return properties.get("googleadsLink")
 
 
-if __name__ == "__main__":
-    googleadsLink = getLinkGoogleads()
+# run crawl process using above function
+def executeCrawl():
+    googleadsLink = getLinkGoogleads(getNewest=True)
     googleadsRawData = getHtmlData(googleadsLink)
 
     resourceLink = extractInfoResource(googleadsRawData)
+    
     folderName = downloadXmlRawData(resourceLink)
     writeLog(folderName, resourceLink)

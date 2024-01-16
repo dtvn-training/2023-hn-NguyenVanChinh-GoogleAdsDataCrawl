@@ -1,4 +1,4 @@
-drop table if exists relatedresource, resource, resourcefield, datatype, selectablewith, resourcefieldconnect;
+drop table if exists DataType, SelectableWith, ResourceFieldConnect, RelatedResource, Resource, ResourceField;
 
 create table if not exists ResourceField (
 FieldId int primary key not null,
@@ -16,13 +16,13 @@ Id int primary key,
 FieldId int,
 DataType varchar(20),
 EnumDataType varchar(100),
-foreign key (FieldId) references resourcefield(FieldId));
+foreign key (FieldId) references ResourceField(FieldId));
 
 create table if not exists SelectableWith (
 Id int primary key,
 FieldId int,
 ResourceName text,
-foreign key (FieldId) references resourcefield(FieldId));
+foreign key (FieldId) references ResourceField(FieldId));
 
 create table Resource (
 ResourceId int primary key not null,
