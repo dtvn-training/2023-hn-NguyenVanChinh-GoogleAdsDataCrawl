@@ -512,16 +512,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select Related resource</from>
-      <to>Add id</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add id</from>
-      <to>relatedResource output</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values 3</from>
       <to>Sort rows 4</to>
       <enabled>Y</enabled>
@@ -531,42 +521,12 @@
       <to>Merge attributed resource</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Select Related resource</from>
+      <to>relatedResource output</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
-  <step>
-    <name>Add id</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <valuename>Id</valuename>
-    <use_database>N</use_database>
-    <connection/>
-    <schema/>
-    <seqname>SEQ_</seqname>
-    <use_counter>Y</use_counter>
-    <counter_name/>
-    <start_at>0</start_at>
-    <increment_by>1</increment_by>
-    <max_value>999999999</max_value>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1296</xloc>
-      <yloc>464</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Merge attributed resource</name>
     <type>MergeJoin</type>
@@ -1148,7 +1108,7 @@ var IsSegment = (Type == "Segmenting resources");</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>624</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1292,18 +1252,6 @@ var IsSegment = (Type == "Segmenting resources");</jsScript_script>
     </file>
     <fields>
       <field>
-        <name>Id</name>
-        <type>Integer</type>
-        <format>#;-#</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>0</precision>
-      </field>
-      <field>
         <name>MasterResourceId</name>
         <type>Integer</type>
         <format>#</format>
@@ -1350,7 +1298,7 @@ var IsSegment = (Type == "Segmenting resources");</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>1296</xloc>
-      <yloc>576</yloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

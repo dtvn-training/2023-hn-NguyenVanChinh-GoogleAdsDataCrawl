@@ -565,11 +565,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort fieldId</from>
-      <to>Add index</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>trim datatype</from>
       <to>Select after cut 2</to>
       <enabled>Y</enabled>
@@ -630,11 +625,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add index</from>
-      <to>Select for datatype</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values 3</from>
       <to>Add EnumDataType</to>
       <enabled>Y</enabled>
@@ -657,6 +647,11 @@
     <hop>
       <from>Select values 4</from>
       <to>Select datatype</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort fieldId</from>
+      <to>Select for datatype</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -770,41 +765,6 @@
     <GUI>
       <xloc>448</xloc>
       <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add index</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <valuename>Id</valuename>
-    <use_database>N</use_database>
-    <connection/>
-    <schema/>
-    <seqname>SEQ_</seqname>
-    <use_counter>Y</use_counter>
-    <counter_name/>
-    <start_at>${COUNT_DATATYPE}</start_at>
-    <increment_by>1</increment_by>
-    <max_value>99999999</max_value>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1264</xloc>
-      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1366,16 +1326,16 @@
     </partitioning>
     <fields>
       <field>
-        <name>Id</name>
-      </field>
-      <field>
         <name>FieldId</name>
+        <rename/>
       </field>
       <field>
         <name>DataType</name>
+        <rename/>
       </field>
       <field>
         <name>EnumDataType</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2027,18 +1987,6 @@
       <splitevery>0</splitevery>
     </file>
     <fields>
-      <field>
-        <name>Id</name>
-        <type>Integer</type>
-        <format>#;-#</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>0</precision>
-      </field>
       <field>
         <name>FieldId</name>
         <type>Integer</type>

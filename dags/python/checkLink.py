@@ -57,7 +57,7 @@ def updateNewestLinkGoogleads():
     # TODO: handle get html error
 
     # extract link report, it is newest link
-    googleadsReportLink = extractLink(googleadsRawData)
+    googleadsReportLink = "https://developers.google.com/google-ads/api/fields/v14/overview" # extractLink(googleadsRawData)
 
     # write log
     writeAirflowLog("Get link: {}".format(googleadsReportLink))

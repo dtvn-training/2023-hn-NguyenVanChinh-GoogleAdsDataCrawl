@@ -1,4 +1,4 @@
-drop table if exists DataType, SelectableWith, ResourceFieldConnect, RelatedResource, Resources, ResourceField;
+# drop table if exists DataType, SelectableWith, ResourceFieldConnect, RelatedResource, Resources, ResourceField;
 
 create table if not exists ResourceField (
 FieldId int primary key not null,
@@ -13,7 +13,7 @@ Repeated bool,
 GoogleadsApiVersion int);
 
 create table if not exists DataType (
-Id int primary key,
+Id int primary key not null auto_increment,
 FieldId int,
 DataType varchar(20),
 EnumDataType varchar(100),
@@ -21,13 +21,13 @@ GoogleadsApiVersion int,
 foreign key (FieldId) references ResourceField(FieldId));
 
 create table if not exists SelectableWith (
-Id int primary key,
+Id int primary key not null auto_increment,
 FieldId int,
 ResourceName text,
 GoogleadsApiVersion int,
 foreign key (FieldId) references ResourceField(FieldId));
 
-create table Resources (
+create table if not exists Resources (
 ResourceId int primary key not null,
 ResourceName text,
 ResourceDescription text,
@@ -36,7 +36,7 @@ GoogleadsApiVersion int
 );
 
 create table if not exists RelatedResource (
-Id int primary key,
+Id int primary key auto_increment,
 MasterResourceId int not null,
 AttributedResourceId int not null,
 BeSegment bool not null,
@@ -45,7 +45,7 @@ foreign key (MasterResourceId) references Resources(ResourceId),
 foreign key (AttributedResourceId) references Resources(ResourceId));
 
 create table if not exists ResourceFieldConnect (
-Id int primary key not null,
+Id int primary key not null auto_increment,
 FieldId int not null,
 ResourceId int not null,
 GoogleadsApiVersion int,

@@ -1,5 +1,6 @@
 from datetime import datetime
 import re
+import mysql.connector
 
 def writeAirflowLog(logText):
     print(logText)
@@ -45,3 +46,41 @@ def getVersion(link):
         return version
     else:
         return -1
+
+# connect to mysql
+def create_connection(connectionInfo):
+    connection = None
+    try:
+        connection = mysql.connector.connect(
+            host=connectionInfo.get("host"),
+            user=connectionInfo.get("user"),
+            password=connectionInfo.get("password"),
+            database=connectionInfo.get("database"),
+        )
+        print("Connected to MySQL database")
+    except Exception as e:
+        print(f"Error connecting to MySQL: {e}")
+
+    return connection
+
+# execute queries create table
+def createTableMySql(connection, createTablePath):
+    # Create a cursor object to execute SQL statements
+    cursor = connection.cursor()
+
+    # Read the SQL script from the file
+    with open(createTablePath, "r") as file:
+        sql_queries = file.read()
+
+    sql_scripts = sql_queries.split(";")
+
+    # Execute the SQL script
+    for sql_script in sql_scripts:
+        cursor.execute(sql_script)
+
+    # Commit change
+    connection.commit()
+
+    # Close the cursor and connection
+    # cursor.close()
+    # connection.close()
