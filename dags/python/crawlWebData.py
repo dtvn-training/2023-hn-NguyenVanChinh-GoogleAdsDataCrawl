@@ -2,7 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import os
 from datetime import datetime
-from python.selfLog import writeAirflowLog
+from python.commonFunction import writeAirflowLog
+from python.commonFunction import getLinkGoogleads
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -136,6 +137,8 @@ def checkRawdataFolder(folder_name):
 # write folderName of saved file to properties, for downstream in PDI
 def writeLog(folderName, resourceLink):
     writeFolderName(folderName)
+    logPath = 'logs/' + folderName
+    os.makedirs(logPath)
     writeToLogFile(folderName, resourceLink)
 
 
@@ -159,20 +162,6 @@ def writeToLogFile(folderName, resourceLink):
     writeAirflowLog(logText2)
 
 
-# open file properties get link to googleads website
-def getLinkGoogleads(getNewest=False):
-    if getNewest:
-        file_path = "config/newestLink.properties"
-    else:
-        file_path = "config/googleadsLink.properties"
-    properties = {}
-    with open(file_path, "r") as file:
-        for line in file:
-            line = line.strip()
-            if line and not line.startswith("#"):
-                key, value = line.split("=")
-                properties[key.strip()] = value.strip().strip("'")
-    return properties.get("googleadsLink")
 
 
 # run crawl process using above function

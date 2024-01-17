@@ -4,7 +4,7 @@ import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-from python.selfLog import writeAirflowLog
+from python.commonFunction import writeAirflowLog
 
 
 # send request get html raw data by link
@@ -57,7 +57,7 @@ def updateNewestLinkGoogleads():
     # TODO: handle get html error
 
     # extract link report, it is newest link
-    googleadsReportLink = extractLink(googleadsRawData)
+    googleadsReportLink = "https://developers.google.com/google-ads/api/fields/v14/overview" # extractLink(googleadsRawData)
 
     # write log
     writeAirflowLog("Get link: {}".format(googleadsReportLink))

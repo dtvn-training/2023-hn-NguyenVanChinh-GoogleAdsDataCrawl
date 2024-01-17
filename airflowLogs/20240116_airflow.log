@@ -1,0 +1,30 @@
+INFO: Load to table ResourceField successfully!
+INFO: Load to table DataType successfully!
+INFO: Load to table SelectableWith successfully!
+INFO: Load to table Resources successfully!
+INFO: Load to table ResourceFieldConnect successfully!
+INFO: Load to table RelatedResource successfully!
+INFO: Transform data successfully! Result saved in folder: outputdata/20240115_googleadsData
+INFO: Load to table RelatedResource successfully!
+INFO: Load to table RelatedResource successfully!
+INFO: Transform data successfully! Result saved in folder: outputdata/20240115_googleadsData
+INFO: Load to table ResourceFieldConnect successfully!
+INFO: Load to table ResourceFieldConnect successfully!
+INFO: Transform data successfully! Result saved in folder: outputdata/20240115_googleadsData
+INFO: Load to table DataType successfully!
+INFO: Load to table DataType successfully!
+INFO: Transform data successfully! Result saved in folder: outputdata/20240115_googleadsData
+INFO: Load to table SelectableWith successfully!
+INFO: Load to table SelectableWith successfully!
+INFO: Transform data successfully! Result saved in folder: outputdata/20240115_googleadsData
+INFO: Transform data successfully! Result saved in folder: outputdata/20240115_googleadsData
+INFO: Get link: https://developers.google.com/google-ads/api/fields/v13/overview
+INFO: Link was changed from https://developers.google.com/google-ads/api/fields/v15/overview to https://developers.google.com/google-ads/api/fields/v13/overview
+INFO: Downloaded file to folder: inputdata/20240117_googleadsData/, with 160 files
+INFO: Transform data successfully! Result saved in folder: outputdata/20240117_googleadsData
+INFO: Load to table ResourceField successfully!
+INFO: Load to table DataType successfully!
+INFO: Load to table SelectableWith successfully!
+INFO: Load to table Resources successfully!
+INFO: Load to table ResourceFieldConnect successfully!
+INFO: Load to table RelatedResource successfully!

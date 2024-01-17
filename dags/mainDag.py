@@ -9,7 +9,7 @@ from python.crawlWebData import executeCrawl
 from python.transformData import transform
 from python.loadToDB import loadToMySql
 from python.checkLink import updateNewestLinkGoogleads
-from python.crawlWebData import getLinkGoogleads
+from python.commonFunction import getLinkGoogleads
 from python.endTask import handleEndJob
 from python.checkForChanges import checkDifferences
 
@@ -35,9 +35,9 @@ checkLink = do_branching()
 
 crawlData = PythonOperator(task_id="crawl_data", python_callable=executeCrawl, dag=dag)
 transformData = PythonOperator(task_id="transform_data", python_callable=transform, dag=dag)
-checkDiff = PythonOperator(task_id="check_for_changes", python_callable=checkDifferences, dag=dag) 
+# checkDiff = PythonOperator(task_id="check_for_changes", python_callable=checkDifferences, dag=dag) 
 loadData = PythonOperator(task_id="load_data_toMysql", python_callable=loadToMySql, dag=dag)
 endJob = PythonOperator(task_id='end_job', python_callable=handleEndJob, dag=dag) 
 
 updateLink >> checkLink >> [crawlData, endJob]
-crawlData >> transformData >> checkDiff >> loadData
+crawlData >> transformData >> loadData
