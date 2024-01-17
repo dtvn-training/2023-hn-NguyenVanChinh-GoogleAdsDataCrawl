@@ -11,3 +11,22 @@ INFO: Load to table SelectableWith successfully!
 INFO: Load to table Resources successfully!
 INFO: Load to table ResourceFieldConnect successfully!
 INFO: Load to table RelatedResource successfully!
+INFO: --Start check ResourceField table v13 vs v14
+INFO: Number of record change from 2141 to 2184, different: 43
+INFO: --Start check ResourceField table v13 vs v14
+INFO: Number of record change from 2141 to 2184, different: 43
+INFO: Number of deleted fields: 8 
+INFO: --Start check ResourceField table v13 vs v14
+INFO: Number of record change from 2141 to 2184, different: 43
+INFO: Number of deleted fields: 8 
+INFO: --Start check ResourceField table v13 vs v14
+INFO: Number of record change from 2141 to 2184, different: 43
+INFO: Number of deleted fields: 8 
+INFO: --Start check ResourceField table v13 vs v14
+INFO: Number of record change from 2141 to 2184, different: 43
+INFO: Number of deleted fields: 8 
+INFO: --Start check ResourceField table v13 vs v14
+INFO: Number of record change from 2141 to 2184, different: 43
+INFO: Number of deleted fields: 8 
+INFO: Link was changed from https://developers.google.com/google-ads/api/fields/v13/overview to https://developers.google.com/google-ads/api/fields/v14/overview
+INFO: Downloaded file to folder: inputdata/20240117_googleadsData, with 0 files

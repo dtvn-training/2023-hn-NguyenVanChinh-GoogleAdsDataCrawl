@@ -5,10 +5,6 @@ from python.commonFunction import readProperties
 from python.commonFunction import getLinkGoogleads
 from python.commonFunction import getVersion
 
-def updateLinkGoogleads():
-    file_path = "config/googleadsLink.properties"
-    with open(file_path, "w") as file:
-        file.write("googleadsLink={}".format(getLinkGoogleads(getNewest=True)))
 
 # use all above functions
 def loadToMySql():
@@ -45,4 +41,3 @@ def loadToMySql():
         )
         writeAirflowLog("Load to table {} successfully!".format(tableName))
         
-    updateLinkGoogleads()

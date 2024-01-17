@@ -137,6 +137,8 @@ def checkRawdataFolder(folder_name):
 # write folderName of saved file to properties, for downstream in PDI
 def writeLog(folderName, resourceLink):
     writeFolderName(folderName)
+    logPath = 'logs/' + folderName
+    os.makedirs(logPath)
     writeToLogFile(folderName, resourceLink)
 
 

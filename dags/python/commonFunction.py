@@ -5,7 +5,7 @@ import mysql.connector
 def writeAirflowLog(logText):
     print(logText)
     
-    airflowLogPath = "airflowLogs/{}_airflow.log".format(datetime.now().strftime("%Y%m%d"))
+    airflowLogPath = "logs/{}/{}_airflow.log".format(readProperties("config/foldername.properties").get("folder_name"), datetime.now().strftime("%Y%m%d"))
     with open(airflowLogPath, "a") as log_file:  # Open the log file in 'append' mode
         log_file.write(
             "INFO: {}\n".format(logText)

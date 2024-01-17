@@ -1,203 +1,158 @@
-from python.commonFunction import create_connection
-from python.commonFunction import readProperties
-from python.commonFunction import createTableMySql
-from python.commonFunction import writeAirflowLog
-from python.commonFunction import getLinkGoogleads
-from sqlalchemy import create_engine
+from commonFunction import create_connection
+from commonFunction import readProperties
+from commonFunction import writeAirflowLog
+from commonFunction import getLinkGoogleads
+from commonFunction import getVersion
 import pandas as pd
 
 
 def getConnection():
     connectionInfo = readProperties("config/db.properties")
     mysqlConnection = create_connection(connectionInfo)
-    return mysqlConnection, connectionInfo
+    return mysqlConnection
 
-
-def loadTempTable(mysqlConnection, connectionInfo):
-    createTableMySql(mysqlConnection, "config/createTmpTables.sql")
-    engine = create_engine(
-        "mysql+pymysql://{user}:{pw}@{host}:3306/{db}".format(
-            host=connectionInfo.get("host"),
-            pw=connectionInfo.get("password"),
-            user=connectionInfo.get("user"),
-            db=connectionInfo.get("database"),
-        )
-    )
-
-    # table name for save
-    tableNames = [
-        "ResourceField",
-        "DataType",
-        "SelectableWith",
-        "Resource",
-        "ResourceFieldConnect",
-        "RelatedResource",
-    ]
-
-    folderName = readProperties("config/foldername.properties")
-    outputdataPath = "outputdata/" + folderName.get("folder_name") + "/"
-    for tableName in tableNames:
-        df = pd.read_csv(outputdataPath + tableName + ".csv", sep=";")
-        df.to_sql(tableName + "Tmp", engine, if_exists="append", index=False)
-        writeAirflowLog("Load to table {}Tmp successfully!".format(tableName))
-
-
-def checkResourceField(connection):
-    writeAirflowLog("--Start check ResourceField table")
-
-    cursor = connection.cursor()
-
-    queryCount1 = "SELECT COUNT(*) as num_records FROM ResourceField"
+def countRows(cursor, tableName, Version):
+    queryCount1 = "SELECT COUNT(*) as num_records FROM {} WHERE GoogleadsApiVersion = {};".format(tableName, Version)
     cursor.execute(queryCount1)
     result1 = cursor.fetchone()
-    num_recordsSoFar = result1[0]
+    num_records = result1[0]
+    return num_records
 
-    queryCount2 = "SELECT COUNT(*) as num_records FROM ResourceFieldTmp"
-    cursor.execute(queryCount2)
-    result2 = cursor.fetchone()
-    num_recordsNew = result2[0]
+def writeDiffDataToLog(tableName, df, mode='Write'):
+    outputdataPath = 'logs/{}/Diff{}.csv'.format(readProperties("config/foldername.properties").get("folder_name"), tableName)
+    if mode == 'Append':
+        df.to_csv(outputdataPath, index=False, sep=';', mode='a', header=False)
+    else:
+        df.to_csv(outputdataPath, index=False, sep=';')
+
+def checkResourceField(connection, oldVersion, newVersion):
+    writeAirflowLog("--Start check ResourceField table v{} vs v{}".format(oldVersion, newVersion))
+
+    cursor = connection.cursor()
+    num_recordsSoFar = countRows(cursor, 'ResourceField', oldVersion)
+    num_recordsNew = countRows(cursor, 'ResourceField', newVersion)
     writeAirflowLog(
         "Number of record change from {} to {}, different: {}".format(
             num_recordsSoFar, num_recordsNew, abs(num_recordsNew - num_recordsSoFar)
         ),
     )
 
-    # check deleted field
-    sql_scripts_checkResourceField1 = """SELECT rf.FieldName, SUBSTRING(rf.FieldDescription, 1, 40) AS FieldDescription, rf.Category, 'Deleted' AS 'Status'
+    sql_scripts_checkResourceField = """SELECT rf.FieldName, rf.FieldDescription, rf.Category, rf.GoogleadsApiVersion, '{}' AS 'Status'
                                     FROM    ResourceField rf
-                                    WHERE   rf.FieldName NOT IN
-                                            (
-                                            SELECT  FieldName
-                                            FROM    ResourceFieldTmp 
+                                    WHERE   rf.GoogleadsApiVersion = {} 
+										AND FieldName NOT IN
+                                            (SELECT  FieldName
+                                            FROM    ResourceField WHERE GoogleadsApiVersion = {}
                                             )
                                     """
-    # Execute the SQL script
-    cursor.execute(sql_scripts_checkResourceField1)
+    ResourceFieldColumns = ['FieldName', 'FieldDescription', 'Category', 'GoogleadsApiVersion', 'Status']
+    
+    # Execute the SQL script check deleted field
+    cursor.execute(sql_scripts_checkResourceField.format('Deleted', oldVersion, newVersion))
     difResult1 = cursor.fetchall()
     writeAirflowLog("Number of deleted fields: {} ".format(len(difResult1)))
+    df1 = pd.DataFrame(difResult1, columns=ResourceFieldColumns)
+    writeDiffDataToLog('ResourceField', df1)
 
-    # check added field
-    sql_scripts_checkResourceField2 = """SELECT rft.FieldName, SUBSTRING(rft.FieldDescription, 1, 40) AS FieldDescription, rft.Category, 'New' AS 'Status'
-                                    FROM    ResourceFieldTmp rft
-                                    WHERE   rft.FieldName NOT IN
-                                            (
-                                            SELECT  FieldName
-                                            FROM    ResourceField
-                                            )
-                                    """
-    # Execute the SQL script
-    cursor.execute(sql_scripts_checkResourceField2)
+
+    # Execute the SQL script check added field
+    cursor.execute(sql_scripts_checkResourceField.format('New', newVersion, oldVersion))
     difResult2 = cursor.fetchall()
     writeAirflowLog("Number of new fields: {} ".format(len(difResult2)))
+    df2 = pd.DataFrame(difResult2, columns=ResourceFieldColumns)
+    writeDiffDataToLog('ResourceField', df2, mode='Append')
 
-def checkDataType(connection):
-    writeAirflowLog("--Start check Datatype table")
-
+def checkDataType(connection, oldVersion, newVersion):
+    writeAirflowLog("--Start check Datatype table v{} vs v{}".format(oldVersion, newVersion))
     cursor = connection.cursor()
 
-    queryCount1 = "SELECT COUNT(*) as num_records FROM DataType"
-    cursor.execute(queryCount1)
-    result1 = cursor.fetchone()
-    num_dataTypeSoFar = result1[0]
-
-    queryCount2 = "SELECT COUNT(*) as num_records FROM DataTypeTmp"
-    cursor.execute(queryCount2)
-    result2 = cursor.fetchone()
-    num_dataTypeNew = result2[0]
+    countOld = countRows(cursor, 'DataType', oldVersion)
+    countNew = countRows(cursor, 'DataType', newVersion)
     writeAirflowLog(
         "Number of record change from {} to {}, different: {}".format(
-            num_dataTypeSoFar, num_dataTypeNew, abs(num_dataTypeSoFar - num_dataTypeNew)
+            countOld, countNew, abs(countOld - countNew)
         )
     )
 
     # check deleted field
-    sql_scripts_checkDataType1 = """SELECT rf.FieldName, dt.DataType, dt.EnumDataType, 'Deleted' as Status
-                    FROM ResourceField rf JOIN DataType dt ON rf.FieldId = dt.FieldId
-                    WHERE ROW(rf.FieldName, dt.DataType, dt.EnumDataType) NOT IN (SELECT rft.FieldName, dtt.DataType, dtt.EnumDataType
-                    FROM ResourceFieldTmp rft JOIN DataTypeTmp dtt ON rft.FieldId = dtt.FieldId)
+    sql_scripts_checkDataType = """SELECT rf.FieldName, dt.DataType, dt.EnumDataType, dt.GoogleadsApiVersion, '{}' as Status
+            FROM ResourceField rf JOIN DataType dt ON rf.FieldId = dt.FieldId
+            WHERE dt.GoogleadsApiVersion = {} AND ROW(rf.FieldName, dt.DataType, dt.EnumDataType) NOT IN 
+	        (SELECT rf.FieldName, dt.DataType, dt.EnumDataType FROM ResourceField rf JOIN DataType dt ON rf.FieldId = dt.FieldId WHERE dt.GoogleadsApiVersion = {})
                                     """
+    DataTypeColumns = ['FieldName', 'DataType', 'EnumDataType', 'GoogleadsApiVersion', 'Status']
     # Execute the SQL script
-    cursor.execute(sql_scripts_checkDataType1)
+    cursor.execute(sql_scripts_checkDataType.format('Deleted', oldVersion, newVersion))
     difResult1 = cursor.fetchall()
-    writeAirflowLog("Number of deleted records: {} ".format(len(difResult1)))
-
-    # check added field
-    sql_scripts_checkDataType2 = """SELECT rft.FieldName, dtt.DataType, dtt.EnumDataType, 'New' as Status
-                    FROM ResourceFieldTmp rft JOIN DataTypeTmp dtt ON rft.FieldId = dtt.FieldId
-                    WHERE ROW(rft.FieldName, dtt.DataType, dtt.EnumDataType) NOT IN (SELECT rf.FieldName, dt.DataType, dt.EnumDataType
-                    FROM ResourceField rf JOIN DataType dt ON rf.FieldId = dt.FieldId)
-                                    """
+    writeAirflowLog("Number of deleted fields: {} ".format(len(difResult1)))
+    df1 = pd.DataFrame(difResult1, columns=DataTypeColumns)
+    writeDiffDataToLog('DataType', df1)
+    
+    
     # Execute the SQL script
-    cursor.execute(sql_scripts_checkDataType2)
+    cursor.execute(sql_scripts_checkDataType.format('New', newVersion, oldVersion))
     difResult2 = cursor.fetchall()
     writeAirflowLog("Number of new records: {} ".format(len(difResult2)))
+    df2 = pd.DataFrame(difResult2, columns=DataTypeColumns)
+    writeDiffDataToLog('DataType', df2, mode='Append')
 
-def checkResource(connection):
-    writeAirflowLog("--Start check Resources table")
+def checkResource(connection, oldVersion, newVersion):
+    writeAirflowLog("--Start check Resources table v{} vs v{}".format(oldVersion, newVersion))
 
     cursor = connection.cursor()
 
-    queryCount1 = "SELECT COUNT(*) as num_records FROM Resource"
-    cursor.execute(queryCount1)
-    result1 = cursor.fetchone()
-    num_resourceSoFar = result1[0]
-
-    queryCount2 = "SELECT COUNT(*) as num_records FROM ResourceTmp"
-    cursor.execute(queryCount2)
-    result2 = cursor.fetchone()
-    num_resourceNew = result2[0]
+    countOld = countRows(cursor, 'Resources', oldVersion)
+    countNew = countRows(cursor, 'Resources', newVersion)
     writeAirflowLog(
         "Number of record change from {} to {}, different: {}".format(
-            num_resourceSoFar, num_resourceNew, abs(num_resourceSoFar - num_resourceNew)
+            countOld, countNew, abs(countOld - countNew)
         ),
     )
 
-    # check deleted field
-    sql_scripts_checkResource1 = """SELECT r.ResourceName, SUBSTRING(r.ResourceDescription, 1, 40) AS ResourceDescription, r.ResourceWithMetric, 'Deleted' AS 'Status'
-                                    FROM    Resource r
-                                    WHERE   r.ResourceName NOT IN (SELECT rt.ResourceName FROM ResourceTmp rt )
+    sql_scripts_checkResources = """SELECT r.ResourceName, r.ResourceDescription, r.ResourceWithMetric, r.GoogleadsApiVersion, '{}' AS 'Status'
+                                    FROM Resources r
+                                    WHERE r.GoogleadsApiVersion = {} AND r.ResourceName NOT IN (SELECT ResourceName FROM Resources WHERE GoogleadsApiVersion = {});
                                     """
-    # Execute the SQL script
-    cursor.execute(sql_scripts_checkResource1)
+    ResourcesColumns = ['ResourceName', 'ResourceDescription', 'ResourceWithMetric', 'GoogleadsApiVersion', 'Status']
+                                    
+    # Execute the SQL script check deleted field
+    cursor.execute(sql_scripts_checkResources.format('Deleted', oldVersion, newVersion))
     difResult1 = cursor.fetchall()
     writeAirflowLog("Number of deleted records: {} ".format(len(difResult1)))
+    df1 = pd.DataFrame(difResult1, columns=ResourcesColumns)
+    writeDiffDataToLog('Resources', df1)
 
-    # check added field
-    sql_scripts_checkResource2 = """SELECT rt.ResourceName, SUBSTRING(rt.ResourceDescription, 1, 40) AS ResourceDescription, rt.ResourceWithMetric, 'New' AS 'Status'
-                                    FROM    ResourceTmp rt
-                                    WHERE   rt.ResourceName NOT IN (SELECT r.ResourceName FROM Resource r )
-                                    """
-    # Execute the SQL script
-    cursor.execute(sql_scripts_checkResource2)
+    # Execute the SQL script check added field
+    cursor.execute(sql_scripts_checkResources.format('New', newVersion, oldVersion))
     difResult2 = cursor.fetchall()
     writeAirflowLog("Number of new records: {} ".format(len(difResult2)))
+    df2 = pd.DataFrame(difResult2, columns=ResourcesColumns)
+    writeDiffDataToLog('Resources', df2, mode='Append')
 
-def checkChanges(connection):
-    checkResourceField(connection)
-    checkDataType(connection)
-    checkResource(connection)
+def checkChanges():
+    connection = getConnection()
+    oldVersion = getVersion(getLinkGoogleads(getNewest=False))
+    newVersion = getVersion(getLinkGoogleads(getNewest=True))
+    
+    checkResourceField(connection, oldVersion, newVersion)
+    checkDataType(connection, oldVersion, newVersion)
+    checkResource(connection, oldVersion, newVersion)
 
-
-def dropTable(connection):
-    cursor = connection.cursor()
-    cursor.execute(
-        "drop table if exists RelatedResourceTmp, ResourceTmp, ResourceFieldTmp, DataTypeTmp, SelectableWithTmp, ResourceFieldConnectTmp;"
-    )
-    connection.commit()
-    cursor.close()
-    connection.close()
-
-
+def updateLinkGoogleads():
+    file_path = "config/googleadsLink.properties"
+    with open(file_path, "w") as file:
+        file.write("googleadsLink={}".format(getLinkGoogleads(getNewest=True)))
 
 def checkDifferences():
     writeAirflowLog('------- Start checkForChanges.py ---------')
-    mysqlConnection, connectionInfo = getConnection()
-    loadTempTable(mysqlConnection, connectionInfo)
-    
+
     # if crawled googleadsLink is null, data googleads is empty. So dont need check
     if getLinkGoogleads(getNewest=False) is not None:
-        checkChanges(mysqlConnection)
+        checkChanges()
     else:
         writeAirflowLog('Dont have old table to compare')
 
-    dropTable(mysqlConnection)
+    updateLinkGoogleads()
+    
+if __name__ == '__main__':
+    checkChanges()
