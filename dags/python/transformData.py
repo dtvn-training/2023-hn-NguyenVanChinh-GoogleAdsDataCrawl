@@ -76,7 +76,7 @@ def transform():
     # read connection to mysql
     connectionInfo = readProperties("config/db.properties")
 
-    # prepare db by drop exist table and create new table.
+    # prepare db by create if not exists table.
     mysqlConnection = create_connection(connectionInfo)
     createTableMySql(mysqlConnection, "config/createtables.sql")
     

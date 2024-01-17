@@ -134,19 +134,8 @@ def checkRawdataFolder(folder_name):
         os.makedirs(folder_name + "/resources")
 
 
-# write folderName of saved file to properties, for downstream in PDI
-def writeLog(folderName, resourceLink):
-    writeFolderName(folderName)
-    logPath = 'logs/' + folderName
-    os.makedirs(logPath)
-    writeToLogFile(folderName, resourceLink)
 
 
-# write folder name to properties file
-def writeFolderName(folderName):
-    file_path = "config/foldername.properties"
-    with open(file_path, "w") as file:
-        file.write("folder_name={}".format(folderName[:-1]))
 
 
 # write result of crawlCode to log file
@@ -172,4 +161,4 @@ def executeCrawl():
     resourceLink = extractInfoResource(googleadsRawData)
     
     folderName = downloadXmlRawData(resourceLink)
-    writeLog(folderName, resourceLink)
+    writeToLogFile(folderName, resourceLink)

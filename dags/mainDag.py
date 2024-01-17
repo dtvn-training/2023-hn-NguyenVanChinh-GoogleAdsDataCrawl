@@ -14,9 +14,9 @@ from python.endTask import handleEndJob
 from python.checkForChanges import checkDifferences
 
 dag = DAG(
-    dag_id="crawlDataGoogleadsJob",
-    start_date=datetime.datetime(2021, 1, 1),
-    schedule_interval=timedelta(days=2000),
+    dag_id="Crawl_GoogleadsData_Job",
+    start_date=datetime.datetime(2024, 1, 15),
+    schedule_interval=timedelta(days=10),
     tags=["etl", "pentaho", "googleads"],
 )
 
@@ -35,9 +35,9 @@ checkLink = do_branching()
 
 crawlData = PythonOperator(task_id="crawl_data", python_callable=executeCrawl, dag=dag)
 transformData = PythonOperator(task_id="transform_data", python_callable=transform, dag=dag)
-# checkDiff = PythonOperator(task_id="check_for_changes", python_callable=checkDifferences, dag=dag) 
+checkDiff = PythonOperator(task_id="check_for_changes", python_callable=checkDifferences, dag=dag) 
 loadData = PythonOperator(task_id="load_data_toMysql", python_callable=loadToMySql, dag=dag)
 endJob = PythonOperator(task_id='end_job', python_callable=handleEndJob, dag=dag) 
 
 updateLink >> checkLink >> [crawlData, endJob]
-crawlData >> transformData >> loadData
+crawlData >> transformData >> loadData >> checkDiff

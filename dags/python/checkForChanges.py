@@ -1,8 +1,8 @@
-from commonFunction import create_connection
-from commonFunction import readProperties
-from commonFunction import writeAirflowLog
-from commonFunction import getLinkGoogleads
-from commonFunction import getVersion
+from python.commonFunction import create_connection
+from python.commonFunction import readProperties
+from python.commonFunction import writeAirflowLog
+from python.commonFunction import getLinkGoogleads
+from python.commonFunction import getVersion
 import pandas as pd
 
 
@@ -154,5 +154,3 @@ def checkDifferences():
 
     updateLinkGoogleads()
     
-if __name__ == '__main__':
-    checkChanges()
