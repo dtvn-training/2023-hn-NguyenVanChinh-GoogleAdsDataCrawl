@@ -1,4 +1,4 @@
-drop table if exists DataType, SelectableWith, ResourceFieldConnect, RelatedResource, Resource, ResourceField;
+# drop table if exists DataType, SelectableWith, ResourceFieldConnect, RelatedResource, Resources, ResourceField;
 
 create table if not exists ResourceField (
 FieldId int primary key not null,
@@ -9,39 +9,45 @@ TypeURL TEXT,
 Filterable bool,
 Selectable bool,
 Sortable bool,
-Repeated bool);
+Repeated bool,
+GoogleadsApiVersion int);
 
 create table if not exists DataType (
-Id int primary key,
+Id int primary key not null auto_increment,
 FieldId int,
 DataType varchar(20),
 EnumDataType varchar(100),
+GoogleadsApiVersion int,
 foreign key (FieldId) references ResourceField(FieldId));
 
 create table if not exists SelectableWith (
-Id int primary key,
+Id int primary key not null auto_increment,
 FieldId int,
 ResourceName text,
+GoogleadsApiVersion int,
 foreign key (FieldId) references ResourceField(FieldId));
 
-create table Resource (
+create table if not exists Resources (
 ResourceId int primary key not null,
 ResourceName text,
 ResourceDescription text,
-ResourceWithMetric bool
+ResourceWithMetric bool,
+GoogleadsApiVersion int
 );
 
 create table if not exists RelatedResource (
-Id int primary key,
+Id int primary key auto_increment,
 MasterResourceId int not null,
 AttributedResourceId int not null,
 BeSegment bool not null,
-foreign key (MasterResourceId) references Resource(ResourceId),
-foreign key (AttributedResourceId) references Resource(ResourceId));
+GoogleadsApiVersion int,
+foreign key (MasterResourceId) references Resources(ResourceId),
+foreign key (AttributedResourceId) references Resources(ResourceId));
 
 create table if not exists ResourceFieldConnect (
-Id int primary key not null,
+Id int primary key not null auto_increment,
 FieldId int not null,
 ResourceId int not null,
+GoogleadsApiVersion int,
 foreign key (FieldId) references ResourceField(FieldId),
-foreign key (ResourceId) references Resource(ResourceId))
+foreign key (ResourceId) references Resources(ResourceId))

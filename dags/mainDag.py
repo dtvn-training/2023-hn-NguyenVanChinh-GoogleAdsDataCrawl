@@ -9,14 +9,14 @@ from python.crawlWebData import executeCrawl
 from python.transformData import transform
 from python.loadToDB import loadToMySql
 from python.checkLink import updateNewestLinkGoogleads
-from python.crawlWebData import getLinkGoogleads
+from python.commonFunction import getLinkGoogleads
 from python.endTask import handleEndJob
 from python.checkForChanges import checkDifferences
 
 dag = DAG(
-    dag_id="crawlDataGoogleadsJob",
-    start_date=datetime.datetime(2021, 1, 1),
-    schedule_interval=timedelta(days=2000),
+    dag_id="Crawl_GoogleadsData_Job",
+    start_date=datetime.datetime(2024, 1, 15),
+    schedule_interval=timedelta(days=10),
     tags=["etl", "pentaho", "googleads"],
 )
 
@@ -40,4 +40,4 @@ loadData = PythonOperator(task_id="load_data_toMysql", python_callable=loadToMyS
 endJob = PythonOperator(task_id='end_job', python_callable=handleEndJob, dag=dag) 
 
 updateLink >> checkLink >> [crawlData, endJob]
-crawlData >> transformData >> checkDiff >> loadData
+crawlData >> transformData >> loadData >> checkDiff

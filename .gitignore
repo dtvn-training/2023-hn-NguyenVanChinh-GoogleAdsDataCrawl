@@ -7,4 +7,4 @@ config/foldername.properties
 config/db.properties
 __pycache__
 chromedriver
-log/*
+logs/*
